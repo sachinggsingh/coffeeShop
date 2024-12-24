@@ -76,6 +76,10 @@ git clone https://github.com/your-username/ms-cafe.git
 cd ms-cafe
 ```
 ```bash
+#install dependencies
+npm install
+```
+```bash
 # Create a new branch for your feature or fix
 git checkout -b feature/your-feature-name
 ```
