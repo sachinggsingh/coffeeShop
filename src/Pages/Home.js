@@ -45,6 +45,7 @@ const FeaturesSection = styled.section`
   gap: 2rem;
   padding: 4rem 2rem;
   background-color: #f8f8f8;
+  overflow: visible;
 `;
 
 const FeatureCard = styled(motion.div)`
@@ -52,18 +53,21 @@ const FeatureCard = styled(motion.div)`
   padding: 2rem;
   border-radius: 8px;
   text-align: center;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 
   &:hover {
-    transform: translateY(-5px);
+    transform: scale(1.1);  
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); 
   }
 `;
 
+
 const FeatureIcon = styled.img`
   width: 350px;
-  height:350px;
+  height: 350px;
   margin-bottom: 1rem;
+  
 `;
 
 const FeatureTitle = styled.h3`
