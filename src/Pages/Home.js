@@ -67,10 +67,7 @@ const FeatureIcon = styled.img`
   width: 350px;
   height: 350px;
   margin-bottom: 1rem;
-  &:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
-  }
+  
 `;
 
 const FeatureTitle = styled.h3`
