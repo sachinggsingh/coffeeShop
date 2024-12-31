@@ -3,13 +3,14 @@ import { useDispatch } from 'react-redux';
 import { login } from '../Store/authSlice';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-const LoginBackGround= styled.section`
-background-image: url('https://img.freepik.com/free-photo/hot-latte-art-coffee-cup-wood-table-coffee-shop_1150-8937.jpg?t=st=1727759954~exp=1727763554~hmac=2715c972f28c255c158e0d14f664f9443fdd95a0e4b21cf6d5b41bc690aaa2d3&w=1380');
+import { Link } from 'react-router-dom';
+
+const LoginBackGround = styled.section`
+  background-image: url('https://img.freepik.com/free-photo/hot-latte-art-coffee-cup-wood-table-coffee-shop_1150-8937.jpg?t=st=1727759954~exp=1727763554~hmac=2715c972f28c255c158e0d14f664f9443fdd95a0e4b21cf6d5b41bc690aaa2d3&w=1380');
   background-size: cover;
   background-position: center;
-
-
 `;
+
 const LoginContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -44,7 +45,16 @@ const Button = styled(motion.button)`
   cursor: pointer;
 `;
 
+const RegisterLink = styled(Link)`
+  display: block;
+  margin-top: 1rem;
+  text-align: center;
+  color: #7c2214;
+  text-decoration: none;
+`;
+
 function Login() {
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
@@ -52,42 +62,50 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     // In a real app, you would validate the credentials here
-    dispatch(login({ email }));
+    dispatch(login({ username, email }));
   };
 
   return (
     <LoginBackGround>
-    <LoginContainer>
-      <LoginForm
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        onSubmit={handleSubmit}
-      >
-        <h2>Login</h2>
-        <Input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <Input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        <Button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          type="submit"
+      <LoginContainer>
+        <LoginForm
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          onSubmit={handleSubmit}
         >
-          Login
-        </Button>
-      </LoginForm>
-    </LoginContainer>
+          <h2>Login</h2>
+          <Input
+            type="text"
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+          <Input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <Input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <Button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            type="submit"
+          >
+            Login
+          </Button>
+          <RegisterLink to="/register">Don't have an account? Register</RegisterLink>
+        </LoginForm>
+      </LoginContainer>
     </LoginBackGround>
   );
 }
