@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { login } from '../Store/authSlice';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const LoginBackGround = styled.section`
   background-image: url('https://img.freepik.com/free-photo/hot-latte-art-coffee-cup-wood-table-coffee-shop_1150-8937.jpg?t=st=1727759954~exp=1727763554~hmac=2715c972f28c255c158e0d14f664f9443fdd95a0e4b21cf6d5b41bc690aaa2d3&w=1380');
@@ -53,16 +53,29 @@ const RegisterLink = styled(Link)`
   text-decoration: none;
 `;
 
+const ErrorMessage = styled.div`
+  margin-top: 1rem;
+  color: red;
+  text-align: center;
+`;
+
 function Login() {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // In a real app, you would validate the credentials here
-    dispatch(login({ username, email }));
+    const storedUser = JSON.parse(localStorage.getItem('user'));
+    if (storedUser && storedUser.username === username && storedUser.email === email && storedUser.password === password) {
+      dispatch(login({ username, email }));
+      navigate('/home'); // Redirect to home page
+    } else {
+      setError('Invalid credentials');
+    }
   };
 
   return (
@@ -103,6 +116,7 @@ function Login() {
           >
             Login
           </Button>
+          {error && <ErrorMessage>{error}</ErrorMessage>}
           <RegisterLink to="/register">Don't have an account? Register</RegisterLink>
         </LoginForm>
       </LoginContainer>
