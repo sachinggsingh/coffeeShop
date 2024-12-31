@@ -11,7 +11,7 @@ const NavbarContainer = styled(motion.nav)`
   align-items: center;
   padding: 1rem 2rem;
   color: white;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  // box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   position: fixed;
   top: 0;
   left: 0;
