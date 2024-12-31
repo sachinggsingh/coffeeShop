@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../Store/authSlice';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
+import './Navbar.css';
 
 const NavbarContainer = styled(motion.nav)`
   display: flex;
@@ -13,6 +14,7 @@ const NavbarContainer = styled(motion.nav)`
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   position: fixed;
+   
   top: 0;
   left: 0;
   right: 0;
@@ -22,6 +24,7 @@ const NavbarContainer = styled(motion.nav)`
 const Logo = styled(motion.div)`
   font-size: 1.5rem;
   font-weight: bold;
+   
 `;
 
 const NavLinks = styled(motion.div)`
@@ -108,8 +111,12 @@ function Navbar() {
             <Link to="/about">About</Link>
           </NavLink>
           <NavLink whileHover={{ scale: 1.1 }}>
+            <Link to="/testimonial">Testimonal</Link>
+          </NavLink>
+          <NavLink whileHover={{ scale: 1.1 }}>
             <Link to="/contact">Contact</Link>
           </NavLink>
+          
           {isLoggedIn ? (
             <>
               <NavLink whileHover={{ scale: 1.1 }}>
