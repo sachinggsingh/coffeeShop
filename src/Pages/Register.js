@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { login } from '../Store/authSlice';
 
 const RegisterBackGround = styled.section`
   background-image: url('https://img.freepik.com/free-photo/hot-latte-art-coffee-cup-wood-table-coffee-shop_1150-8937.jpg?t=st=1727759954~exp=1727763554~hmac=2715c972f28c255c158e0d14f664f9443fdd95a0e4b21cf6d5b41bc690aaa2d3&w=1380');
@@ -73,6 +75,7 @@ const Register = () => {
 
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [error, setError] = useState('');
+    const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const handleChange = (e) => {
@@ -91,11 +94,12 @@ const Register = () => {
         }
         // Store user credentials in local storage
         localStorage.setItem('user', JSON.stringify(formData));
+        dispatch(login({ username: formData.username, email: formData.email }));
         console.log('Form submitted:', formData);
         setIsSubmitted(true);
         setError('');
         setTimeout(() => {
-            navigate('/login');
+            navigate('/profile'); // Redirect to profile page
         }, 2000);
     };
 
