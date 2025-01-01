@@ -14,7 +14,7 @@ const StyledButton = styled(motion.button)`
 
   &:hover {
     background-color: ${props => props.primary ? '#7c2214' : 'white'};
-    color: ${props => props.primary ? '#7c2214' : '#7c2214'}
+    color: ${props => props.primary ? 'white' : '#7c2214'}
   }
 `;
 
