@@ -80,6 +80,7 @@ function Contact() {
           value={formData.name}
           onChange={handleChange}
           required
+          pattern="[a-zA-Z\s]+" title="Name must only contain letters"
         />
         <Input
           type="email"
