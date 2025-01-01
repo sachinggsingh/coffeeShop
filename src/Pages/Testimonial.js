@@ -8,7 +8,8 @@ import './Testimonial.css'
     <div className="testimonial">
       
         <div className="container">
-        <h1 class = "mt-3">What Our Customer Says</h1>
+        <h1 className = "mt-5">What Our Customers Say:</h1>
+        <br></br>
             <div className="row">
                <div className="col-md-12">
                <div id="carouselExampleSlidesOnly" className="carousel slide" data-bs-ride="carousel">
