@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { login } from '../Store/authSlice';
@@ -72,7 +73,7 @@ function Login() {
     const storedUser = JSON.parse(localStorage.getItem('user'));
     if (storedUser && storedUser.username === username && storedUser.email === email && storedUser.password === password) {
       dispatch(login({ username, email }));
-      navigate('/home'); // Redirect to home page
+      navigate('/profile'); // Redirect to home page
     } else {
       setError('Invalid credentials');
     }
