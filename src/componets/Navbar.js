@@ -11,8 +11,8 @@ const NavbarContainer = styled(motion.nav)`
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  color: white;
+  // box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   position: fixed;
    
   top: 0;
@@ -37,9 +37,10 @@ const NavLinks = styled(motion.div)`
 `;
 
 const NavLink = styled(motion.div)`
-  color: #333;
+  color: white;
   text-decoration: none;
   &:hover {
+    transition: 0.3s;
     color: #7c2214;
   }
 `;
@@ -50,7 +51,7 @@ const MobileMenuButton = styled(motion.button)`
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
-
+  color: white;
   @media (max-width: 768px) {
     display: block;
   }
@@ -61,7 +62,7 @@ const MobileMenu = styled(motion.div)`
   top: 60px;
   left: 0;
   right: 0;
-  background-color: #fff;
+  color: white;
   padding: 1rem;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 `;
