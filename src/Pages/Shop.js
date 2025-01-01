@@ -6,21 +6,25 @@ import { addToCart } from '../Store/cartSlice';
 import Button from '../componets/Button';
 
 const ShopContainer = styled.div`
-  padding: 4rem 2rem;
+  padding: 6rem 2rem 4rem 2rem; // Added top padding for navbar
   max-width: 1200px;
   margin: 0 auto;
+  background-color: #fffbeb; // Warm background color
 `;
 
 const Title = styled(motion.h1)`
   font-size: 2.5rem;
   margin-bottom: 2rem;
   text-align: center;
+  color: #78350f; // Warm brown color
 `;
 
 const ProductGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
+  max-width: 1100px; // Slightly reduced to center content more
+  margin: 0 auto;
 `;
 
 const ProductCard = styled(motion.div)`
@@ -28,16 +32,23 @@ const ProductCard = styled(motion.div)`
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+
   position: relative;
 
   &:hover .overlay {
     opacity: 1;
+
+  transition: box-shadow 0.3s ease;
+  
+  &:hover {
+    box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+
   }
 `;
 
 const ProductImage = styled.img`
   width: 100%;
-  height: 200px;
+  height: 220px;
   object-fit: cover;
 `;
 
@@ -65,18 +76,21 @@ const OverlayText = styled.p`
 
 
 const ProductInfo = styled.div`
-  padding: 1rem;
+  padding: 1.25rem;
+  background-color: white;
 `;
 
 const ProductName = styled.h3`
   font-size: 1.2rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
+  color: #78350f; // Warm brown color
 `;
 
 const ProductPrice = styled.p`
-  font-size: 1rem;
-  color: #666;
+  font-size: 1.1rem;
+  color: #92400e; // Slightly lighter brown
   margin-bottom: 1rem;
+  font-weight: 500;
 `;
 
 const products = [
