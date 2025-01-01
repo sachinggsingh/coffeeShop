@@ -13,11 +13,15 @@ import About from './Pages/About';
 import Contact from './Pages/contact';
 import Profile from './Pages/profile';
 import Checkout from './Pages/checkOut';
+import Testimonial from './Pages/Testimonial';
+
+
 
 const AppContainer = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+   color: #7c2214;
 `;
 
 const ContentContainer = styled.div`
@@ -37,11 +41,13 @@ function App() {
               <Route path="/shop" element={<Shop />} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/about" element={<About />} />
+              <Route path="/testimonial" element={<Testimonial/>} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/checkout" element={<Checkout />} />
             </Routes>
           </ContentContainer>
+          
           <Footer />
         </AppContainer>
       </Router>
