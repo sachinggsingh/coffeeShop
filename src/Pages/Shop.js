@@ -1,9 +1,15 @@
+
 import { motion } from "framer-motion";
 import React from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { addToCart } from "../Store/cartSlice";
 import Button from "../componets/Button";
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import styled from 'styled-components';
+import { motion } from 'framer-motion';
+import { addToCart } from '../Store/cartSlice';
 
 const ShopContainer = styled.div`
   padding: 6rem 2rem 4rem 2rem; // Added top padding for navbar
@@ -26,23 +32,22 @@ const ProductGrid = styled.div`
   max-width: 1100px; // Slightly reduced to center content more
   margin: 0 auto;
 `;
-
 const ProductCard = styled(motion.div)`
-  background-color: white;
-  border-radius: 8px;
+  background: linear-gradient(145deg, #ffffff, #e6e6e6);
+  border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-
   position: relative;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1), -2px -2px 8px rgba(255, 255, 255, 0.8);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.15), -4px -4px 12px rgba(255, 255, 255, 0.9);
+  }
 
   &:hover .overlay {
     opacity: 1;
-
-  transition: box-shadow 0.3s ease;
-  
-  &:hover {
-    box-shadow: 0 8px 12px rgba(0,0,0,0.15);
-
   }
 `;
 
@@ -65,6 +70,13 @@ const Overlay = styled.div`
   opacity: 0;
   transition: opacity 0.3s ease;
   padding: 1rem;
+  text-align: center;
+`;
+
+const ProductName = styled.h3`
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
   box-sizing: border-box;
 `;
 
@@ -79,17 +91,34 @@ const ProductInfo = styled.div`
   background-color: white;
 `;
 
-const ProductName = styled.h3`
-  font-size: 1.2rem;
-  margin-bottom: 0.75rem;
-  color: #78350f; // Warm brown color
-`;
-
 const ProductPrice = styled.p`
   font-size: 1.1rem;
-  color: #92400e; // Slightly lighter brown
+  color: #4a2c2a;
   margin-bottom: 1rem;
-  font-weight: 500;
+  font-weight: 600;
+`;
+
+const StyledButton = styled.button`
+  background: linear-gradient(145deg, #6b4f4f, #7d5858);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  letter-spacing: 0.6px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease, transform 0.2s ease;
+
+  &:hover {
+    background: linear-gradient(145deg, #7d5858, #8e6a6a);
+    transform: scale(1.05);
+  }
+    
+  &:active {
+    transform: scale(0.98);
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); 
+  }
 `;
 
 const products = [
@@ -552,6 +581,8 @@ function Shop() {
               <Button onClick={() => handleAddToCart(product)}>
                 Add to Cart
               </Button>
+              <StyledButton onClick={() => handleAddToCart(product)}>Add to Cart</StyledButton>
+
             </ProductInfo>
           </ProductCard>
         ))}
