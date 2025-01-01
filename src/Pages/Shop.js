@@ -25,12 +25,11 @@ const ProductGrid = styled.div`
   max-width: 1100px; // Slightly reduced to center content more
   margin: 0 auto;
 `;
-
 const ProductCard = styled(motion.div)`
   background: linear-gradient(145deg, #ffffff, #e6e6e6);
   border-radius: 10px;
   overflow: hidden;
-<<<<<<< HEAD
+  position: relative;
   box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1), -2px -2px 8px rgba(255, 255, 255, 0.8);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
@@ -38,20 +37,10 @@ const ProductCard = styled(motion.div)`
   &:hover {
     transform: translateY(-5px);
     box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.15), -4px -4px 12px rgba(255, 255, 255, 0.9);
-=======
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-
-  position: relative;
+  }
 
   &:hover .overlay {
     opacity: 1;
-
-  transition: box-shadow 0.3s ease;
-  
-  &:hover {
-    box-shadow: 0 8px 12px rgba(0,0,0,0.15);
-
->>>>>>> origin/main
   }
 `;
 
@@ -74,7 +63,6 @@ const Overlay = styled.div`
   opacity: 0;
   transition: opacity 0.3s ease;
   padding: 1rem;
-<<<<<<< HEAD
   text-align: center;
 `;
 
@@ -82,7 +70,6 @@ const ProductName = styled.h3`
   font-size: 1.4rem;
   margin-bottom: 0.5rem;
   font-weight: 600;
-=======
   box-sizing: border-box;
 `;
 
@@ -98,16 +85,8 @@ const ProductInfo = styled.div`
   background-color: white;
 `;
 
-const ProductName = styled.h3`
-  font-size: 1.2rem;
-  margin-bottom: 0.75rem;
-  color: #78350f; // Warm brown color
->>>>>>> origin/main
-`;
-
 const ProductPrice = styled.p`
   font-size: 1.1rem;
-<<<<<<< HEAD
   color: #4a2c2a;
   margin-bottom: 1rem;
   font-weight: 600;
@@ -134,22 +113,6 @@ const StyledButton = styled.button`
     transform: scale(0.98);
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); 
   }
-`;
-
-const products = [
-  { id: 1, name: 'Espresso', price: 2.5, image: 'https://img.freepik.com/free-photo/caramel-latte-with-chocolade-table_140725-4.jpg?t=st=1727759794~exp=1727763394~hmac=c764d48b2b28767da2c6b996ec20e0d6a5857c19724850db5e46498687e16225&w=740' },
-  { id: 2, name: 'Cappuccino', price: 3.5, image: 'https://img.freepik.com/free-photo/delicious-organic-latte-macchiato-with-milk_23-2148420329.jpg?t=st=1727761406~exp=1727765006~hmac=10f2d9d7a08693daef2ef87ff4edd99d5bc33e1813adb65c8628d088268239b5&w=1380 ' },
-  { id: 3, name: 'Latte', price: 4, image: 'https://img.freepik.com/free-photo/cold-chocolate-cocktail-with-ice-cream_140725-940.jpg?t=st=1727759865~exp=1727763465~hmac=ad44e2430bff005bce4db484fbef6f2ec22f05b97b41c8c6c28ecb8508c2d909&w=740 ' },
-  { id: 4, name: 'Mocha', price: 4.5, image: 'https://img.freepik.com/free-photo/delicious-quality-coffee-cup_23-2150691385.jpg?t=st=1727759888~exp=1727763488~hmac=ea5484acf51753db6069801c3df0caa601e5d09a2265109ba218d040acb3e53c&w=1380  ' },
-  { id: 5, name: 'Americano', price: 3, image: 'https://img.freepik.com/free-photo/delicious-quality-coffee-cup_23-2150691389.jpg?t=st=1727759909~exp=1727763509~hmac=615986b69635b1e5a35b3a09347203d49046878d7525a9588f94211a3947ff58&w=1380  ' },
-  { id: 6, name: 'Macchiato', price: 3.5, image: 'https://img.freepik.com/free-photo/assortment-with-frappe-dark-background_23-2148436976.jpg?t=st=1727761354~exp=1727764954~hmac=20b5ddf356f56d12e139084bc8e2c14ad3c71677269de9680db9dc4d09250774&w=740 ' },
-  { id: 7, name: 'Chai', price: 3, image: 'https://img.freepik.com/free-photo/frappe-glass-slices-bread-with-seeds_23-2148623233.jpg?ga=GA1.1.1542821208.1727756299&semt=ais_hybrid' },
-  { id: 8, name: 'Lemon Tea', price: 3.5, image: 'https://img.freepik.com/free-photo/cup-hot-mint-tea_144627-34462.jpg?ga=GA1.1.1542821208.1727756299&semt=ais_hybrid ' },
-];
-=======
-  color: #92400e; // Slightly lighter brown
-  margin-bottom: 1rem;
-  font-weight: 500;
 `;
 
 const products = [
@@ -201,7 +164,6 @@ const products = [
   { id: 46, name: 'Cold cucumber soup', price: 7.34, image: 'https://img.freepik.com/free-photo/cold-cucumber-soup-with-dried-tomatoes-mozzarella_2829-14287.jpg?ga=GA1.1.900909129.1729318722&semt=ais_hybrid', description: 'Refreshing and cool, a chilled soup made with cucumbers, yogurt, and herbs, perfect for summer.' },
   { id: 47, name: 'Tom Yum Soup', price: 9.2, image: 'https://img.freepik.com/free-photo/tom-yum-kung-thai-hot-spicy-soup-shrimp-with-lemon-grass-lemon-galangal-chilli-wooden-table-thailand-food_1150-21078.jpg?ga=GA1.1.900909129.1729318722&semt=ais_hybrid', description: 'Spicy and aromatic, a Thai soup with lemongrass, kaffir lime leaves, and chilies, often with shrimp.' },
 ]
->>>>>>> origin/main
 
 function Shop() {
   const dispatch = useDispatch();
