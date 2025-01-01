@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import Button from '../componets/Button';
+import Button from '../componets/Button'; // Corrected import statement
 
 const ProfileContainer = styled.div`
   padding: 4rem 2rem;
@@ -70,7 +70,7 @@ function Profile() {
       >
         <InfoItem>
           <Label>Name:</Label>
-          {user?.name || 'N/A'}
+          {user?.username || 'N/A'}
         </InfoItem>
         <InfoItem>
           <Label>Email:</Label>
