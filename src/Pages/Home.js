@@ -283,7 +283,8 @@ function Home() {
       <FeaturesSection ref={featuresRef}>
         <FeatureCard>
           <FeatureIcon src="https://img.freepik.com/free-photo/side-view-fresh-coffee-beans-falling-out-black-basket-red-background_141793-27586.jpg?t=st=1727759694~exp=1727763294~hmac=661c2c2b8c561df98b21f74effb9bb02a0875b0584c062f076bceafa5d6f7eda&w=1380" alt="Quality Beans" />
-          <FeatureTitle>Premium Beans</FeatureTitle>
+          
+           <Link to="/premiumbeans"><FeatureTitle>Premium Beans</FeatureTitle></Link>
           <FeatureDescription>We source the finest coffee beans from around the world.</FeatureDescription>
         </FeatureCard>
         <FeatureCard>
