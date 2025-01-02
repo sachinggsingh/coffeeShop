@@ -278,6 +278,9 @@ function Navbar() {
               <Link to="/testimonial" onClick={toggleMenu}>Testimonial</Link>
             </MobileNavLink>
             <MobileNavLink whileHover={{ scale: 1.02 }}>
+              <Link to="/premiumbeans" onClick={toggleMenu}>Premium Beans</Link>
+            </MobileNavLink>
+            <MobileNavLink whileHover={{ scale: 1.02 }}>
               <Link to="/contact" onClick={toggleMenu}>Contact</Link>
             </MobileNavLink>
             {isLoggedIn ? (
