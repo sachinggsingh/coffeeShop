@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation} from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../Store/authSlice';
 import styled from 'styled-components';
@@ -256,8 +256,9 @@ function Navbar() {
             <><NavLink className={location.pathname === '/login' ? 'active' : ''}
               whileHover={{ scale: 1.05 }}>
               <Link to="/login">Login</Link>
-            </NavLink><NavLink className={location.pathname === '/register' ? 'active' : ''}
-              whileHover={{ scale: 1.05 }}>
+            </NavLink>
+              <NavLink className={location.pathname === '/register' ? 'active' : ''}
+                whileHover={{ scale: 1.05 }}>
                 <Link to="/register">Register</Link>
               </NavLink></>
           )}
@@ -304,8 +305,8 @@ function Navbar() {
                 <MobileNavLink whileHover={{ scale: 1.02 }}>
                   <Link to="/cart" onClick={toggleMenu}>Cart</Link>
                 </MobileNavLink>
-                <MobileNavLink 
-                  whileHover={{ scale: 1.02 }} 
+                <MobileNavLink
+                  whileHover={{ scale: 1.02 }}
                   onClick={() => { handleLogout(); toggleMenu(); }}
                   style={{ cursor: 'pointer' }}
                 >
@@ -313,9 +314,12 @@ function Navbar() {
                 </MobileNavLink>
               </>
             ) : (
-              <MobileNavLink whileHover={{ scale: 1.02 }}>
+              <><MobileNavLink whileHover={{ scale: 1.02 }}>
                 <Link to="/login" onClick={toggleMenu}>Login</Link>
               </MobileNavLink>
+                <MobileNavLink whileHover={{ scale: 1.02 }}>
+                  <Link to="/register" onClick={toggleMenu}>Register</Link>
+                </MobileNavLink></>
             )}
           </MobileMenu>
         )}
