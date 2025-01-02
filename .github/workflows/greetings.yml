@@ -32,7 +32,7 @@ jobs:
             - ✅ Follow our issue template if provided
             - ⏳ We'll review your issue as soon as possible
 
-            Need help? Check our [Contributing Guidelines](CONTRIBUTING.md)
+            Need help? Check our [Contributing Guidelines](https://github.com/Mujtabaa07/coffeeShop/blob/main/CONTRIBUTING.md)
             
           pr-message: |
             ### Amazing Work @${{ github.actor }}! 🎉
@@ -40,8 +40,7 @@ jobs:
             Thank you for your first pull request! We're thrilled to have you here.
 
             Helpful resources:
-            - 📚 [Contributing Guidelines](CONTRIBUTING.md)
-            - 🔧 [Development Setup](DEVELOPMENT.md)
-            - ⭐ [Code of Conduct](CODE_OF_CONDUCT.md)
+            - 📚 [Contributing Guidelines](https://github.com/Mujtabaa07/coffeeShop/blob/main/CONTRIBUTING.md)
+            - ⭐ [Code of Conduct](https://github.com/Mujtabaa07/coffeeShop/blob/main/CODE_OF_CONDUCT.md)
 
             We'll review your PR soon. Keep coding! 💻
