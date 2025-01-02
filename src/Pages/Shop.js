@@ -167,7 +167,7 @@ function Shop() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
           >
-            <div style={{ position: 'relative' }}>
+            <div style={{ position: 'relative'}}>
               <ProductImage src={product.image} alt={product.name} />
               <Overlay className="overlay">
                 <OverlayText>{product.description}</OverlayText>
@@ -177,6 +177,7 @@ function Shop() {
               <ProductName>{product.name}</ProductName>
               <ProductPrice>${product.price.toFixed(2)}</ProductPrice>
               <Button onClick={() => handleAddToCart(product)}>Add to Cart</Button>
+              <Button onClick={() => handleAddToCart(product)}>Buy Now</Button>
             </ProductInfo>
           </ProductCard>
         ))}
