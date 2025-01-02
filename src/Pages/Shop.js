@@ -2,10 +2,11 @@
 import { motion } from "framer-motion";
 import React from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { addToCart } from "../Store/cartSlice";
 import Button from "../componets/Button";
-
+ 
 const ShopContainer = styled.div`
   padding: 6rem 2rem 4rem 2rem; // Added top padding for navbar
   max-width: 1200px;
@@ -542,11 +543,16 @@ const products = [
 
 function Shop() {
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const handleAddToCart = (product) => {
     dispatch(addToCart(product));
   };
 
+ const handleBuyNow = (product) => {
+    dispatch(addToCart(product));   
+    navigate("/checkout");
+
+  };
   return (
     <ShopContainer>
       <Title
@@ -576,7 +582,7 @@ function Shop() {
               <Button onClick={() => handleAddToCart(product)}>
                 Add to Cart
               </Button>
-              <StyledButton onClick={() => handleAddToCart(product)}>Add to Cart</StyledButton>
+              <StyledButton onClick={() => handleBuyNow(product)}>Buy Now</StyledButton>
 
             </ProductInfo>
           </ProductCard>
