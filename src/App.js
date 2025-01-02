@@ -7,6 +7,7 @@ import Navbar from './componets/Navbar';
 import Footer from './componets/footer';
 import Home from './Pages/Home';
 import Login from './Pages/login';
+import Register from './Pages/Register';
 import Shop from './Pages/Shop';
 import Cart from './Pages/cart';
 import About from './Pages/About';
@@ -38,6 +39,8 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/home" element={<Home />} />
               <Route path="/shop" element={<Shop />} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/about" element={<About />} />
