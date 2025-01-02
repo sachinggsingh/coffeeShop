@@ -105,5 +105,25 @@ git push origin feature/your-feature-name
 # Go to the original repository on GitHub and open a new Pull Request
 # Provide a clear description of your changes in the Pull Request.
 ```
-Happy Coding
-☕️
+
+
+<div>
+  <h2 align="center"><img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Red%20Heart.png" width="35" height="35"> Our Contributors</h2>
+  <div align="center">
+    <h3>Thank you for contributing to our project</h3
+<p align="center">
+      <a href="https://github.com/Mujtabaa07/coffeeShop/graphs/contributors">
+        <img src="https://api.vaunt.dev/v1/github/entities/Mujtabaa07/repositories/coffeeShop/contributors?format=svg&limit=54" width="700" height="250" />
+      </a>
+ </p>
+<a href="https://github.com/Mujtabaa07/coffeeShop/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Mujtabaa07/coffeeShop&max=300" />
+</a>
+    
+
+
+  </div>
+</div>
+
+
+<h3 align="center"> Happy Coding ☕️</h3>
