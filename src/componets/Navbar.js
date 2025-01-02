@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { logout } from "../Store/authSlice";
-import styled from "styled-components";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation} from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { logout } from '../Store/authSlice';
+import styled from 'styled-components';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const NavbarContainer = styled(motion.nav)`
   display: flex;
@@ -19,7 +19,7 @@ const NavbarContainer = styled(motion.nav)`
   right: 0;
   z-index: 1000;
   transition: all 0.3s ease;
-  border-bottom: 2px solid #8b4513;
+  border-bottom: 2px solid #8B4513;
 
   &.scrolled {
     padding: 0.8rem 2rem;
@@ -27,13 +27,13 @@ const NavbarContainer = styled(motion.nav)`
   }
 
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: url("/coffee-beans-pattern.png") repeat;
+    background: url('/coffee-beans-pattern.png') repeat;
     opacity: 0.05;
     pointer-events: none;
   }
@@ -42,17 +42,17 @@ const NavbarContainer = styled(motion.nav)`
 const Logo = styled(motion.div)`
   font-size: 2rem;
   font-weight: 700;
-  font-family: "Playfair Display", serif;
-
+  font-family: 'Playfair Display', serif;
+  
   a {
-    color: #d2691e;
+    color: #D2691E;
     text-decoration: none;
-    background: linear-gradient(to right, #d2691e, #cd853f);
+    background: linear-gradient(to right, #D2691E, #CD853F);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     transition: all 0.3s ease;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-
+    
     &:hover {
       opacity: 0.9;
     }
@@ -71,29 +71,33 @@ const NavLinks = styled(motion.div)`
 
 const NavLink = styled(motion.div)`
   position: relative;
-
+  
   a {
-    color: #deb887;
+    color: #DEB887;
     text-decoration: none;
     font-weight: 500;
     font-size: 1.1rem;
     transition: all 0.3s ease;
-    font-family: "Poppins", sans-serif;
-
+    font-family: 'Poppins', sans-serif;
+    
     &:hover {
-      color: #ffe4b5;
+      color: #FFE4B5;
     }
+  }
+  &.active a {
+    text-decoration: underline;
+    color: #D2691E;
   }
 
   &::after {
-    content: "☕";
+    content: '☕';
     position: absolute;
     font-size: 0.8rem;
     bottom: -15px;
     left: 50%;
     transform: translateX(-50%) scale(0);
     transition: transform 0.3s ease;
-    color: #d2691e;
+    color: #D2691E;
   }
 
   &:hover::after {
@@ -104,10 +108,10 @@ const NavLink = styled(motion.div)`
 const MobileMenuButton = styled(motion.button)`
   display: none;
   background: none;
-  border: 2px solid #d2691e;
+  border: 2px solid #D2691E;
   font-size: 1.8rem;
   cursor: pointer;
-  color: #deb887;
+  color: #DEB887;
   padding: 0.5rem;
   border-radius: 8px;
   transition: all 0.3s ease;
@@ -120,7 +124,7 @@ const MobileMenuButton = styled(motion.button)`
 
   &:hover {
     background: rgba(210, 105, 30, 0.2);
-    color: #ffe4b5;
+    color: #FFE4B5;
   }
 `;
 
@@ -143,21 +147,21 @@ const MobileNavLink = styled(motion.div)`
   border-radius: 8px;
   transition: all 0.3s ease;
   margin-bottom: 0.5rem;
-
+  
   a {
-    color: #deb887;
+    color: #DEB887;
     text-decoration: none;
     font-weight: 500;
     display: block;
     transition: all 0.3s ease;
-    font-family: "Poppins", sans-serif;
+    font-family: 'Poppins', sans-serif;
   }
 
   &:hover {
     background: rgba(210, 105, 30, 0.2);
-
+    
     a {
-      color: #ffe4b5;
+      color: #FFE4B5;
       transform: translateX(10px);
     }
   }
@@ -168,14 +172,15 @@ function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const dispatch = useDispatch();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const handleLogout = () => {
@@ -192,46 +197,54 @@ function Navbar() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
-        className={scrolled ? "scrolled" : ""}
+        className={scrolled ? 'scrolled' : ''}
       >
         <Logo whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
           <Link to="/">MsCafe</Link>
         </Logo>
         <NavLinks>
-          <NavLink whileHover={{ scale: 1.05 }}>
+          <NavLink className={location.pathname === '/' ? 'active' : ''}
+          whileHover={{ scale: 1.05 }}>
             <Link to="/">Home</Link>
           </NavLink>
-          <NavLink whileHover={{ scale: 1.05 }}>
+          <NavLink className={location.pathname === '/shop' ? 'active' : ''}
+          whileHover={{ scale: 1.05 }}>
             <Link to="/shop">Shop</Link>
           </NavLink>
-          <NavLink whileHover={{ scale: 1.05 }}>
+          <NavLink className={location.pathname === '/about' ? 'active' : ''} 
+          whileHover={{ scale: 1.05 }}>
             <Link to="/about">About</Link>
           </NavLink>
-          <NavLink whileHover={{ scale: 1.05 }}>
+          <NavLink className={location.pathname === '/testimonial' ? 'active' : ''}
+          whileHover={{ scale: 1.05 }}>
             <Link to="/testimonial">Testimonial</Link>
           </NavLink>
-          <NavLink whileHover={{ scale: 1.05 }}>
+          <NavLink className={location.pathname === '/contact' ? 'active' : ''}
+          whileHover={{ scale: 1.05 }}>
             <Link to="/contact">Contact</Link>
           </NavLink>
-
+          
           {isLoggedIn ? (
             <>
-              <NavLink whileHover={{ scale: 1.05 }}>
+              <NavLink className={location.pathname === '/profile' ? 'active' : ''}
+              whileHover={{ scale: 1.05 }}>
                 <Link to="/profile">Profile</Link>
               </NavLink>
-              <NavLink whileHover={{ scale: 1.05 }}>
+              <NavLink 
+              whileHover={{ scale: 1.05 }}>
                 <Link to="/cart">Cart</Link>
               </NavLink>
-              <NavLink
-                whileHover={{ scale: 1.05 }}
+              <NavLink className={location.pathname === '/cart' ? 'active' : ''}
+                whileHover={{ scale: 1.05 }} 
                 onClick={handleLogout}
-                style={{ cursor: "pointer" }}
+                style={{ cursor: 'pointer' }}
               >
                 Logout
               </NavLink>
             </>
           ) : (
-            <NavLink whileHover={{ scale: 1.05 }}>
+            <NavLink className={location.pathname === '/login' ? 'active' : ''}
+            whileHover={{ scale: 1.05 }}>
               <Link to="/login">Login</Link>
             </NavLink>
           )}
@@ -241,7 +254,7 @@ function Navbar() {
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
         >
-          {isOpen ? "×" : "☰"}
+          {isOpen ? '×' : '☰'}
         </MobileMenuButton>
       </NavbarContainer>
       <AnimatePresence>
@@ -253,58 +266,39 @@ function Navbar() {
             transition={{ duration: 0.3 }}
           >
             <MobileNavLink whileHover={{ scale: 1.02 }}>
-              <Link to="/" onClick={toggleMenu}>
-                Home
-              </Link>
+              <Link to="/" onClick={toggleMenu}>Home</Link>
             </MobileNavLink>
             <MobileNavLink whileHover={{ scale: 1.02 }}>
-              <Link to="/shop" onClick={toggleMenu}>
-                Shop
-              </Link>
+              <Link to="/shop" onClick={toggleMenu}>Shop</Link>
             </MobileNavLink>
             <MobileNavLink whileHover={{ scale: 1.02 }}>
-              <Link to="/about" onClick={toggleMenu}>
-                About
-              </Link>
+              <Link to="/about" onClick={toggleMenu}>About</Link>
             </MobileNavLink>
             <MobileNavLink whileHover={{ scale: 1.02 }}>
-              <Link to="/testimonial" onClick={toggleMenu}>
-                Testimonial
-              </Link>
+              <Link to="/testimonial" onClick={toggleMenu}>Testimonial</Link>
             </MobileNavLink>
             <MobileNavLink whileHover={{ scale: 1.02 }}>
-              <Link to="/contact" onClick={toggleMenu}>
-                Contact
-              </Link>
+              <Link to="/contact" onClick={toggleMenu}>Contact</Link>
             </MobileNavLink>
             {isLoggedIn ? (
               <>
                 <MobileNavLink whileHover={{ scale: 1.02 }}>
-                  <Link to="/profile" onClick={toggleMenu}>
-                    Profile
-                  </Link>
+                  <Link to="/profile" onClick={toggleMenu}>Profile</Link>
                 </MobileNavLink>
                 <MobileNavLink whileHover={{ scale: 1.02 }}>
-                  <Link to="/cart" onClick={toggleMenu}>
-                    Cart
-                  </Link>
+                  <Link to="/cart" onClick={toggleMenu}>Cart</Link>
                 </MobileNavLink>
-                <MobileNavLink
-                  whileHover={{ scale: 1.02 }}
-                  onClick={() => {
-                    handleLogout();
-                    toggleMenu();
-                  }}
-                  style={{ cursor: "pointer" }}
+                <MobileNavLink 
+                  whileHover={{ scale: 1.02 }} 
+                  onClick={() => { handleLogout(); toggleMenu(); }}
+                  style={{ cursor: 'pointer' }}
                 >
                   Logout
                 </MobileNavLink>
               </>
             ) : (
               <MobileNavLink whileHover={{ scale: 1.02 }}>
-                <Link to="/login" onClick={toggleMenu}>
-                  Login
-                </Link>
+                <Link to="/login" onClick={toggleMenu}>Login</Link>
               </MobileNavLink>
             )}
           </MobileMenu>
