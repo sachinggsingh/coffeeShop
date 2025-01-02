@@ -208,7 +208,10 @@ function Navbar() {
             <Link to="/about">About</Link>
           </NavLink>
           <NavLink whileHover={{ scale: 1.05 }}>
-            <Link to="/testimonial">Testimonial</Link>
+          <Link to="/testimonial">Testimonial</Link>
+          </NavLink>
+          <NavLink whileHover={{ scale: 1.05 }}>
+          <Link to="/premiumbeans">Premium Beans</Link>
           </NavLink>
           <NavLink whileHover={{ scale: 1.05 }}>
             <Link to="/contact">Contact</Link>
