@@ -206,45 +206,45 @@ function Navbar() {
 
           {/* <!-- ------NavLink:::::Home-------------------> */}
           <NavLink className={location.pathname === '/' ? 'active' : ''}
-          whileHover={{ scale: 1.05 }}>
+            whileHover={{ scale: 1.05 }}>
             <Link to="/">Home</Link>
           </NavLink>
           {/* <!-- ------NavLink:::::Shop-------------------> */}
           <NavLink className={location.pathname === '/shop' ? 'active' : ''}
-          whileHover={{ scale: 1.05 }}>
+            whileHover={{ scale: 1.05 }}>
             <Link to="/shop">Shop</Link>
           </NavLink>
 
           {/* <!-- ------NavLink:::::About-------------------> */}
-          <NavLink className={location.pathname === '/about' ? 'active' : ''} 
-          whileHover={{ scale: 1.05 }}>
+          <NavLink className={location.pathname === '/about' ? 'active' : ''}
+            whileHover={{ scale: 1.05 }}>
             <Link to="/about">About</Link>
           </NavLink>
 
           {/* <!-- ------NavLink::::Testinomial-------------------> */}
           <NavLink className={location.pathname === '/testimonial' ? 'active' : ''}
-          whileHover={{ scale: 1.05 }}>
+            whileHover={{ scale: 1.05 }}>
             <Link to="/testimonial">Testimonial</Link>
           </NavLink>
-          
+
           {/* <!-- ------NavLink:::::Contacts-------------------> */}
           <NavLink className={location.pathname === '/contact' ? 'active' : ''}
-          whileHover={{ scale: 1.05 }}>
+            whileHover={{ scale: 1.05 }}>
             <Link to="/contact">Contact</Link>
           </NavLink>
-          
+
           {isLoggedIn ? (
             <>
               <NavLink className={location.pathname === '/profile' ? 'active' : ''}
-              whileHover={{ scale: 1.05 }}>
+                whileHover={{ scale: 1.05 }}>
                 <Link to="/profile">Profile</Link>
               </NavLink>
-              <NavLink 
-              whileHover={{ scale: 1.05 }}>
+              <NavLink
+                whileHover={{ scale: 1.05 }}>
                 <Link to="/cart">Cart</Link>
               </NavLink>
               <NavLink className={location.pathname === '/cart' ? 'active' : ''}
-                whileHover={{ scale: 1.05 }} 
+                whileHover={{ scale: 1.05 }}
                 onClick={handleLogout}
                 style={{ cursor: 'pointer' }}
               >
@@ -252,13 +252,14 @@ function Navbar() {
               </NavLink>
             </>
           ) : (
+            // navbar login and register buttons
             <><NavLink className={location.pathname === '/login' ? 'active' : ''}
-                whileHover={{ scale: 1.05 }}>
-                <Link to="/login">Login</Link>
-              </NavLink><NavLink className={location.pathname === '/register' ? 'active' : ''}
-                whileHover={{ scale: 1.05 }}>
-                  <Link to="/register">Register</Link>
-                </NavLink></>
+              whileHover={{ scale: 1.05 }}>
+              <Link to="/login">Login</Link>
+            </NavLink><NavLink className={location.pathname === '/register' ? 'active' : ''}
+              whileHover={{ scale: 1.05 }}>
+                <Link to="/register">Register</Link>
+              </NavLink></>
           )}
         </NavLinks>
         <MobileMenuButton
