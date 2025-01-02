@@ -59,9 +59,13 @@ Once the server is running, you can view the app at (http://localhost:3000).
 
 ## ScreenShots:
 ## **Home Page:** 
-![Screenshot 2024-10-01 115456](https://github.com/user-attachments/assets/1d60d37c-891d-4b7b-b477-1bfa75d59691)
+![homepage](https://github.com/user-attachments/assets/36a7852c-dd6d-40b2-9652-4c4a3f9d46fc)
 ## **Coffee Menu:**
-![shop](https://github.com/user-attachments/assets/4d30c92d-8f70-4dd8-8f50-9f3560d37fe5)
+![coffeemenu](https://github.com/user-attachments/assets/0f9583d8-e2a8-4797-8e13-9d8325f58764)
+## **Login Page**
+![coffeelogin](https://github.com/user-attachments/assets/e29ee634-69c4-45a3-978c-a797cf62487f)
+## **Testimonials**
+![testimonials](https://github.com/user-attachments/assets/af0b4e1f-5363-4b71-8c5c-fe1ba244edb3)
 ## Contributing
 We welcome contributions! Follow the steps below to contribute to this project:
 ```bash
