@@ -16,7 +16,7 @@ import Profile from './Pages/profile';
 import Checkout from './Pages/checkOut';
 import Testimonial from './Pages/Testimonial';
 import PremiumBeans from './Pages/PremiumBeans';
-
+import ForgetPassword from './Pages/ForgetPassword';
 
 
 const AppContainer = styled.div`
@@ -41,6 +41,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
+              <Route path="/forget-password" element={<ForgetPassword />} />
               <Route path="/home" element={<Home />} />
               <Route path="/shop" element={<Shop />} />
               <Route path="/cart" element={<Cart />} />
