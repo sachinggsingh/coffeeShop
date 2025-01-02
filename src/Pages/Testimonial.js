@@ -3,58 +3,59 @@ import './Testimonial.css'
 
 function Testimonial() {
   return (
-    <>
-    <div className="testimonial">
-        <div className="container">
-        <h1>What Our Customer Says</h1>
-            <div className="row">
-               <div className="col-md-12">
-               <div id="testimonialCarousel" className="carousel slide" data-bs-ride="carousel">
-               <div className="carousel-indicators">
-                    <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-               </div>
-               <div className="carousel-inner">
-                   <div className="carousel-item active">
-                    <div className="row">
-                      <div className="col-md-4">
-                        <div className="single">
-                          <div className="image">
-                            <img src="https://images.unsplash.com/photo-1592493552901-9f0ef0d6f702?q=80&w=415&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" width={100} height={100} alt="" />
-                          </div>
-                          <div className="image-text">
-                           <h2>Devolina</h2>
-                           <p>⭐️⭐️⭐️⭐️</p>
-                           <p>"Best coffee in town! The aroma of freshly brewed coffee hits you the moment you walk in. Their baristas are true artists, and every cup is a masterpiece.</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-md-4">
-                        <div className="single">
-                          <div className="image">
-                            <img src="https://plus.unsplash.com/premium_photo-1670884522719-d7f4bcdfcbeb?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" width={100} height={100} alt="" />
-                          </div>
-                          <div className="image-text">
-                           <h2>Priya Jha</h2>
-                           <p>⭐️⭐️⭐️⭐️</p>
-                           <p>A hidden gem! This coffee shop not only has a fantastic selection of drinks but also a mouth-watering array of pastries.</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-md-4">
-                        <div className="single">
-                          <div className="image">
-                            <img src="https://images.unsplash.com/photo-1679673988162-018d0400240e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" width={100} height={100} alt="" />
-                          </div>
-                          <div className="image-text">
-                           <h2>Hellan</h2>
-                           <p>⭐️⭐️⭐️⭐️</p>
-                           <p>"Perfect spot to unwind. The music is just the right volume, the seating is comfortable, and there's always a good mix of people.</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                   </div>
+    <TestimonialSection>
+      <Container>
+        <Title>What Our Customers Say</Title>
+        <CarouselContainer id="carouselExampleSlidesOnly" className="carousel slide" data-bs-ride="carousel">
+          <CarouselInner className="carousel-inner">
+            <div className="carousel-item active">
+              <CarouselRow>
+                <TestimonialCard
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <ImageContainer>
+                    <img src="https://images.unsplash.com/photo-1592493552901-9f0ef0d6f702?q=80&w=415&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Devolina" />
+                  </ImageContainer>
+                  <TestimonialContent>
+                    <h2>Devolina</h2>
+                    <div className="stars">⭐️⭐️⭐️⭐️⭐️</div>
+                    <p>"Best coffee in town! The aroma of freshly brewed coffee hits you the moment you walk in. Their baristas are true artists, and every cup is a masterpiece."</p>
+                  </TestimonialContent>
+                </TestimonialCard>
+
+                <TestimonialCard
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                >
+                  <ImageContainer>
+                    <img src="https://plus.unsplash.com/premium_photo-1670884522719-d7f4bcdfcbeb?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Priya Jha" />
+                  </ImageContainer>
+                  <TestimonialContent>
+                    <h2>Priya Jha</h2>
+                    <div className="stars">⭐️⭐️⭐️⭐️⭐️</div>
+                    <p>"A hidden gem! This coffee shop not only has a fantastic selection of drinks but also a mouth-watering array of pastries."</p>
+                  </TestimonialContent>
+                </TestimonialCard>
+
+                <TestimonialCard
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                >
+                  <ImageContainer>
+                    <img src="https://images.unsplash.com/photo-1679673988162-018d0400240e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Hellan" />
+                  </ImageContainer>
+                  <TestimonialContent>
+                    <h2>Hellan</h2>
+                    <div className="stars">⭐️⭐️⭐️⭐️⭐️</div>
+                    <p>"Perfect spot to unwind. The music is just the right volume, the seating is comfortable, and there's always a good mix of people."</p>
+                  </TestimonialContent>
+                </TestimonialCard>
+              </CarouselRow>
+            </div>
 
                    <div className="carousel-item">
                     <div className="row">
