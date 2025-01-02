@@ -252,10 +252,13 @@ function Navbar() {
               </NavLink>
             </>
           ) : (
-            <NavLink className={location.pathname === '/login' ? 'active' : ''}
-            whileHover={{ scale: 1.05 }}>
-              <Link to="/login">Login</Link>
-            </NavLink>
+            <><NavLink className={location.pathname === '/login' ? 'active' : ''}
+                whileHover={{ scale: 1.05 }}>
+                <Link to="/login">Login</Link>
+              </NavLink><NavLink className={location.pathname === '/register' ? 'active' : ''}
+                whileHover={{ scale: 1.05 }}>
+                  <Link to="/register">Register</Link>
+                </NavLink></>
           )}
         </NavLinks>
         <MobileMenuButton
