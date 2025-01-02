@@ -61,6 +61,7 @@ function Contact() {
   return (
     <ContactContainer>
       <Title
+        className = "mt-7"
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -80,6 +81,7 @@ function Contact() {
           value={formData.name}
           onChange={handleChange}
           required
+          pattern="[a-zA-Z\s]+" title="Name must only contain letters"
         />
         <Input
           type="email"
