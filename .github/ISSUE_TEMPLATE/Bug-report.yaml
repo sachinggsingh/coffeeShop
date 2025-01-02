@@ -1,67 +1,32 @@
-name: 🐛 Bug Report
-description: Create a report to help us improve
-title: "[BUG] "
-labels: ["bug", "triage"]
+name: ​🐞 Bug
+description: Report an issue to help us improve the project.
+title: "[BUG] <write a small description here>"
+labels: ["bug", "goal: fix", "priority: medium"]
 body:
-  - type: markdown
-    attributes:
-      value: |
-        Thanks for taking the time to fill out this bug report!
-  
   - type: textarea
-    id: describe-bug
     attributes:
-      label: Describe the Bug
-      description: A clear description of what the bug is
-      placeholder: Tell us what happened...
+      label: Description
+      description: A brief description of the issue or bug you are facing, also include what you tried and what didn't work.
     validations:
-      required: true
-
+      required: false
   - type: textarea
-    id: reproduce
     attributes:
-      label: Steps To Reproduce
-      description: Steps to reproduce the behavior
-      placeholder: |
-        1. Go to '...'
-        2. Click on '....'
-        3. Scroll down to '....'
-        4. See error
+      label: Screenshots
+      description: Please add screenshots if applicable
     validations:
-      required: true
-
+      required: false
   - type: textarea
-    id: expected
     attributes:
-      label: Expected Behavior
-      description: What did you expect to happen?
+      label: Any additional information?
+      description: Any additional information or Is there anything we should know about this bug?
     validations:
-      required: true
-
+      required: false
   - type: dropdown
-    id: browsers
     attributes:
-      label: What browsers are you seeing the problem on?
+      label: What browser are you seeing the problem on?
       multiple: true
       options:
-        - Chrome
         - Firefox
+        - Chrome
         - Safari
         - Microsoft Edge
-
-  - type: input
-    id: version
-    attributes:
-      label: Version
-      description: What version of our software are you running?
-    validations:
-      required: true
-
-  - type: checkboxes
-    id: terms
-    attributes:
-      label: Code of Conduct
-      description: By submitting this issue, you agree to follow our Code of Conduct
-      options:
-        - label: I agree to follow this project's Code of Conduct
-          required: true

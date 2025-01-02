@@ -1,35 +1,73 @@
-name: 💡 Feature Request
-description: Suggest an idea for this project
+name: "✨ Feature Request"
+description: "Suggest a new feature to enhance our Coffee Shop"
 title: "[FEATURE] "
-labels: ["enhancement"]
+labels: ["enhancement", "triage-needed"]
+
 body:
+  - type: markdown
+    attributes:
+      value: |
+        # Feature Request
+        Thanks for taking the time to suggest a new feature! 
+        Please fill out the information below to help us understand your suggestion better.
+
   - type: textarea
     id: problem
     attributes:
-      label: Is your feature request related to a problem?
-      description: A clear description of what the problem is
-      placeholder: I'm always frustrated when...
+      label: "Problem Statement"
+      description: "What problem does this feature solve?"
+      placeholder: "I'm always frustrated when..."
     validations:
       required: true
 
   - type: textarea
     id: solution
     attributes:
-      label: Describe the solution
-      description: What you want to happen
+      label: "Proposed Solution"
+      description: "Describe the solution you'd like"
+      placeholder: "It would be great if..."
     validations:
       required: true
 
   - type: textarea
     id: alternatives
     attributes:
-      label: Alternatives Considered
-      description: Any alternative solutions you've considered
+      label: "Alternative Solutions"
+      description: "What alternatives have you considered?"
+      placeholder: "Another approach could be..."
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: "Screenshots or Mockups"
+      description: "Add any relevant screenshots, mockups or examples"
+      placeholder: "Drag and drop images here..."
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: "Priority"
+      options:
+        - High
+        - Medium
+        - Low
+    validations:
+      required: true
 
   - type: checkboxes
     id: terms
     attributes:
-      label: Code of Conduct
+      label: "Contribution Guidelines"
       options:
-        - label: I agree to follow this project's Code of Conduct
+        - label: "I have searched [existing issues](https://github.com/Mujtabaa07/coffeeShop/issues) and this is not a duplicate"
           required: true
+        - label: "I have read the [Contributing Guidelines](CONTRIBUTING.md)"
+          required: true
+        - label: "I would like to implement this feature"
+          required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        💡 Thank you for contributing to make our Coffee Shop better!
