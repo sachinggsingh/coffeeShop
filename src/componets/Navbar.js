@@ -203,22 +203,31 @@ function Navbar() {
           <Link to="/">MsCafe</Link>
         </Logo>
         <NavLinks>
+
+          {/* <!-- ------NavLink:::::Home-------------------> */}
           <NavLink className={location.pathname === '/' ? 'active' : ''}
           whileHover={{ scale: 1.05 }}>
             <Link to="/">Home</Link>
           </NavLink>
+          {/* <!-- ------NavLink:::::Shop-------------------> */}
           <NavLink className={location.pathname === '/shop' ? 'active' : ''}
           whileHover={{ scale: 1.05 }}>
             <Link to="/shop">Shop</Link>
           </NavLink>
+
+          {/* <!-- ------NavLink:::::About-------------------> */}
           <NavLink className={location.pathname === '/about' ? 'active' : ''} 
           whileHover={{ scale: 1.05 }}>
             <Link to="/about">About</Link>
           </NavLink>
+
+          {/* <!-- ------NavLink::::Testinomial-------------------> */}
           <NavLink className={location.pathname === '/testimonial' ? 'active' : ''}
           whileHover={{ scale: 1.05 }}>
             <Link to="/testimonial">Testimonial</Link>
           </NavLink>
+          
+          {/* <!-- ------NavLink:::::Contacts-------------------> */}
           <NavLink className={location.pathname === '/contact' ? 'active' : ''}
           whileHover={{ scale: 1.05 }}>
             <Link to="/contact">Contact</Link>

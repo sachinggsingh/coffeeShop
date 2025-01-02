@@ -94,19 +94,21 @@ const ProductPrice = styled.p`
 `;
 
 const StyledButton = styled.button`
-  background: linear-gradient(145deg, #6b4f4f, #7d5858);
+  background: linear-gradient(145deg, #7c2214, #7c2216);
   color: white;
   border: none;
   padding: 0.6rem 1.2rem;
   font-size: 1rem;
-  border-radius: 20px;
+  border-radius: 4px;
   cursor: pointer;
   letter-spacing: 0.6px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
   transition: background 0.3s ease, transform 0.2s ease;
 
   &:hover {
-    background: linear-gradient(145deg, #7d5858, #8e6a6a);
+    background: linear-gradient(145deg,rgb(241, 231, 231),rgb(255, 250, 250));
+    color : #7c2214;
+    border : 2px solid #651d14;
     transform: scale(1.05);
   }
     
