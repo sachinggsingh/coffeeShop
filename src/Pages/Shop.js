@@ -5,11 +5,6 @@ import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { addToCart } from "../Store/cartSlice";
 import Button from "../componets/Button";
-import React from 'react';
-import { useDispatch } from 'react-redux';
-import styled from 'styled-components';
-import { motion } from 'framer-motion';
-import { addToCart } from '../Store/cartSlice';
 
 const ShopContainer = styled.div`
   padding: 6rem 2rem 4rem 2rem; // Added top padding for navbar
