@@ -61,7 +61,7 @@ body:
       options:
         - label: "I have searched [existing issues](https://github.com/Mujtabaa07/coffeeShop/issues) and this is not a duplicate"
           required: true
-        - label: "I have read the [Contributing Guidelines](CONTRIBUTING.md)"
+        - label: "I have read the [Contributing Guidelines](https://github.com/Mujtabaa07/coffeeShop/blob/main/CONTRIBUTING.md)"
           required: true
         - label: "I would like to implement this feature"
           required: false

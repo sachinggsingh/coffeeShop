@@ -19,7 +19,7 @@ jobs:
       - name: Close Linked Issues
         uses: actions/github-script@v6
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.COFFEE_SHOP_GITHUB_TOKEN }}
           script: |
             const pr = context.payload.pull_request;
             
