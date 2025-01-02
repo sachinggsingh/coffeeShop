@@ -116,6 +116,16 @@ const StyledButton = styled.button`
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); 
   }
 `;
+const ButtonContainer = styled.div`
+  display: flex;
+  flex-direction: row;  /* Default to horizontal layout */
+  gap: 10px;            /* Add space between the buttons */
+
+  @media (max-width: 768px) {
+    flex-direction: column; /* Stack buttons vertically on small screens */
+    gap: 10px;              /* Add space between stacked buttons */
+  }
+`;
 
 const products = [
   {
@@ -579,10 +589,13 @@ function Shop() {
             <ProductInfo>
               <ProductName>{product.name}</ProductName>
               <ProductPrice>${product.price.toFixed(2)}</ProductPrice>
+              <ButtonContainer>
+
               <Button onClick={() => handleAddToCart(product)}>
                 Add to Cart
               </Button>
               <StyledButton onClick={() => handleBuyNow(product)}>Buy Now</StyledButton>
+  </ButtonContainer>
 
             </ProductInfo>
           </ProductCard>
