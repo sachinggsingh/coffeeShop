@@ -1,9 +1,10 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
-import styled from 'styled-components';
-import { motion } from 'framer-motion';
-import { addToCart } from '../Store/cartSlice';
-import Button from '../componets/Button';
+
+import { motion } from "framer-motion";
+import React from "react";
+import { useDispatch } from "react-redux";
+import styled from "styled-components";
+import { addToCart } from "../Store/cartSlice";
+import Button from "../componets/Button";
 
 const ShopContainer = styled.div`
   padding: 6rem 2rem 4rem 2rem; // Added top padding for navbar
@@ -92,6 +93,16 @@ const ProductPrice = styled.p`
   margin-bottom: 1rem;
   font-weight: 500;
 `;
+const ButtonContainer = styled.div`
+  display: flex;
+  flex-direction: row;  /* Default to horizontal layout */
+  gap: 10px;            /* Add space between the buttons */
+
+  @media (max-width: 768px) {
+    flex-direction: column; /* Stack buttons vertically on small screens */
+    gap: 10px;              /* Add space between stacked buttons */
+  }
+`;
 
 const products = [
   { id: 1, name: 'Espresso', price: 2.5, image: 'https://img.freepik.com/free-photo/caramel-latte-with-chocolade-table_140725-4.jpg?t=st=1727759794~exp=1727763394~hmac=c764d48b2b28767da2c6b996ec20e0d6a5857c19724850db5e46498687e16225&w=740', description: 'A strong, rich coffee shot, perfect for a quick pick-me-up.' },
@@ -145,11 +156,16 @@ const products = [
 
 function Shop() {
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const handleAddToCart = (product) => {
     dispatch(addToCart(product));
   };
 
+ const handleBuyNow = (product) => {
+    dispatch(addToCart(product));   
+    navigate("/checkout");
+
+  };
   return (
     <ShopContainer>
       <Title
@@ -176,8 +192,16 @@ function Shop() {
             <ProductInfo>
               <ProductName>{product.name}</ProductName>
               <ProductPrice>${product.price.toFixed(2)}</ProductPrice>
+
               <Button onClick={() => handleAddToCart(product)}>Add to Cart</Button>
               <Button onClick={() => handleAddToCart(product)}>Buy Now</Button>
+
+              <Button onClick={() => handleAddToCart(product)}>
+                Add to Cart
+              </Button>
+              <StyledButton onClick={() => handleAddToCart(product)}>Add to Cart</StyledButton>
+
+
             </ProductInfo>
           </ProductCard>
         ))}
