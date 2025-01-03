@@ -16,149 +16,180 @@ const RegisterContainer = styled.div`
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f5f5f5;
+  padding: 0 1rem;
+  background: rgba(0, 0, 0, 0.6);
 `;
 
 const RegisterForm = styled(motion.form)`
   background-color: white;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  width: 300px;
+  padding: 2.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  width: 350px;
+  max-width: 90%;
+  text-align: center;
 `;
 
 const Input = styled.input`
   width: 100%;
-  padding: 0.5rem;
-  margin-bottom: 1rem;
+  padding: 0.8rem;
+  margin-bottom: 1.2rem;
   border: 1px solid #ddd;
-  border-radius: 4px;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+
+  &:focus {
+    border-color: #7c2214;
+    outline: none;
+    box-shadow: 0 0 5px rgba(124, 34, 20, 0.5);
+  }
+
+  &:hover {
+    border-color: #aaa;
+  }
 `;
 
 const Button = styled(motion.button)`
   width: 100%;
-  padding: 0.5rem;
+  padding: 0.8rem;
   background-color: #7c2214;
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
+  font-size: 1rem;
   cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #b2311e;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(124, 34, 20, 0.5);
+  }
 `;
 
 const LoginLink = styled(Link)`
   display: block;
-  margin-top: 1rem;
-  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
   color: #7c2214;
   text-decoration: none;
+  transition: all 0.3s ease;
+
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 const SuccessMessage = styled.div`
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   color: green;
   text-align: center;
+  font-weight: bold;
 `;
 
 const ErrorMessage = styled.div`
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   color: red;
   text-align: center;
+  font-weight: bold;
 `;
 
 const Register = () => {
-    const [formData, setFormData] = useState({
-        username: '',
-        email: '',
-        password: '',
-        confirmPassword: '',
+  const [formData, setFormData] = useState({
+    username: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+  });
+
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState('');
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
     });
+  };
 
-    const [isSubmitted, setIsSubmitted] = useState(false);
-    const [error, setError] = useState('');
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (formData.password !== formData.confirmPassword) {
+      setError('Passwords do not match');
+      return;
+    }
+    localStorage.setItem('user', JSON.stringify(formData));
+    dispatch(login({ username: formData.username, email: formData.email }));
+    setIsSubmitted(true);
+    setError('');
+    setTimeout(() => {
+      navigate('/profile');
+    }, 2000);
+  };
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value,
-        });
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (formData.password !== formData.confirmPassword) {
-            setError('Passwords do not match');
-            return;
-        }
-        // Store user credentials in local storage
-        localStorage.setItem('user', JSON.stringify(formData));
-        dispatch(login({ username: formData.username, email: formData.email }));
-        console.log('Form submitted:', formData);
-        setIsSubmitted(true);
-        setError('');
-        setTimeout(() => {
-            navigate('/profile'); // Redirect to profile page
-        }, 2000);
-    };
-
-    return (
-        <RegisterBackGround>
-            <RegisterContainer>
-                <RegisterForm
-                    initial={{ opacity: 0, y: 50 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
-                    onSubmit={handleSubmit}
-                >
-                    <h2>Register</h2>
-                    <Input
-                        type="text"
-                        name="username"
-                        placeholder="Username"
-                        value={formData.username}
-                        onChange={handleChange}
-                        required
-                    />
-                    <Input
-                        type="email"
-                        name="email"
-                        placeholder="Email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                    />
-                    <Input
-                        type="password"
-                        name="password"
-                        placeholder="Password"
-                        value={formData.password}
-                        onChange={handleChange}
-                        required
-                    />
-                    <Input
-                        type="password"
-                        name="confirmPassword"
-                        placeholder="Confirm Password"
-                        value={formData.confirmPassword}
-                        onChange={handleChange}
-                        required
-                    />
-                    <Button
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        type="submit"
-                    >
-                        Register
-                    </Button>
-                    {error && <ErrorMessage>{error}</ErrorMessage>}
-                    {isSubmitted && <SuccessMessage>Registration successful!</SuccessMessage>}
-                    <LoginLink to="/login">Already have an account? Login</LoginLink>
-                </RegisterForm>
-            </RegisterContainer>
-        </RegisterBackGround>
-    );
+  return (
+    <RegisterBackGround>
+      <RegisterContainer>
+        <RegisterForm
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          onSubmit={handleSubmit}
+        >
+          <h2>Register</h2>
+          <Input
+            type="text"
+            name="username"
+            placeholder="Username"
+            value={formData.username}
+            onChange={handleChange}
+            required
+          />
+          <Input
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
+          <Input
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={formData.password}
+            onChange={handleChange}
+            required
+          />
+          <Input
+            type="password"
+            name="confirmPassword"
+            placeholder="Confirm Password"
+            value={formData.confirmPassword}
+            onChange={handleChange}
+            required
+          />
+          <Button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            type="submit"
+          >
+            Register
+          </Button>
+          {error && <ErrorMessage>{error}</ErrorMessage>}
+          {isSubmitted && <SuccessMessage>Registration successful!</SuccessMessage>}
+          <LoginLink to="/login">Already have an account? Login</LoginLink>
+        </RegisterForm>
+      </RegisterContainer>
+    </RegisterBackGround>
+  );
 };
 
 export default Register;
