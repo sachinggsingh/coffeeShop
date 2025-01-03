@@ -226,6 +226,11 @@ function Navbar() {
             whileHover={{ scale: 1.05 }}>
             <Link to="/testimonial">Testimonial</Link>
           </NavLink>
+          {/* <!-- ------NavLink::::Premium Beans-------------------> */}
+          <NavLink className={location.pathname === '/premiumbeans' ? 'active' : ''}
+            whileHover={{ scale: 1.05 }}>
+            <Link to="/premiumbeans">Premium Beans</Link>
+          </NavLink>
 
           {/* <!-- ------NavLink:::::Contacts-------------------> */}
           <NavLink className={location.pathname === '/contact' ? 'active' : ''}

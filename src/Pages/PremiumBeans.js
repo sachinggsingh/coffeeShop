@@ -7,6 +7,8 @@ const PremiumContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   background-color: #fffbeb;
+      box-shadow: 1px 1px 5px 6px #888888;
+
 `;
 
 const FeatureTitle =  styled(motion.h1)`
