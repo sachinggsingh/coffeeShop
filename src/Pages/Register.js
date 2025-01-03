@@ -6,9 +6,10 @@ import { useDispatch } from 'react-redux';
 import { login } from '../Store/authSlice';
 
 const RegisterBackGround = styled.section`
-  background-image: url('https://img.freepik.com/free-photo/hot-latte-art-coffee-cup-wood-table-coffee-shop_1150-8937.jpg?t=st=1727759954~exp=1727763554~hmac=2715c972f28c255c158e0d14f664f9443fdd95a0e4b21cf6d5b41bc690aaa2d3&w=1380');
+  background-image: url('https://img.freepik.com/free-photo/hot-latte-art-coffee-cup-wood-table-coffee-shop_1150-8937.jpg');
   background-size: cover;
   background-position: center;
+  height: 100vh;
 `;
 
 const RegisterContainer = styled.div`
@@ -17,25 +18,35 @@ const RegisterContainer = styled.div`
   align-items: center;
   height: 100vh;
   padding: 0 1rem;
+  backdrop-filter: blur(8px);
   background: rgba(0, 0, 0, 0.6);
 `;
 
 const RegisterForm = styled(motion.form)`
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.9);
   padding: 2.5rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
   width: 350px;
   max-width: 90%;
   text-align: center;
+  opacity: 1;
+  transition: opacity 0.6s ease-in-out;
 `;
 
-const Input = styled.input`
+const Heading = styled.h2`
+  margin-bottom: 1.5rem;
+  color: #7c2214;
+  font-size: 1.8rem;
+  font-weight: bold;
+`;
+
+const Input = styled(motion.input)`
   width: 100%;
   padding: 0.8rem;
   margin-bottom: 1.2rem;
   border: 1px solid #ddd;
-  border-radius: 6px;
+  border-radius: 8px;
   font-size: 1rem;
   transition: all 0.3s ease;
 
@@ -44,7 +55,6 @@ const Input = styled.input`
     outline: none;
     box-shadow: 0 0 5px rgba(124, 34, 20, 0.5);
   }
-
   &:hover {
     border-color: #aaa;
   }
@@ -56,18 +66,14 @@ const Button = styled(motion.button)`
   background-color: #7c2214;
   color: white;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   font-size: 1rem;
+  font-weight: bold;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s;
 
   &:hover {
-    background-color: #b2311e;
-  }
-
-  &:focus {
-    outline: none;
-    box-shadow: 0 0 5px rgba(124, 34, 20, 0.5);
+    background-color: #5b190f;
   }
 `;
 
@@ -76,11 +82,11 @@ const LoginLink = styled(Link)`
   margin-top: 1.5rem;
   font-size: 0.9rem;
   color: #7c2214;
-  text-decoration: none;
-  transition: all 0.3s ease;
+  text-decoration: underline;
 
   &:hover {
-    text-decoration: underline;
+    text-decoration: none;
+    color: #5b190f;
   }
 `;
 
@@ -140,10 +146,10 @@ const Register = () => {
         <RegisterForm
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.6 }}
           onSubmit={handleSubmit}
         >
-          <h2>Register</h2>
+          <Heading>Register</Heading>
           <Input
             type="text"
             name="username"
@@ -151,6 +157,7 @@ const Register = () => {
             value={formData.username}
             onChange={handleChange}
             required
+            whileFocus={{ scale: 1.03 }}
           />
           <Input
             type="email"
@@ -159,6 +166,7 @@ const Register = () => {
             value={formData.email}
             onChange={handleChange}
             required
+            whileFocus={{ scale: 1.03 }}
           />
           <Input
             type="password"
@@ -167,6 +175,7 @@ const Register = () => {
             value={formData.password}
             onChange={handleChange}
             required
+            whileFocus={{ scale: 1.03 }}
           />
           <Input
             type="password"
@@ -175,11 +184,12 @@ const Register = () => {
             value={formData.confirmPassword}
             onChange={handleChange}
             required
+            whileFocus={{ scale: 1.03 }}
           />
           <Button
+            type="submit"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            type="submit"
           >
             Register
           </Button>
