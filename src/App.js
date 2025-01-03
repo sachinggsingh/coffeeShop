@@ -16,10 +16,8 @@ import Profile from './Pages/profile';
 import Checkout from './Pages/checkOut';
 import Testimonial from './Pages/Testimonial';
 import PremiumBeans from './Pages/PremiumBeans';
+import ExpertBaristas from './Pages/ExpertBaristas';
 import Reviews from './componets/Reviews'
-
-
-
 
 const AppContainer = styled.div`
   display: flex;
@@ -52,6 +50,8 @@ function App() {
               <Route path="/profile" element={<Profile />} />
               <Route path="/checkout" element={<Checkout />} />
               <Route path="/premiumbeans" element={<PremiumBeans />} />
+              <Route path="/expertbaristas" element={<ExpertBaristas />} />
+
 
             </Routes>
           </ContentContainer>
