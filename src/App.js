@@ -16,6 +16,7 @@ import Profile from './Pages/profile';
 import Checkout from './Pages/checkOut';
 import Testimonial from './Pages/Testimonial';
 import PremiumBeans from './Pages/PremiumBeans';
+import ExpertBaristas from './Pages/ExpertBaristas';
 
 
 
@@ -50,6 +51,8 @@ function App() {
               <Route path="/profile" element={<Profile />} />
               <Route path="/checkout" element={<Checkout />} />
               <Route path="/premiumbeans" element={<PremiumBeans />} />
+              <Route path="/expertbaristas" element={<ExpertBaristas />} />
+
 
             </Routes>
           </ContentContainer>

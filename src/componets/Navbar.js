@@ -226,10 +226,10 @@ function Navbar() {
             whileHover={{ scale: 1.05 }}>
             <Link to="/testimonial">Testimonial</Link>
           </NavLink>
-          {/* <!-- ------NavLink::::Premium Beans-------------------> */}
-          <NavLink className={location.pathname === '/premiumbeans' ? 'active' : ''}
+           {/* <!-- ------NavLink::::expertbaristas-------------------> */}
+           <NavLink className={location.pathname === '/expertbaristas' ? 'active' : ''}
             whileHover={{ scale: 1.05 }}>
-            <Link to="/premiumbeans">Premium Beans</Link>
+            <Link to="/expertbaristas">Expert Baristas</Link>
           </NavLink>
 
           {/* <!-- ------NavLink:::::Contacts-------------------> */}
@@ -298,6 +298,9 @@ function Navbar() {
             </MobileNavLink>
             <MobileNavLink whileHover={{ scale: 1.02 }}>
               <Link to="/premiumbeans" onClick={toggleMenu}>Premium Beans</Link>
+            </MobileNavLink>
+            <MobileNavLink whileHover={{ scale: 1.02 }}>
+              <Link to="/expertbaristas" onClick={toggleMenu}>Expert Baristas</Link>
             </MobileNavLink>
             <MobileNavLink whileHover={{ scale: 1.02 }}>
               <Link to="/contact" onClick={toggleMenu}>Contact</Link>
