@@ -52,7 +52,7 @@ npm start
 ```
 Once the server is running, you can view the app at (http://localhost:3000).
 ## Usage
-- **To use the app:**
+**To use the app:**
 - **View Coffee Menu:** Browse through the available coffee items on the homepage.
 - **Learn About Coffee:** Check out the sourcing section to learn more about our sustainably sourced beans.
 - **Place an Order:** In future releases, you'll be able to add items to the cart and complete orders.
