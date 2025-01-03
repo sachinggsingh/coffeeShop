@@ -1,12 +1,11 @@
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import styled from 'styled-components';
+import { motion } from 'framer-motion';
+import { addToCart } from '../Store/cartSlice';
+import { useState } from 'react'; 
+import Button from '../componets/Button';
 
-import { motion } from "framer-motion";
-import React from "react";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
-import { addToCart } from "../Store/cartSlice";
-import Button from "../componets/Button";
- 
 const ShopContainer = styled.div`
   padding: 6rem 2rem 4rem 2rem; // Added top padding for navbar
   max-width: 1200px;
@@ -41,23 +40,22 @@ const ProductGrid = styled.div`
   max-width: 1100px; // Slightly reduced to center content more
   margin: 0 auto;
 `;
-
 const ProductCard = styled(motion.div)`
-  background-color: white;
-  border-radius: 8px;
+  background: linear-gradient(145deg, #ffffff, #e6e6e6);
+  border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-
   position: relative;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1), -2px -2px 8px rgba(255, 255, 255, 0.8);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.15), -4px -4px 12px rgba(255, 255, 255, 0.9);
+  }
 
   &:hover .overlay {
     opacity: 1;
-
-  transition: box-shadow 0.3s ease;
-  
-  &:hover {
-    box-shadow: 0 8px 12px rgba(0,0,0,0.15);
-
   }
 `;
 
@@ -80,6 +78,13 @@ const Overlay = styled.div`
   opacity: 0;
   transition: opacity 0.3s ease;
   padding: 1rem;
+  text-align: center;
+`;
+
+const ProductName = styled.h3`
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
   box-sizing: border-box;
 `;
 
@@ -95,21 +100,37 @@ const ProductInfo = styled.div`
   background-color: white;
 `;
 
-const ProductName = styled.h3`
-  font-size: 1.2rem;
-  margin-bottom: 0.75rem;
-  color: #78350f; // Warm brown color
-`;
-
 const ProductPrice = styled.p`
   font-size: 1.1rem;
-  color: #92400e; // Slightly lighter brown
+  color: #4a2c2a;
   margin-bottom: 1rem;
-  font-weight: 500;
+  font-weight: 600;
+`;
+
+const StyledButton = styled.button`
+  background: linear-gradient(145deg, #6b4f4f, #7d5858);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  letter-spacing: 0.6px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease, transform 0.2s ease;
+
+  &:hover {
+    background: linear-gradient(145deg, #7d5858, #8e6a6a);
+    transform: scale(1.05);
+  }
+    
+  &:active {
+    transform: scale(0.98);
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); 
+  }
 `;
 
 const products = [
-
   { id: 1, name: 'Espresso', price: 2.5, image: 'https://img.freepik.com/free-photo/caramel-latte-with-chocolade-table_140725-4.jpg?t=st=1727759794~exp=1727763394~hmac=c764d48b2b28767da2c6b996ec20e0d6a5857c19724850db5e46498687e16225&w=740', description: 'A strong, rich coffee shot, perfect for a quick pick-me-up.', type: 'hot' },
   { id: 2, name: 'Cappuccino', price: 3.5, image: 'https://img.freepik.com/free-photo/delicious-organic-latte-macchiato-with-milk_23-2148420329.jpg?t=st=1727761406~exp=1727765006~hmac=10f2d9d7a08693daef2ef87ff4edd99d5bc33e1813adb65c8628d088268239b5&w=1380 ', description: 'Creamy and frothy, a classic Italian coffee with steamed milk.', type: 'hot' },
   { id: 3, name: 'Latte', price: 4, image: 'https://img.freepik.com/free-photo/cold-chocolate-cocktail-with-ice-cream_140725-940.jpg?t=st=1727759865~exp=1727763465~hmac=ad44e2430bff005bce4db484fbef6f2ec22f05b97b41c8c6c28ecb8508c2d909&w=740 ', description: 'Smooth and milky, a comforting coffee drink with a velvety texture.', type: 'hot' },
@@ -163,20 +184,11 @@ function Shop() {
   const dispatch = useDispatch();
   const [category, setCategory] = useState('hot');
 
-
   const handleAddToCart = (product) => {
     dispatch(addToCart(product));
   };
 
-
   const filteredProducts = products.filter((product) => product.type === category);
-
-
- const handleBuyNow = (product) => {
-    dispatch(addToCart(product));   
-    navigate("/checkout");
-
-  };
 
   return (
     <ShopContainer>
@@ -202,27 +214,11 @@ function Shop() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
           >
-
             <ProductImage src={product.image} alt={product.name} />
             <ProductInfo>
               <ProductName>{product.name}</ProductName>
               <ProductPrice>${product.price.toFixed(2)}</ProductPrice>
               <Button onClick={() => handleAddToCart(product)}>Add to Cart</Button>
-
-            <div style={{ position: "relative" }}>
-
-           
-              <ProductImage src={product.image} alt={product.name} />
-              <Overlay className="overlay">
-                <OverlayText>{product.description}</OverlayText>
-              </Overlay>
-            </div>
-            <ProductInfo>
-              <ProductName>{product.name}</ProductName>
-              <ProductPrice>${product.price.toFixed(2)}</ProductPrice>
-
-              <Button onClick={() => handleAddToCart(product)}>Add to Cart</Button>
-              <Button onClick={() => handleAddToCart(product)}>Buy Now</Button>
             </ProductInfo>
           </ProductCard>
         ))}
