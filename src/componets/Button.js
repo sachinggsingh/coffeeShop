@@ -12,12 +12,7 @@ const StyledButton = styled(motion.button)`
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.3s ease;
-<<<<<<< HEAD
-  margin-right: 15px;
-=======
-
   margin-right: 30px;
->>>>>>> 16a667df0abd39b5e203d8f01f832ddba5df066e
   border-radius: 10px;
 
     margin-right: ${props => props.noMargin ? '0' : '10px'}; /* Add margin for spacing */
