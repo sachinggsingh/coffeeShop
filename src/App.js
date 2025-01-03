@@ -15,7 +15,10 @@ import Contact from './Pages/contact';
 import Profile from './Pages/profile';
 import Checkout from './Pages/checkOut';
 import Testimonial from './Pages/Testimonial';
-
+import Cake from './Pages/cake';
+import Coffee from './Pages/coffee';
+import Soup from './Pages/soup';
+import Milkshakes from './Pages/milkshake';
 
 
 const AppContainer = styled.div`
@@ -48,6 +51,10 @@ function App() {
               <Route path="/contact" element={<Contact />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/checkout" element={<Checkout />} />
+              <Route path="/shop/cake" element={<Cake />} />
+              <Route path="/shop/coffee" element={<Coffee />} />
+              <Route path="/shop/soup" element={<Soup />} />
+              <Route path="/shop/milkshake" element={<Milkshakes />} />
             </Routes>
           </ContentContainer>
           
