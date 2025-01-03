@@ -17,8 +17,7 @@ import Checkout from './Pages/checkOut';
 import Testimonial from './Pages/Testimonial';
 import PremiumBeans from './Pages/PremiumBeans';
 import ExpertBaristas from './Pages/ExpertBaristas';
-
-
+import Reviews from './componets/Reviews'
 
 const AppContainer = styled.div`
   display: flex;
@@ -56,7 +55,7 @@ function App() {
 
             </Routes>
           </ContentContainer>
-          
+          <Reviews />
           <Footer />
         </AppContainer>
       </Router>
