@@ -135,7 +135,7 @@ const products = [
     name: "Espresso",
     price: 2.5,
     image:
-      "https://img.freepik.com/free-photo/caramel-latte-with-chocolade-table_140725-4.jpg?t=st=1727759794~exp=1727763394~hmac=c764d48b2b28767da2c6b996ec20e0d6a5857c19724850db5e46498687e16225&w=740",
+      "https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Module-2a.jpg?v=1641819059",
     description: "A strong, rich coffee shot, perfect for a quick pick-me-up.",
   },
   {
@@ -143,7 +143,7 @@ const products = [
     name: "Cappuccino",
     price: 3.5,
     image:
-      "https://img.freepik.com/free-photo/delicious-organic-latte-macchiato-with-milk_23-2148420329.jpg?t=st=1727761406~exp=1727765006~hmac=10f2d9d7a08693daef2ef87ff4edd99d5bc33e1813adb65c8628d088268239b5&w=1380 ",
+      "https://easy-peasy.ai/cdn-cgi/image/quality=80,format=auto,width=700/https://fdczvxmwwjwpwbeeqcth.supabase.co/storage/v1/object/public/images/642a47ed-9f59-4c02-b9a3-2ff875179476/066b0ee9-c0d4-40f8-b9ef-5ea270079e35.png ",
     description:
       "Creamy and frothy, a classic Italian coffee with steamed milk.",
   },
@@ -152,7 +152,7 @@ const products = [
     name: "Latte",
     price: 4,
     image:
-      "https://img.freepik.com/free-photo/cold-chocolate-cocktail-with-ice-cream_140725-940.jpg?t=st=1727759865~exp=1727763465~hmac=ad44e2430bff005bce4db484fbef6f2ec22f05b97b41c8c6c28ecb8508c2d909&w=740 ",
+      "https://liliebakery.fr/wp-content/uploads/2024/10/latte-macchiato-recette-facile-lilie-bakery.jpg",
     description:
       "Smooth and milky, a comforting coffee drink with a velvety texture.",
   },
@@ -161,7 +161,7 @@ const products = [
     name: "Mocha",
     price: 4.5,
     image:
-      "https://img.freepik.com/free-photo/delicious-quality-coffee-cup_23-2150691385.jpg?t=st=1727759888~exp=1727763488~hmac=ea5484acf51753db6069801c3df0caa601e5d09a2265109ba218d040acb3e53c&w=1380  ",
+      "https://ichef.bbci.co.uk/food/ic/food_16x9_1600/recipes/the_perfect_mocha_coffee_29100_16x9.jpg",
     description:
       "A sweet blend of coffee and chocolate, perfect for chocolate lovers.",
   },
@@ -170,7 +170,7 @@ const products = [
     name: "Americano",
     price: 3,
     image:
-      "https://img.freepik.com/free-photo/delicious-quality-coffee-cup_23-2150691389.jpg?t=st=1727759909~exp=1727763509~hmac=615986b69635b1e5a35b3a09347203d49046878d7525a9588f94211a3947ff58&w=1380  ",
+      "https://i0.wp.com/misaexpress.in/wp-content/uploads/2023/06/79039.jpg?fit=451%2C451&ssl=1",
     description:
       "A diluted espresso shot, similar to brewed coffee but stronger.",
   },
@@ -179,7 +179,7 @@ const products = [
     name: "Macchiato",
     price: 3.5,
     image:
-      "https://img.freepik.com/free-photo/assortment-with-frappe-dark-background_23-2148436976.jpg?t=st=1727761354~exp=1727764954~hmac=20b5ddf356f56d12e139084bc8e2c14ad3c71677269de9680db9dc4d09250774&w=740 ",
+      "https://www.tankcoffee.com/wp-content/uploads/2023/07/A_close-up_shot_of_a_classic_Italian_macchiato.png",
     description: "An espresso with a dollop of foamed milk, rich and creamy.",
   },
   {
