@@ -85,7 +85,7 @@ function Login() {
       storedUser.password === password
     ) {
       dispatch(login({ username, email }));
-      navigate("/profile"); // Redirect to home page
+      navigate("/"); // Redirect to home page
     } else {
       setError("Invalid credentials");
     }
