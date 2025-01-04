@@ -5,6 +5,7 @@ import { logout } from '../Store/authSlice';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 
+
 const NavbarContainer = styled(motion.nav)`
   display: flex;
   justify-content: space-between;
@@ -43,7 +44,10 @@ const Logo = styled(motion.div)`
   font-size: 2rem;
   font-weight: 700;
   font-family: 'Playfair Display', serif;
-  
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
   a {
     color: #D2691E;
     text-decoration: none;
@@ -56,6 +60,12 @@ const Logo = styled(motion.div)`
     &:hover {
       opacity: 0.9;
     }
+  }
+
+  img {
+    margin-right: 5px; /* Adds space between the image and the text */
+    width: 30px; /* Adjust size of the image */
+    height: 30px; /* Adjust size of the image */
   }
 `;
 
@@ -200,6 +210,7 @@ function Navbar() {
         className={scrolled ? 'scrolled' : ''}
       >
         <Logo whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+        <img src="3817208_coffee_cup_drink_icon.png" alt="Logo" />
           <Link to="/">MsCafe</Link>
         </Logo>
         <NavLinks>
