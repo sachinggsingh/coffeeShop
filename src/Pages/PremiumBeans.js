@@ -13,7 +13,7 @@ const PremiumContainer = styled.div`
 
 const FeatureTitle =  styled(motion.h1)`
  font-size: 4rem;
-    margin-top: 2rem;
+    margin-top: -4rem;
     margin-bottom: 1rem;
     color: ##78350f;
     font-family: 'Playfair Display', serif;
