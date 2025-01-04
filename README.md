@@ -52,16 +52,20 @@ npm start
 ```
 Once the server is running, you can view the app at (http://localhost:3000).
 ## Usage
--**To use the app:**
--**View Coffee Menu:** Browse through the available coffee items on the homepage.
--**Learn About Coffee:** Check out the sourcing section to learn more about our sustainably sourced beans.
--**Place an Order:** In future releases, you'll be able to add items to the cart and complete orders.
+**To use the app:**
+- **View Coffee Menu:** Browse through the available coffee items on the homepage.
+- **Learn About Coffee:** Check out the sourcing section to learn more about our sustainably sourced beans.
+- **Place an Order:** In future releases, you'll be able to add items to the cart and complete orders.
 
 ## ScreenShots:
 ## **Home Page:** 
-![Screenshot 2024-10-01 115456](https://github.com/user-attachments/assets/1d60d37c-891d-4b7b-b477-1bfa75d59691)
+![homepage](https://github.com/user-attachments/assets/2dc9b51d-ce06-4eb6-89fb-774867ede12c)
 ## **Coffee Menu:**
-![shop](https://github.com/user-attachments/assets/4d30c92d-8f70-4dd8-8f50-9f3560d37fe5)
+![coffeemenu](https://github.com/user-attachments/assets/014c6a7a-03ab-4bdf-88e1-bb3c11d66447)
+## **Login Page**
+![coffeelogin](https://github.com/user-attachments/assets/c6c7c645-475d-4658-a47c-f0ada0b177d1)
+## **Testimonials**
+![testimonials](https://github.com/user-attachments/assets/38d811e3-4acc-4901-9a3d-8e4185c96a2c)
 ## Contributing
 We welcome contributions! Follow the steps below to contribute to this project:
 ```bash
@@ -101,5 +105,25 @@ git push origin feature/your-feature-name
 # Go to the original repository on GitHub and open a new Pull Request
 # Provide a clear description of your changes in the Pull Request.
 ```
-Happy Coding
-☕️
+
+
+<div>
+  <h2 align="center"><img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Red%20Heart.png" width="35" height="35"> Our Contributors</h2>
+  <div align="center">
+    <h3>Thank you for contributing to our project</h3
+<p align="center">
+      <a href="https://github.com/Mujtabaa07/coffeeShop/graphs/contributors">
+        <img src="https://api.vaunt.dev/v1/github/entities/Mujtabaa07/repositories/coffeeShop/contributors?format=svg&limit=54" width="700" height="250" />
+      </a>
+ </p>
+<a href="https://github.com/Mujtabaa07/coffeeShop/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Mujtabaa07/coffeeShop&max=300" />
+</a>
+    
+
+
+  </div>
+</div>
+
+
+<h3 align="center"> Happy Coding ☕️</h3>

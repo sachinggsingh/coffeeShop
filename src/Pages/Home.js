@@ -283,12 +283,13 @@ function Home() {
       <FeaturesSection ref={featuresRef} className="hover:cursor-pointer">
         <FeatureCard >
           <FeatureIcon src="https://img.freepik.com/free-photo/side-view-fresh-coffee-beans-falling-out-black-basket-red-background_141793-27586.jpg?t=st=1727759694~exp=1727763294~hmac=661c2c2b8c561df98b21f74effb9bb02a0875b0584c062f076bceafa5d6f7eda&w=1380" alt="Quality Beans" />
-          <FeatureTitle>Premium Beans</FeatureTitle>
+          
+           <Link to="/premiumbeans"><FeatureTitle>Premium Beans</FeatureTitle></Link>
           <FeatureDescription>We source the finest coffee beans from around the world.</FeatureDescription>
         </FeatureCard>
         <FeatureCard>
           <FeatureIcon src="https://img.freepik.com/free-vector/people-making-different-coffee-methods_23-2148659306.jpg?t=st=1727760094~exp=1727763694~hmac=1308757b9658b2965de4fa54acb3d847813ef088426f2fb78a05d8cb0be1b993&w=826" alt="Expert Baristas" />
-          <FeatureTitle>Expert Baristas</FeatureTitle>
+          <Link to="/expertbaristas"><FeatureTitle>Expert Baristas</FeatureTitle></Link>
           <FeatureDescription>Our skilled baristas craft each cup to perfection.</FeatureDescription>
         </FeatureCard>
         <FeatureCard>
