@@ -36,14 +36,15 @@ const ProductCard = styled(motion.div)`
   position: relative;
 
   &:hover .overlay {
-    opacity: 1;
+  opacity: 1;
+}
 
-  transition: box-shadow 0.3s ease;
-  
-  &:hover {
-    box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+transition: box-shadow 0.3s ease;
 
-  }
+&:hover {
+  box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+}
+
 `;
 
 const ProductImage = styled.img`
@@ -92,7 +93,7 @@ const ProductPrice = styled.p`
   margin-bottom: 1rem;
   font-weight: 500;
 `;
-//chnages in the images 
+//changes in the images 
 const products = [
 
   {
