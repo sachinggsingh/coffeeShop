@@ -135,7 +135,7 @@ const products = [
     name: "Espresso",
     price: 2.5,
     image:
-      "https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Module-2a.jpg?v=1641819059",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtmOsFrpFh2l-iZTaOA0_1QyRm9cfRMvGv1g&s",
     description: "A strong, rich coffee shot, perfect for a quick pick-me-up.",
   },
   {
