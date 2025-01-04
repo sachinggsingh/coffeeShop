@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import ScrollToTop from './componets/ScrollToTop';
 import { Provider } from 'react-redux';
 import { store } from './Store/index';
 import styled from 'styled-components';
@@ -39,9 +40,11 @@ function App() {
   return (
     <Provider store={store}>
       <Router>
+      <ScrollToTop />
         <AppContainer>
           <Navbar />
           <ContentContainer>
+          
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
