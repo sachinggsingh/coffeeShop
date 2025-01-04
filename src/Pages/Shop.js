@@ -128,7 +128,7 @@ const ButtonContainer = styled.div`
     gap: 10px;              /* Add space between stacked buttons */
   }
 `;
-
+//chnages in the images 
 const products = [
   {
     id: 1,
