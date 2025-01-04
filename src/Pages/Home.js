@@ -282,7 +282,7 @@ function Home() {
       </HeroSection>
       <FeaturesSection ref={featuresRef} className="hover:cursor-pointer">
         <FeatureCard >
-          <FeatureIcon src="https://img.freepik.com/free-photo/side-view-fresh-coffee-beans-falling-out-black-basket-red-background_141793-27586.jpg?t=st=1727759694~exp=1727763294~hmac=661c2c2b8c561df98b21f74effb9bb02a0875b0584c062f076bceafa5d6f7eda&w=1380" alt="Quality Beans" />
+          <FeatureIcon src="https://img.freepik.com/premium-photo/fresh-coffee-splash-coffee-bean-premium_636537-238642.jpg?w=360" />
           
            <Link to="/premiumbeans"><FeatureTitle>Premium Beans</FeatureTitle></Link>
           <FeatureDescription>We source the finest coffee beans from around the world.</FeatureDescription>
@@ -293,7 +293,7 @@ function Home() {
           <FeatureDescription>Our skilled baristas craft each cup to perfection.</FeatureDescription>
         </FeatureCard>
         <FeatureCard>
-          <FeatureIcon src="https://img.freepik.com/free-photo/modern-coffee-shop-with-comfortable-chairs-elegant-decor-relaxing-ambiance-generated-by-artificial-intelligence_188544-150832.jpg?t=st=1727760180~exp=1727763780~hmac=5b12fc3782c57d5c5a04bcd60e2d275f3c18e52b87d6939948612e1cd4a76d68&w=1380" alt="Cozy Ambiance" />
+          <FeatureIcon src="https://img.freepik.com/premium-photo/capturing-cozy-ambiance-stock-photos-coffee-shop-marketing-concept-coffee-shop-vibes-commercial-photography-lifestyle-marketing-cozy-atmosphere-stock-image-collection_864588-134610.jpg" />
           <FeatureTitle>Cozy Ambiance</FeatureTitle>
           <FeatureDescription>Enjoy your coffee in our warm and inviting atmosphere.</FeatureDescription>
         </FeatureCard>
@@ -301,7 +301,7 @@ function Home() {
       <SpecialtySection ref={specialtyRef}>
         <SpecialtyImage src="https://img.freepik.com/free-photo/brown-coffee-beans-seed_74190-6651.jpg?ga=GA1.1.1542821208.1727756299&semt=ais_hybrid " alt="Specialty Coffee 1" />
         <SpecialtyImage src="https://img.freepik.com/free-photo/coffee-machine-making-perfect-cup-coffee_23-2151699675.jpg?ga=GA1.1.1542821208.1727756299&semt=ais_hybrid" alt="Specialty Coffee 2" />
-        <SpecialtyImage src="https://img.freepik.com/free-photo/coffee-cup-with-beans_23-2148453628.jpg?t=st=1727760337~exp=1727763937~hmac=c326eb236a78a478ea9d9703e1bdbb8b390dcc71cefb24d78ca7a85bcb1c1cc5&w=740" alt="Specialty Coffee 3" />
+        <SpecialtyImage src="https://espressocoffeeguide.com/wp-content/uploads/2022/08/baileys-irish-coffee-500x500.jpg" />
       </SpecialtySection>
     </HomeContainer>
   );
