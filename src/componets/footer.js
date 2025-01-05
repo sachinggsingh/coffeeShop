@@ -21,7 +21,7 @@ const FooterContent = styled.div`
   
   p {
     margin: 0.5rem 0;
-    font-size: 0.9rem;
+    font-size: 1rem;
     line-height: 1.5rem;
     
     &:first-child {
@@ -72,7 +72,7 @@ const InfoColumn = styled.div`
 
   @media (max-width:768px){
     h3{
-      font-size:1.4rem;
+      font-size:1.2rem;
       margin-bottom:0rem;
       }
 
