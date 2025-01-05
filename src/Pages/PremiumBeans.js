@@ -24,10 +24,9 @@ const FeatureTitle =  styled(motion.h1)`
     font-weight:bold;
     
     @media (max-width: 768px) {
-  font-size: 2.5rem; /* Adjust font size for smaller screens */
-  text-align: center; /* Center the title on smaller screens */
-}
-
+      font-size: 2.5rem; /* Adjust font size for smaller screens */
+      text-align: center; /* Center the title on smaller screens */
+    }
 `;
 
 const ImageContent = styled(motion.div)`
