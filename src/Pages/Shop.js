@@ -178,7 +178,7 @@ const products = [
   { id: 45, name: 'Miso soup', price: 7.5, image: 'https://img.freepik.com/free-photo/top-view-japanese-food-bowls-arrangement_23-2148809848.jpg?ga=GA1.1.900909129.1729318722&semt=ais_hybrid', description: 'Savory and umami-rich, a traditional Japanese soup made with miso paste and dashi broth.', type: 'food' },
   { id: 46, name: 'Cold cucumber soup', price: 7.34, image: 'https://img.freepik.com/free-photo/cold-cucumber-soup-with-dried-tomatoes-mozzarella_2829-14287.jpg?ga=GA1.1.900909129.1729318722&semt=ais_hybrid', description: 'Refreshing and cool, a chilled soup made with cucumbers, yogurt, and herbs, perfect for summer.', type: 'food' },
   { id: 47, name: 'Tom Yum Soup', price: 9.2, image: 'https://img.freepik.com/free-photo/tom-yum-kung-thai-hot-spicy-soup-shrimp-with-lemon-grass-lemon-galangal-chilli-wooden-table-thailand-food_1150-21078.jpg?ga=GA1.1.900909129.1729318722&semt=ais_hybrid', description: 'Spicy and aromatic, a Thai soup with lemongrass, kaffir lime leaves, and chilies, often with shrimp.', type: 'food' },
-]
+];
 
 function Shop() {
   const dispatch = useDispatch();
