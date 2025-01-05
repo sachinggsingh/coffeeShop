@@ -197,7 +197,7 @@ const SpecialtyImage = styled(motion.img)`
 const ScrollIndicator = styled(motion.div)`
   position: absolute;
   bottom: 40px;
-  left: 50%;
+  left: 49.6%;
   transform: translateX(-50%);
   color: #ffe4b5;
   font-size: 2rem;
