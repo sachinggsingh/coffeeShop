@@ -39,7 +39,7 @@ const ImageContent = styled(motion.div)`
   padding: 0;
   flex-direction: column;
   flex-wrap: wrap;
-  align-content: flex-start;
+  align-content: center;
 
   @media (max-width: 768px) {
     margin-bottom: 2rem;
