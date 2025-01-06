@@ -143,3 +143,8 @@ body.menu-open {
   background-color: #D2691E;
   transition: width 0.3s ease;
 }
+
+.head{
+  display: flex;
+}
+
