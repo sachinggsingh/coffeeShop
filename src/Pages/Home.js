@@ -24,7 +24,7 @@ const HeroSection = styled.section`
   justify-content: center;
   text-align: center;
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   background-image: linear-gradient(
       rgba(44, 19, 11, 0.7),
       rgba(44, 19, 11, 0.7)
