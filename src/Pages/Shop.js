@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
@@ -11,6 +11,7 @@ const ShopContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   background-color: #fffbeb; // Warm background color
+  padding-top: 1.5rem; /* Adjusted padding for top */
 `;
 
 const Title = styled(motion.h1)`
@@ -196,6 +197,7 @@ const products = [
 
 function Shop() {
   const dispatch = useDispatch();
+
   const [category, setCategory] = useState('hot');
 
   const handleAddToCart = (product) => {
@@ -204,6 +206,19 @@ function Shop() {
 
   const filteredProducts = products.filter((product) => product.type === category);
 
+
+  const [itemsNo,setItemsNo]=useState(9);
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product));
+  };
+  const handleItemsNo = ()=>{
+    const s = products.length;
+    if (s==itemsNo) {
+      setItemsNo(9);
+    } else {
+      setItemsNo(Math.min(itemsNo + 9,s));
+    }
+  }
   return (
     <ShopContainer>
       <Title
@@ -221,7 +236,11 @@ function Shop() {
         </Dropdown>
       </DropdownContainer>
       <ProductGrid>
+
         {filteredProducts.map((product) => (
+
+        {products.slice(0, itemsNo).map((product) => (
+
           <ProductCard
             key={product.id}
             initial={{ opacity: 0, scale: 0.9 }}
@@ -236,6 +255,9 @@ function Shop() {
             </ProductInfo>
           </ProductCard>
         ))}
+        <div style={{ gridColumn: '2 / 3' }}>
+          <Button onClick={() => handleItemsNo() } style={{ width: '100%' }}>{itemsNo===products.length ?"See Less":"See More" }</Button>
+        </div>
       </ProductGrid>
     </ShopContainer>
   );
