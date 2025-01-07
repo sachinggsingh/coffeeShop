@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import { motion } from 'framer-motion';
-import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { login } from '../Store/authSlice';
+import React, { useState } from "react";
+import styled from "styled-components";
+import { motion } from "framer-motion";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { login } from "../Store/authSlice";
 
 const RegisterBackGround = styled.section`
-  background-image: url('https://img.freepik.com/free-photo/hot-latte-art-coffee-cup-wood-table-coffee-shop_1150-8937.jpg');
+  background-image: url("https://img.freepik.com/free-photo/hot-latte-art-coffee-cup-wood-table-coffee-shop_1150-8937.jpg");
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -16,8 +16,10 @@ const RegisterContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  height: 100vh;
+  padding: 0 1rem;
   backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.6);
 `;
 
 const RegisterForm = styled(motion.form)`
@@ -26,9 +28,10 @@ const RegisterForm = styled(motion.form)`
   border-radius: 12px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
   width: 350px;
+  max-width: 90%;
   text-align: center;
-  opacity: 1;  // Ensure the form is fully visible
-  transition: opacity 0.6s ease-in-out; // Smooth fade-in effect
+  opacity: 1;
+  transition: opacity 0.6s ease-in-out;
 `;
 
 const Heading = styled.h2`
@@ -40,24 +43,26 @@ const Heading = styled.h2`
 
 const Input = styled(motion.input)`
   width: 100%;
-  padding: 0.75rem;
-  margin-bottom: 1.25rem;
+  padding: 0.8rem;
+  margin-bottom: 1.2rem;
   border: 1px solid #ddd;
   border-radius: 8px;
-  outline: none;
   font-size: 1rem;
-  transition: border-color 0.3s;
-  opacity: 1;  // Ensure inputs are visible
+  transition: all 0.3s ease;
 
   &:focus {
     border-color: #7c2214;
-    box-shadow: 0 0 4px rgba(124, 34, 20, 0.5);
+    outline: none;
+    box-shadow: 0 0 5px rgba(124, 34, 20, 0.5);
+  }
+  &:hover {
+    border-color: #aaa;
   }
 `;
 
 const Button = styled(motion.button)`
   width: 100%;
-  padding: 0.75rem;
+  padding: 0.8rem;
   background-color: #7c2214;
   color: white;
   border: none;
@@ -74,7 +79,7 @@ const Button = styled(motion.button)`
 
 const LoginLink = styled(Link)`
   display: block;
-  margin-top: 1.25rem;
+  margin-top: 1.5rem;
   font-size: 0.9rem;
   color: #7c2214;
   text-decoration: underline;
@@ -86,27 +91,29 @@ const LoginLink = styled(Link)`
 `;
 
 const SuccessMessage = styled.div`
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   color: green;
+  text-align: center;
   font-weight: bold;
 `;
 
 const ErrorMessage = styled.div`
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   color: red;
+  text-align: center;
   font-weight: bold;
 `;
 
 const Register = () => {
   const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -121,15 +128,15 @@ const Register = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (formData.password !== formData.confirmPassword) {
-      setError('Passwords do not match');
+      setError("Passwords do not match");
       return;
     }
-    localStorage.setItem('user', JSON.stringify(formData));
+    localStorage.setItem("user", JSON.stringify(formData));
     dispatch(login({ username: formData.username, email: formData.email }));
     setIsSubmitted(true);
-    setError('');
+    setError("");
     setTimeout(() => {
-      navigate('/profile');
+      navigate("/");
     }, 2000);
   };
 
@@ -187,7 +194,9 @@ const Register = () => {
             Register
           </Button>
           {error && <ErrorMessage>{error}</ErrorMessage>}
-          {isSubmitted && <SuccessMessage>Registration successful!</SuccessMessage>}
+          {isSubmitted && (
+            <SuccessMessage>Registration successful!</SuccessMessage>
+          )}
           <LoginLink to="/login">Already have an account? Login</LoginLink>
         </RegisterForm>
       </RegisterContainer>
