@@ -78,7 +78,7 @@ const RightNav = styled(motion.div)`
   padding: 1rem 2rem;
   position: fixed;
   top: 0px;
-  left: 40vw;
+  left: 35vw; //Now the Shop section is completely visible at the top-right section of Navbar.
   right: 0;
   z-index: 1000;
   transition: all 0.3s ease;
@@ -408,25 +408,7 @@ function Navbar() {
                 </DropdownMenu>
               </ShopLink>
 
-              <NavLink className={location.pathname === "/about" ? "active" : ""} whileHover={{ scale: 1.05 }}>
-                <Link to="/about">About</Link>
-              </NavLink>
-
-              <NavLink className={location.pathname === "/testimonial" ? "active" : ""} whileHover={{ scale: 1.05 }}>
-                <Link to="/testimonial">Testimonial</Link>
-              </NavLink>
-
-              <NavLink className={location.pathname === "/premiumbeans" ? "active" : ""} whileHover={{ scale: 1.05 }}>
-                <Link to="/premiumbeans">Premium Beans</Link>
-              </NavLink>
-
-              <NavLink className={location.pathname === "/expertbaristas" ? "active" : ""} whileHover={{ scale: 1.05 }}>
-                <Link to="/expertbaristas">Expert Baristas</Link>
-              </NavLink>
-
-              <NavLink className={location.pathname === "/contact" ? "active" : ""} whileHover={{ scale: 1.05 }}>
-                <Link to="/contact">Contact</Link>
-              </NavLink>
+             {/* removed unnecessary links that were already hidden and obsolete.  */}
 
               {isLoggedIn ? (
                 <>
