@@ -207,9 +207,7 @@ function Shop() {
 
 
   const [itemsNo,setItemsNo]=useState(9);
-  const handleAddToCart = (product) => {
-    dispatch(addToCart(product));
-  };
+ 
   const handleItemsNo = ()=>{
     const s = products.length;
     if (s==itemsNo) {
