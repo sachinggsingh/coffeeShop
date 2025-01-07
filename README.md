@@ -41,10 +41,10 @@ Follow the steps below to set up the project locally:
 #### Step 1: Clone the repository
 ```bash
 # Clone the MsCafe repository
-git clone https://github.com/your-username/ms-cafe.git
+git clone https://github.com/your-username/coffeeShop.git
 
 # Navigate into the project directory
-cd ms-cafe
+cd coffeeShop
  # Install the required npm packages
 npm install
 # Start the React development server
