@@ -53,7 +53,7 @@ export const productDropdown =[
 
     {
         id:3,
-        title:"expert bistas",
+        title:"Expert Bistas",
         path:"./expertbaristas",
         cName:"submenu-item",
     },
@@ -62,14 +62,14 @@ export const productDropdown =[
 export const ourstoryDropdown =[
     {
         id:1,
-        title:"about",
+        title:"About",
         path:"./about",
         cName:"submenu-item",
     },
 
     {
         id:2,
-        title:"testimonials",
+        title:"Testimonials",
         path:"./testimonial",
         cName:"submenu-item",
     },
@@ -80,14 +80,14 @@ export const ourstoryDropdown =[
 export const userLogoutDropdown =[
     {
         id:1,
-        title:"login",
+        title:"Login",
         path:"./login",
         cName:"submenu-item",
     },
 
     {
         id:2,
-        title:"register",
+        title:"Register",
         path:"./register",
         cName:"submenu-item",
     },
@@ -96,14 +96,14 @@ export const userLogoutDropdown =[
 export const userLoginDropdown =[
     {
         id:1,
-        title:"cart",
+        title:"Cart",
         path:"./cart",
         cName:"submenu-item",
     },
 
     {
         id:2,
-        title:"profile",
+        title:"Profile",
         path:"./profile",
         cName:"submenu-item",
     },

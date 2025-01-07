@@ -185,7 +185,7 @@ function Cake() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          Our Cake Selection
+          Cake Selection
         </Title>
         <ProductGrid>
           {products.map((product) => (

@@ -221,7 +221,7 @@ function Milkshake() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          Our Milkshake Selection
+          Milkshake Selection
         </Title>
         <ProductGrid>
           {products.map((product) => (

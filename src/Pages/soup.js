@@ -185,7 +185,7 @@ function Soup() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          Our Soupshake Selection
+          Soupshake Selection
         </Title>
         <ProductGrid>
           {products.map((product) => (

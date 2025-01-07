@@ -300,7 +300,7 @@ function Coffee() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          Our Coffee Selection
+          Coffee Selection
         </Title>
         <ProductGrid>
           {products.map((product) => (

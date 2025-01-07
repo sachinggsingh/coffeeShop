@@ -78,7 +78,7 @@ const RightNav = styled(motion.div)`
   padding: 1rem 2rem;
   position: fixed;
   top: 0px;
-  left: 35vw; //Now the Shop section is completely visible at the top-right section of Navbar.
+  left: 55vw; //Now the Shop section is completely visible at the top-right section of Navbar.
   right: 0;
   z-index: 1000;
   transition: all 0.3s ease;
@@ -124,7 +124,6 @@ const NavLink = styled(motion.div)`
     font-size: 1.1rem;
     transition: all 0.3s ease;
     font-family: "Poppins", sans-serif;
-    padding: 25px;
 
     &:hover {
       color: #ffe4b5;
@@ -132,12 +131,12 @@ const NavLink = styled(motion.div)`
   }
 
   &.active a {
-    text-decoration: underline;
+    text-decoration: none;
     color: #d2691e;
   }
 
   &::after {
-    content: "☕";
+    content: "";
     position: absolute;
     font-size: 0.8rem;
     bottom: -15px;
@@ -218,7 +217,7 @@ const DropdownMenu = styled(motion.div)`
   display: none;
   position: absolute;
   top: 100%;
-  left: 0;
+  right: 0;
   background: rgba(44, 19, 11, 0.95);
   border: 2px solid #8b4513;
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
@@ -252,7 +251,7 @@ const ShopLink = styled(NavLink)`
   }
 
   &::after {
-    content: '▼';
+    content: "";
     font-size: 0.7rem;
     margin-left: 0.3rem;
     transition: transform 0.3s ease;
@@ -394,9 +393,9 @@ function Navbar() {
               );
             })}
             <NavLinks>
-              <NavLink className={location.pathname === "/" ? "active" : ""} whileHover={{ scale: 1.05 }}>
+              {/* <NavLink className={location.pathname === "/" ? "active" : ""} whileHover={{ scale: 1.05 }}>
                 <Link to="/">Home</Link>
-              </NavLink>
+              </NavLink> */}
 
               <ShopLink className={location.pathname === "/shop" ? "active" : ""}>
                 <Link to="/shop">Shop</Link>
