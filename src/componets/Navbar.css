@@ -144,6 +144,11 @@ body.menu-open {
   transition: width 0.3s ease;
 }
 
+
+.head{
+  display: flex;
+}
+
 /*dropdown menu for shop*/
 .dropdown-menu {
   display: none;
@@ -158,3 +163,4 @@ body.menu-open {
 .nav-link:hover .dropdown-menu {
   display: flex;
 }
+
