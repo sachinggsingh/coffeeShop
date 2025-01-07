@@ -14,7 +14,9 @@ const ShopContainer = styled.div`
 
 const Title = styled(motion.h1)`
   font-size: 2.5rem;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
+  margin-top: 2rem;
+  padding: 1rem;
   text-align: center;
   color: #78350f; // Warm brown color
 `;
@@ -256,7 +258,21 @@ const products = [
     description:
       "Espresso served with sweetened condensed milk, creating a layered effect.",
   },
+  
   {
+    id: 25,
+    name: "Irish Coffee",
+    price: 7.2,
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNlPYx_StS2Y7x9s4hukcCyJZaDm54mgbe8g&s",
+    description:
+      "Coffee with Irish whiskey, sugar, and cream, a warm and boozy treat.",
+  },
+  
+];
+
+  // Tea Section
+  const product1=[{
     id: 19,
     name: "Chai",
     price: 7.3,
@@ -310,16 +326,9 @@ const products = [
     description:
       "Refreshing chilled tea, often sweetened and served with lemon, perfect for hot days.",
   },
-  {
-    id: 25,
-    name: "Irish Coffee",
-    price: 7.2,
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNlPYx_StS2Y7x9s4hukcCyJZaDm54mgbe8g&s",
-    description:
-      "Coffee with Irish whiskey, sugar, and cream, a warm and boozy treat.",
-  },
-  {
+];
+  // Milkshake and Smothiee
+  const product2=[{
     id: 26,
     name: "Strawberry smoothie",
     price: 6.2,
@@ -409,7 +418,9 @@ const products = [
     description:
       "Rich and creamy, made with peanut butter, ice cream, and milk, a peanut butter lover's dream.",
   },
-  {
+];
+  // Cake Section
+  const product3=[ {
     id: 36,
     name: "Oreo cheese cake",
     price: 9.2,
@@ -463,7 +474,9 @@ const products = [
     description:
       "Light and fluffy, a sweet strawberry cake with creamy frosting, perfect for summer.",
   },
-  {
+];
+  // Soup Section
+  const product4=[{
     id: 42,
     name: "Salad",
     price: 7.3,
@@ -519,8 +532,6 @@ const products = [
   },
 ];
 
-  
-
 
 function Shop() {
   const dispatch = useDispatch();
@@ -540,6 +551,134 @@ function Shop() {
       </Title>
       <ProductGrid>
         {products.map((product) => (
+          <ProductCard
+            key={product.id}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            <div style={{ position: 'relative'}}>
+              <ProductImage src={product.image} alt={product.name} />
+              <Overlay className="overlay">
+                <OverlayText>{product.description}</OverlayText>
+              </Overlay>
+            </div>
+            <ProductInfo>
+              <ProductName>{product.name}</ProductName>
+              <ProductPrice>${product.price.toFixed(2)}</ProductPrice>
+
+              <Button onClick={() => handleAddToCart(product)}>Add to Cart</Button>
+              <Button onClick={() => handleAddToCart(product)}>Buy Now</Button>
+            </ProductInfo>
+          </ProductCard>
+        ))}
+      </ProductGrid>
+      
+      <Title
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        Our Tea Selection
+      </Title>
+      <ProductGrid>
+        {product1.map((product) => (
+          <ProductCard
+            key={product.id}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            <div style={{ position: 'relative'}}>
+              <ProductImage src={product.image} alt={product.name} />
+              <Overlay className="overlay">
+                <OverlayText>{product.description}</OverlayText>
+              </Overlay>
+            </div>
+            <ProductInfo>
+              <ProductName>{product.name}</ProductName>
+              <ProductPrice>${product.price.toFixed(2)}</ProductPrice>
+
+              <Button onClick={() => handleAddToCart(product)}>Add to Cart</Button>
+              <Button onClick={() => handleAddToCart(product)}>Buy Now</Button>
+            </ProductInfo>
+          </ProductCard>
+        ))}
+      </ProductGrid>
+
+      <Title
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        Our Smoothie and Milkshake Selection
+      </Title>
+      <ProductGrid>
+        {product2.map((product) => (
+          <ProductCard
+            key={product.id}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            <div style={{ position: 'relative'}}>
+              <ProductImage src={product.image} alt={product.name} />
+              <Overlay className="overlay">
+                <OverlayText>{product.description}</OverlayText>
+              </Overlay>
+            </div>
+            <ProductInfo>
+              <ProductName>{product.name}</ProductName>
+              <ProductPrice>${product.price.toFixed(2)}</ProductPrice>
+
+              <Button onClick={() => handleAddToCart(product)}>Add to Cart</Button>
+              <Button onClick={() => handleAddToCart(product)}>Buy Now</Button>
+            </ProductInfo>
+          </ProductCard>
+        ))}
+      </ProductGrid>
+
+      <Title
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        Our Cake Selection
+      </Title>
+      <ProductGrid>
+        {product3.map((product) => (
+          <ProductCard
+            key={product.id}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            <div style={{ position: 'relative'}}>
+              <ProductImage src={product.image} alt={product.name} />
+              <Overlay className="overlay">
+                <OverlayText>{product.description}</OverlayText>
+              </Overlay>
+            </div>
+            <ProductInfo>
+              <ProductName>{product.name}</ProductName>
+              <ProductPrice>${product.price.toFixed(2)}</ProductPrice>
+
+              <Button onClick={() => handleAddToCart(product)}>Add to Cart</Button>
+              <Button onClick={() => handleAddToCart(product)}>Buy Now</Button>
+            </ProductInfo>
+          </ProductCard>
+        ))}
+      </ProductGrid>
+
+      <Title
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        Our Soup and Salad Selection
+      </Title>
+      <ProductGrid>
+        {product4.map((product) => (
           <ProductCard
             key={product.id}
             initial={{ opacity: 0, scale: 0.9 }}
