@@ -1,8 +1,8 @@
-import React from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { addToCart } from '../Store/cartSlice';
+import { useState } from 'react'; 
 import Button from '../componets/Button';
 
 const ShopContainer = styled.div`
@@ -10,6 +10,7 @@ const ShopContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   background-color: #fffbeb; // Warm background color
+  padding-top: 1.5rem; /* Adjusted padding for top */
 `;
 
 const Title = styled(motion.h1)`
@@ -21,6 +22,19 @@ const Title = styled(motion.h1)`
   color: #78350f; // Warm brown color
 `;
 
+const DropdownContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+`;
+
+const Dropdown = styled.select`
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+`;
+
 const ProductGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -28,14 +42,24 @@ const ProductGrid = styled.div`
   max-width: 1100px; // Slightly reduced to center content more
   margin: 0 auto;
 `;
-
 const ProductCard = styled(motion.div)`
-  background-color: white;
-  border-radius: 8px;
+  background: linear-gradient(145deg, #ffffff, #e6e6e6);
+  border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-
   position: relative;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1), -2px -2px 8px rgba(255, 255, 255, 0.8);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.15), -4px -4px 12px rgba(255, 255, 255, 0.9);
+  }
+
+  &:hover .overlay {
+    opacity: 1;
+  }
 
   &:hover .overlay {
   opacity: 1;
@@ -46,6 +70,7 @@ transition: box-shadow 0.3s ease;
 &:hover {
   box-shadow: 0 8px 12px rgba(0,0,0,0.15);
 }
+
 
 `;
 
@@ -68,6 +93,13 @@ const Overlay = styled.div`
   opacity: 0;
   transition: opacity 0.3s ease;
   padding: 1rem;
+  text-align: center;
+`;
+
+const ProductName = styled.h3`
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
   box-sizing: border-box;
 `;
 
@@ -83,20 +115,38 @@ const ProductInfo = styled.div`
   background-color: white;
 `;
 
-const ProductName = styled.h3`
-  font-size: 1.2rem;
-  margin-bottom: 0.75rem;
-  color: #78350f; // Warm brown color
-`;
-
 const ProductPrice = styled.p`
   font-size: 1.1rem;
-  color: #92400e; // Slightly lighter brown
+  color: #4a2c2a;
   margin-bottom: 1rem;
-  font-weight: 500;
+  font-weight: 600;
+`;
+
+const StyledButton = styled.button`
+  background: linear-gradient(145deg, #6b4f4f, #7d5858);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  letter-spacing: 0.6px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease, transform 0.2s ease;
+
+  &:hover {
+    background: linear-gradient(145deg, #7d5858, #8e6a6a);
+    transform: scale(1.05);
+  }
+    
+  &:active {
+    transform: scale(0.98);
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); 
+  }
 `;
 //changes in the images 
 const products = [
+
 
   {
     id: 1,
@@ -533,13 +583,29 @@ const products = [
 ];
 
 
+
 function Shop() {
   const dispatch = useDispatch();
+
+  const [category, setCategory] = useState('hot');
 
   const handleAddToCart = (product) => {
     dispatch(addToCart(product));
   };
 
+  const filteredProducts = products.filter((product) => product.type === category);
+
+
+  const [itemsNo,setItemsNo]=useState(9);
+ 
+  const handleItemsNo = ()=>{
+    const s = products.length;
+    if (s==itemsNo) {
+      setItemsNo(9);
+    } else {
+      setItemsNo(Math.min(itemsNo + 9,s));
+    }
+  }
   return (
     <ShopContainer>
       <Title
@@ -547,31 +613,36 @@ function Shop() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        Our Coffee Selection
+        Our Beverage Selection
       </Title>
+      <DropdownContainer>
+        <Dropdown value={category} onChange={(e) => setCategory(e.target.value)}>
+          <option value="hot">Hot Beverages</option>
+          <option value="cold">Cold Beverages</option>
+          <option value="food">Food</option>
+        </Dropdown>
+      </DropdownContainer>
       <ProductGrid>
-        {products.map((product) => (
+
+      {filteredProducts.slice(0, itemsNo).map((product) => (
+
           <ProductCard
             key={product.id}
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
           >
-            <div style={{ position: 'relative'}}>
-              <ProductImage src={product.image} alt={product.name} />
-              <Overlay className="overlay">
-                <OverlayText>{product.description}</OverlayText>
-              </Overlay>
-            </div>
+            <ProductImage src={product.image} alt={product.name} />
             <ProductInfo>
               <ProductName>{product.name}</ProductName>
               <ProductPrice>${product.price.toFixed(2)}</ProductPrice>
-
               <Button onClick={() => handleAddToCart(product)}>Add to Cart</Button>
-              <Button onClick={() => handleAddToCart(product)}>Buy Now</Button>
             </ProductInfo>
           </ProductCard>
         ))}
+        <div style={{ gridColumn: '2 / 3' }}>
+          <Button onClick={() => handleItemsNo() } style={{ width: '100%' }}>{itemsNo===products.length ?"See Less":"See More" }</Button>
+        </div>
       </ProductGrid>
       
       <Title
