@@ -10,6 +10,7 @@ const ShopContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   background-color: #fffbeb; // Warm background color
+  padding-top: 1.5rem; /* Adjusted padding for top */
 `;
 
 const Title = styled(motion.h1)`
