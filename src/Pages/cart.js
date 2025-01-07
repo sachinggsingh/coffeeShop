@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { removeFromCart, updateQuantity } from '../Store/cartSlice';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const CartContainer = styled.div`
   padding: 2rem;
@@ -67,10 +69,12 @@ function Cart() {
 
   const handleRemoveFromCart = (productId) => {
     dispatch(removeFromCart(productId));
+    toast.error('Item removed from cart!');
   };
 
   const handleUpdateQuantity = (productId, quantity) => {
     dispatch(updateQuantity({ productId, quantity: parseInt(quantity) }));
+    toast.info('Cart updated!'); 
   };
 
   const totalPrice = cartItems.reduce(
