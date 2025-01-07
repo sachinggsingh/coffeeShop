@@ -176,6 +176,55 @@ const MobileNavLink = styled(motion.div)`
   }
 `;
 
+const DropdownMenu = styled(motion.div)`
+  display:none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: rgba(44, 19, 11, 0.95);
+  border: 2px solid #8B4513;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  display: none;
+  flex-direction: column;
+  padding: 0.5rem 0;
+  z-index: 1001;
+
+  a {
+    display:block;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    color: #DEB887;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    transition: background 0.3s ease;
+
+    &:hover {
+      background: rgba(210, 105, 30, 0.2);
+      color: #FFE4B5;
+    }
+  }
+`;
+
+const ShopLink = styled(NavLink)`
+  position: relative;
+
+  &:hover ${DropdownMenu} {
+    display: flex;
+  }
+
+  &::after {
+    content: '▼';
+    font-size: 0.7rem;
+    margin-left: 0.3rem;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover::after {
+    transform: rotate(180deg);
+  }
+`;
+
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -220,6 +269,18 @@ function Navbar() {
           >
             <Link to="/">Home</Link>
           </NavLink>
+
+          {/* <!-- ------ShopLink:::::Shop-------------------> */}
+          <ShopLink className={location.pathname === '/shop' ? 'active' : ''}>
+          <Link to="/shop">Shop</Link>
+          <DropdownMenu>
+            <Link to="/shop/cake">Cakes</Link>
+            <Link to="/shop/coffee">Coffee</Link>
+            <Link to="/shop/soup">Soups</Link>
+            <Link to="/shop/milkshake">Milkshakes</Link>
+          </DropdownMenu>
+          </ShopLink>
+
           {/* <!-- ------NavLink:::::Shop-------------------> */}
           <NavLink
             className={location.pathname === "/shop" ? "active" : ""}
@@ -227,6 +288,7 @@ function Navbar() {
           >
             <Link to="/shop">Shop</Link>
           </NavLink>
+
 
           {/* <!-- ------NavLink:::::About-------------------> */}
           <NavLink
