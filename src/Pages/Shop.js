@@ -234,9 +234,7 @@ function Shop() {
       </DropdownContainer>
       <ProductGrid>
 
-        {filteredProducts.map((product) => (
-
-        {products.slice(0, itemsNo).map((product) => (
+      {filteredProducts.slice(0, itemsNo).map((product) => (
 
           <ProductCard
             key={product.id}
