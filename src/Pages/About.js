@@ -8,10 +8,14 @@ const AboutContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   background-color: #fffbeb;
+
   background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20231205/pngtree-creamy-textured-milk-colored-background-image_13815875.png');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
+
+  padding-top: 1.5rem; /* Adjusted padding for top */
+
 `;
 
 const Title = styled(motion.h1)`
