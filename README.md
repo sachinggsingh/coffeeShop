@@ -48,7 +48,7 @@ git clone https://github.com/Mujtabaa07/coffeeShop.git
 cd coffeeShop
 ```
 ```bash
- # Install the required npm packages
+# Install the required npm packages
 npm install (or) npm i
 ```
 ```bash
@@ -63,7 +63,7 @@ Once the server is running, you can view the app at (http://localhost:3000).
 - **Learn About Coffee:** Check out the sourcing section to learn more about our sustainably sourced beans.
 - **Place an Order:** In future releases, you'll be able to add items to the cart and complete orders.
 
-## ScreenShots:
+## ScreenShots
 ## **Home Page:** 
 ![homepage](https://github.com/user-attachments/assets/2dc9b51d-ce06-4eb6-89fb-774867ede12c)
 ## **Coffee Menu:**
@@ -87,7 +87,7 @@ git clone https://github.com/Mujtabaa07/coffeeShop.git
 cd coffeeShop
 ```
 ```bash
-#install dependencies
+# install dependencies
 npm install (or) npm i
 ```
 ```bash
