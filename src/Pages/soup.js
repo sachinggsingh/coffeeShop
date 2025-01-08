@@ -207,7 +207,7 @@ function Soup() {
                 <Button onClick={() => handleAddToCart(product)}>
                   Add to Cart
                 </Button>
-                <StyledButton onClick={() => handleAddToCart(product)}>Add to Cart</StyledButton>
+            
   
               </ProductInfo>
             </ProductCard>
