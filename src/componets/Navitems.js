@@ -53,7 +53,7 @@ export const productDropdown =[
 
     {
         id:3,
-        title:"expert bistas",
+        title:"Expert Baristas",
         path:"./expertbaristas",
         cName:"submenu-item",
     },
