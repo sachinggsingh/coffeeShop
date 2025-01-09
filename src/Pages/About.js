@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
+import { color, motion } from 'framer-motion';
 import Button from '../componets/Button';
 
 const AboutContainer = styled.div`
@@ -8,20 +8,38 @@ const AboutContainer = styled.div`
   max-width: 1900px;
   margin: 0 auto;
   background-color: #fffbeb;
+
   background-image: url('https://images.template.net/103700/soft-brown-background-1btgz.png');
   background-size: cover;
   background-position: center;
   border-radius: 12px; /* Optional: To add rounded corners to the container */
   opacity:1;
   z-index:-1; 
+
+
+  background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20231205/pngtree-creamy-textured-milk-colored-background-image_13815875.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+
+  padding-top: 1.5rem; /* Adjusted padding for top */
+
+
 `;
 
 const Title = styled(motion.h1)`
-  font-size: 2.5rem;
+  font-size: 3rem;
   margin-bottom: 3rem;
   text-align: center;
+
   color: color: #5e2e0d;
   font-weight: bolder;
+
+  color: #7c2214;
+  letter-spacing: 4px;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+
 `;
 
 const Content = styled(motion.div)`
@@ -44,6 +62,7 @@ const TextContent = styled(motion.div)`
     font-size: 1.2rem;
     line-height: 1.8;
     margin-bottom: 1.5rem;
+    font-weight:bold;
   }
 `;
 
@@ -64,6 +83,7 @@ const HoverImage = styled(motion.div)`
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+
   cursor: pointer;
   /* Image scaling and hover effect */
   &:hover img {
@@ -89,6 +109,16 @@ const HoverImage = styled(motion.div)`
     background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
     opacity: 0;
     transition: opacity 0.3s ease;
+
+  filter: grayscale(100%) ;
+  transition: all 0.3s ease;
+  border: 4px solid black;
+  &:hover {
+    filter: grayscale(0%);
+    box-shadow: 0 0 20px rgba(255, 10, 0, 0.8);
+    border-width: 6px;
+    transform: perspective(1000px) rotateX(10deg) rotateY(10deg) scale(1.05);
+
   }
 `;
 
