@@ -9,7 +9,6 @@ import {
   ProDropdown,
   OsDropdown,
   UsLoginDropdown,
-  UsLogoutDropdown,
 } from "./Dropdown";
 
 const NavbarContainer = styled(motion.nav)`
@@ -272,7 +271,6 @@ function Navbar() {
   const [prodropdown, setproDropdown] = useState(false);
   const [osdropdown, setosDropdown] = useState(false);
   const [uslogindropdown, setusloginDropdown] = useState(false);
-  const [uslogoutdropdown, setuslogoutDropdown] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
@@ -348,50 +346,6 @@ function Navbar() {
                         {osdropdown && <OsDropdown />}
                       </NavLink>
                     </li>
-                  </NavLinks>
-                );
-              }
-
-              if (items.title === "User") {
-                return (
-                  <NavLinks>
-                    {isLoggedIn ? (
-                      <>
-                        <li
-                          key={items.id}
-                          className={
-                            location.pathname === items.path ? "active" : ""
-                          }
-                          onMouseEnter={() => setusloginDropdown(true)}
-                          onMouseLeave={() => setusloginDropdown(false)}
-                        >
-                          <NavLink whileHover={{ scale: 1.05 }}>
-                            <Link>{items.title}</Link>
-                            {uslogindropdown && <UsLoginDropdown />}
-                          </NavLink>
-                        </li>
-                        <li>
-                          <NavLink whileHover={{ scale: 1.05 }}>
-                            <Link>{items.title}</Link>
-                            {uslogoutdropdown && <UsLogoutDropdown />}
-                          </NavLink>
-                        </li>
-                      </>
-                    ) : (
-                      <li
-                        key={items.id}
-                        className={
-                          location.pathname === items.path ? "active" : ""
-                        }
-                        onMouseEnter={() => setuslogoutDropdown(true)}
-                        onMouseLeave={() => setuslogoutDropdown(false)}
-                      >
-                        <NavLink whileHover={{ scale: 1.05 }}>
-                          <Link>{items.title}</Link>
-                          {uslogoutdropdown && <UsLogoutDropdown />}
-                        </NavLink>
-                      </li>
-                    )}
                   </NavLinks>
                 );
               }
