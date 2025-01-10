@@ -1,4 +1,6 @@
 import { useDispatch } from 'react-redux';
+// import React, { useState } from 'react';
+// import { addToCart, removeFromCart } from '../Store/cartSlice';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { addToCart } from '../Store/cartSlice';
@@ -7,12 +9,18 @@ import Button from '../componets/Button';
 import { toast, ToastContainer } from 'react-toastify'; // Add this import
 import 'react-toastify/dist/ReactToastify.css';
 
+import ButtonGroup from '@mui/material/ButtonGroup';
+
+
+
 const ShopContainer = styled.div`
   padding: 6rem 2rem 4rem 2rem;
   max-width: 1200px;
   margin: 0 auto;
   background-color: #fffbeb;
   padding-top: 1.5rem;
+  padding-top: 1.5rem; /* Adjusted padding for top */
+
 `;
 
 const Title = styled(motion.h1)`
@@ -24,18 +32,6 @@ const Title = styled(motion.h1)`
   color: #78350f;
 `;
 
-const DropdownContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-bottom: 2rem;
-`;
-
-const Dropdown = styled.select`
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-`;
 
 const ProductGrid = styled.div`
   display: grid;
@@ -43,6 +39,7 @@ const ProductGrid = styled.div`
   gap: 2rem;
   max-width: 1100px;
   margin: 0 auto;
+  margin-top : 50px;
 `;
 
 const ProductCard = styled(motion.div)`
@@ -50,6 +47,9 @@ const ProductCard = styled(motion.div)`
   border-radius: 10px;
   overflow: hidden;
   position: relative;
+  flex-direction: column;
+    justify-content: space-between;
+  height : 250px
   box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1), -2px -2px 8px rgba(255, 255, 255, 0.8);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
@@ -64,11 +64,17 @@ const ProductCard = styled(motion.div)`
   }
 `;
 
-const ProductImage = styled.img`
+const ProductImage = styled(motion.img)`
   width: 100%;
   height: 220px;
   object-fit: cover;
+  transition: transform 0.5s ease-out; /* Smooth scaling transition */
+  
+  &:hover {
+    transform: scale(1.05); /* Scale the image on hover */
+  }
 `;
+
 
 const Overlay = styled.div`
   position: absolute;
@@ -101,7 +107,10 @@ const OverlayText = styled.p`
 
 const ProductInfo = styled.div`
   padding: 1.25rem;
-  background-color: white;
+  background : url("https://png.pngtree.com/thumb_back/fh260/background/20231205/pngtree-creamy-textured-milk-colored-background-image_13815875.png");
+  background-size : cover;
+  flex-direction: column;
+    justify-content: space-between;
 `;
 
 const ProductPrice = styled.p`
@@ -112,7 +121,7 @@ const ProductPrice = styled.p`
 `;
 
 const StyledButton = styled.button`
-  background: linear-gradient(145deg, #6b4f4f, #7d5858);
+  background: linear-gradient(145deg,rgb(51, 15, 15),rgb(46, 22, 22));
   color: white;
   border: none;
   padding: 0.6rem 1.2rem;
@@ -128,10 +137,13 @@ const StyledButton = styled.button`
     transform: scale(1.05);
   }
 
+
   &:active {
     transform: scale(0.98);
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); 
   }
+
+
 `;
 
 
@@ -625,22 +637,102 @@ const products = [
 function Shop() {
   const dispatch = useDispatch();
 
+
+
+  const [category, setCategory] = useState("hot");
+
+
   const handleAddToCart = (product) => {
     dispatch(addToCart(product));
     toast.success(`${product.name} added to cart!`);
   };
+
+
+
+  const handleClick = (value) => {
+    setCategory(value);
+  }
+
+  const filteredProducts = products.filter((product) => product.type === category);
+
+
+  const [itemsNo,setItemsNo]=useState(9);
+ 
+  const handleItemsNo = ()=>{
+    const s = products.length;
+    if (s==itemsNo) {
+      setItemsNo(9);
+    } else {
+      setItemsNo(Math.min(itemsNo + 9,s));
+    }
+  }
 
   return (
     <ShopContainer>
       <Title initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
         Our Coffee Selection
       </Title>
+
       <ProductGrid>
         {products.map(product => (
           <ProductCard key={product.id} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+
+
+      <ButtonGroup variant="text" aria-label="Basic button group" sx={{
+        borderRadius: '8px',           // Rounded corners for ButtonGroup
+        padding: '4px', 
+        marginLeft : '230px',
+      }}>
+          <Button 
+          onClick = {() => setCategory("hot")}
+          style = {
+            {
+              width : '200px',
+              backgroundColor: category === "hot" ? "#f0efdc" :"#7c2414",
+              color : category === "hot" ? "black" : "white"
+            }
+          }
+          >Hot Beverages</Button>
+          <Button onClick = {() =>  setCategory("cold")}  style = {
+            {
+              width : '200px',
+              backgroundColor: category === "cold" ? "#f0efdc" :"#7c2414",
+              color : category === "cold" ? "black" : "white"
+            }
+          }>Cold Beverages</Button>
+          <Button onClick = {() =>  setCategory("food")}  style = {
+            {
+              width : '200px',
+              backgroundColor: category === "food" ? "#f0efdc" :"#7c2414",
+              color : category === "food" ? "black" : "white"
+            }
+          }>Food</Button>
+        </ButtonGroup>
+      
+      <ProductGrid>
+
+      {filteredProducts.slice(0, itemsNo).map((product) => (
+
+          <ProductCard
+            key={product.id}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            whileHover={{
+              scale: 1.05,
+              boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)',
+              transition: { duration: 0.3 }
+            }}
+            style={{ display: 'flex', flexDirection: 'column', height: '100%' }}
+          >
+
             <ProductImage src={product.image} alt={product.name} />
-            <ProductInfo>
+            <ProductInfo style = {{flex: 1, // Allows ProductInfo to grow and fill the remaining space
+            flexDirection : 'column',
+            display : 'flex'
+}}>
               <ProductName>{product.name}</ProductName>
+
               <ProductPrice>${product.price}</ProductPrice>
               <StyledButton onClick={() => handleAddToCart(product)}>
                 Add to Cart
@@ -648,6 +740,16 @@ function Shop() {
             </ProductInfo>
           </ProductCard>
         ))}
+
+              <ProductPrice style = {{marginBottom : '10px'}}>${product.price.toFixed(2)}</ProductPrice>
+              <Button onClick={() => handleAddToCart(product)} style = {{marginLeft : '0px' , marginBottom : '0px'}}>Add to Cart</Button>
+            </ProductInfo>
+          </ProductCard>
+        ))}
+        <div style={{ gridColumn: '2 / 3' }}>
+          <Button onClick={() => handleItemsNo() } style={{ width: '100%' ,marginLeft : "0px" }}>{itemsNo===products.length ?"See Less":"See More" }</Button>
+        </div>
+
       </ProductGrid>
 
       <ToastContainer /> 
