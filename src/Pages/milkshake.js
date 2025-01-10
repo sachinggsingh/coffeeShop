@@ -62,10 +62,6 @@ const OverlayText = styled.p`
   text-align: center;
 `;
 
-const ProductInfo = styled.div`
-  padding: 1.25rem;
-  background-color: white;
-`;
 const ProductInfo1 = styled.div`
 display:flex;
   align-items:center;
