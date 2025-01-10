@@ -1,4 +1,6 @@
 import { useDispatch } from 'react-redux';
+// import React, { useState } from 'react';
+// import { addToCart, removeFromCart } from '../Store/cartSlice';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { addToCart } from '../Store/cartSlice';
