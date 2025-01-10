@@ -289,7 +289,7 @@ const QuantityDisplay = styled.span`
   text-align: center;
 `;
 
-function Coffee() {
+function MilkShake() {
   const dispatch = useDispatch();
   const [quantities, setQuantities] = useState({});
 
@@ -423,7 +423,7 @@ function Coffee() {
 ];
 
   return (
-    <CoffeeContainer>
+    <MilkShakeContainer>
       <Title
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
@@ -456,11 +456,11 @@ function Coffee() {
           </ProductCard>
         ))}
       </ProductGrid>
-    </CoffeeContainer>
+    </MilkShakeContainer>
   );
 }
 
-export default Coffee;
+export default MilkShake;
 
         <ProductGrid>
           {products.map((product) => (
