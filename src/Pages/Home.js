@@ -367,7 +367,6 @@ function Home() {
           alt="Specialty Coffee 3"
         />
       </SpecialtySection>
-      <Faq />
     </HomeContainer>
   );
 }
