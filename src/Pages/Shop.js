@@ -667,224 +667,141 @@ function Shop() {
     }
   }
 
-  return (
-    <ShopContainer>
-      <Title initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
-        Our Coffee Selection
-      </Title>
+ return (
+  <ShopContainer>
+    <Title initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
+      Our Coffee Selection
+    </Title>
 
-      <ProductGrid>
-        {products.map(product => (
-          <ProductCard key={product.id} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+    <ButtonGroup
+      variant="text"
+      aria-label="Basic button group"
+      sx={{
+        borderRadius: '8px',
+        padding: '4px',
+        marginLeft: '230px',
+      }}
+    >
+      <Button
+        onClick={() => setCategory("hot")}
+        style={{
+          width: '200px',
+          backgroundColor: category === "hot" ? "#f0efdc" : "#7c2414",
+          color: category === "hot" ? "black" : "white",
+        }}
+      >
+        Hot Beverages
+      </Button>
+      <Button
+        onClick={() => setCategory("cold")}
+        style={{
+          width: '200px',
+          backgroundColor: category === "cold" ? "#f0efdc" : "#7c2414",
+          color: category === "cold" ? "black" : "white",
+        }}
+      >
+        Cold Beverages
+      </Button>
+      <Button
+        onClick={() => setCategory("food")}
+        style={{
+          width: '200px',
+          backgroundColor: category === "food" ? "#f0efdc" : "#7c2414",
+          color: category === "food" ? "black" : "white",
+        }}
+      >
+        Food
+      </Button>
+    </ButtonGroup>
 
-
-      <ButtonGroup variant="text" aria-label="Basic button group" sx={{
-        borderRadius: '8px',           // Rounded corners for ButtonGroup
-        padding: '4px', 
-        marginLeft : '230px',
-      }}>
-          <Button 
-          onClick = {() => setCategory("hot")}
-          style = {
-            {
-              width : '200px',
-              backgroundColor: category === "hot" ? "#f0efdc" :"#7c2414",
-              color : category === "hot" ? "black" : "white"
-            }
-          }
-          >Hot Beverages</Button>
-          <Button onClick = {() =>  setCategory("cold")}  style = {
-            {
-              width : '200px',
-              backgroundColor: category === "cold" ? "#f0efdc" :"#7c2414",
-              color : category === "cold" ? "black" : "white"
-            }
-          }>Cold Beverages</Button>
-          <Button onClick = {() =>  setCategory("food")}  style = {
-            {
-              width : '200px',
-              backgroundColor: category === "food" ? "#f0efdc" :"#7c2414",
-              color : category === "food" ? "black" : "white"
-            }
-          }>Food</Button>
-        </ButtonGroup>
-      
-      <ProductGrid>
-
+    <ProductGrid>
       {filteredProducts.slice(0, itemsNo).map((product) => (
-
-          <ProductCard
-            key={product.id}
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-            whileHover={{
-              scale: 1.05,
-              boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)',
-              transition: { duration: 0.3 }
+        <ProductCard
+          key={product.id}
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+          whileHover={{
+            scale: 1.05,
+            boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)',
+            transition: { duration: 0.3 },
+          }}
+          style={{ display: 'flex', flexDirection: 'column', height: '100%' }}
+        >
+          <ProductImage src={product.image} alt={product.name} />
+          <ProductInfo
+            style={{
+              flex: 1,
+              flexDirection: 'column',
+              display: 'flex',
             }}
-            style={{ display: 'flex', flexDirection: 'column', height: '100%' }}
           >
+            <ProductName>{product.name}</ProductName>
+            <ProductPrice>${product.price.toFixed(2)}</ProductPrice>
+            <StyledButton onClick={() => handleAddToCart(product)}>
+              Add to Cart
+            </StyledButton>
+          </ProductInfo>
+        </ProductCard>
+      ))}
+      <div style={{ gridColumn: '2 / 3' }}>
+        <Button
+          onClick={() => handleItemsNo()}
+          style={{ width: '100%', marginLeft: '0px' }}
+        >
+          {itemsNo === products.length ? "See Less" : "See More"}
+        </Button>
+      </div>
+    </ProductGrid>
 
-            <ProductImage src={product.image} alt={product.name} />
-            <ProductInfo style = {{flex: 1, // Allows ProductInfo to grow and fill the remaining space
-            flexDirection : 'column',
-            display : 'flex'
-}}>
-              <ProductName>{product.name}</ProductName>
+    <ToastContainer />
 
-              <ProductPrice>${product.price}</ProductPrice>
-              <StyledButton onClick={() => handleAddToCart(product)}>
-                Add to Cart
-              </StyledButton>
-            </ProductInfo>
-          </ProductCard>
-        ))}
-
-              <ProductPrice style = {{marginBottom : '10px'}}>${product.price.toFixed(2)}</ProductPrice>
-              <Button onClick={() => handleAddToCart(product)} style = {{marginLeft : '0px' , marginBottom : '0px'}}>Add to Cart</Button>
-            </ProductInfo>
-          </ProductCard>
-        ))}
-        <div style={{ gridColumn: '2 / 3' }}>
-          <Button onClick={() => handleItemsNo() } style={{ width: '100%' ,marginLeft : "0px" }}>{itemsNo===products.length ?"See Less":"See More" }</Button>
-        </div>
-
-      </ProductGrid>
-
-      <ToastContainer /> 
-
-      
-      <Title
-        initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        Our Tea Selection
-      </Title>
-      <ProductGrid>
-        {product1.map((product) => (
-          <ProductCard
-            key={product.id}
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-          >
-            <div style={{ position: 'relative'}}>
-              <ProductImage src={product.image} alt={product.name} />
-              <Overlay className="overlay">
-                <OverlayText>{product.description}</OverlayText>
-              </Overlay>
-            </div>
-            <ProductInfo>
-              <ProductName>{product.name}</ProductName>
-              <ProductPrice>${product.price.toFixed(2)}</ProductPrice>
-
-              <Button onClick={() => handleAddToCart(product)}>Add to Cart</Button>
-              <Button onClick={() => handleAddToCart(product)}>Buy Now</Button>
-            </ProductInfo>
-          </ProductCard>
-        ))}
-      </ProductGrid>
-
-      <Title
-        initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        Our Smoothie and Milkshake Selection
-      </Title>
-      <ProductGrid>
-        {product2.map((product) => (
-          <ProductCard
-            key={product.id}
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-          >
-            <div style={{ position: 'relative'}}>
-              <ProductImage src={product.image} alt={product.name} />
-              <Overlay className="overlay">
-                <OverlayText>{product.description}</OverlayText>
-              </Overlay>
-            </div>
-            <ProductInfo>
-              <ProductName>{product.name}</ProductName>
-              <ProductPrice>${product.price.toFixed(2)}</ProductPrice>
-
-              <Button onClick={() => handleAddToCart(product)}>Add to Cart</Button>
-              <Button onClick={() => handleAddToCart(product)}>Buy Now</Button>
-            </ProductInfo>
-          </ProductCard>
-        ))}
-      </ProductGrid>
-
-      <Title
-        initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        Our Cake Selection
-      </Title>
-      <ProductGrid>
-        {product3.map((product) => (
-          <ProductCard
-            key={product.id}
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-          >
-            <div style={{ position: 'relative'}}>
-              <ProductImage src={product.image} alt={product.name} />
-              <Overlay className="overlay">
-                <OverlayText>{product.description}</OverlayText>
-              </Overlay>
-            </div>
-            <ProductInfo>
-              <ProductName>{product.name}</ProductName>
-              <ProductPrice>${product.price.toFixed(2)}</ProductPrice>
-
-              <Button onClick={() => handleAddToCart(product)}>Add to Cart</Button>
-              <Button onClick={() => handleAddToCart(product)}>Buy Now</Button>
-            </ProductInfo>
-          </ProductCard>
-        ))}
-      </ProductGrid>
-
-      <Title
-        initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        Our Soup and Salad Selection
-      </Title>
-      <ProductGrid>
-        {product4.map((product) => (
-          <ProductCard
-            key={product.id}
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-          >
-            <div style={{ position: 'relative'}}>
-              <ProductImage src={product.image} alt={product.name} />
-              <Overlay className="overlay">
-                <OverlayText>{product.description}</OverlayText>
-              </Overlay>
-            </div>
-            <ProductInfo>
-              <ProductName>{product.name}</ProductName>
-              <ProductPrice>${product.price.toFixed(2)}</ProductPrice>
-
-              <Button onClick={() => handleAddToCart(product)}>Add to Cart</Button>
-              <Button onClick={() => handleAddToCart(product)}>Buy Now</Button>
-            </ProductInfo>
-          </ProductCard>
-        ))}
-      </ProductGrid>
-
-    </ShopContainer>
-  );
+    {[product1, product2, product3, product4].map((productList, index) => (
+      <React.Fragment key={index}>
+        <Title
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          {index === 0
+            ? "Our Tea Selection"
+            : index === 1
+            ? "Our Smoothie and Milkshake Selection"
+            : index === 2
+            ? "Our Cake Selection"
+            : "Our Soup and Salad Selection"}
+        </Title>
+        <ProductGrid>
+          {productList.map((product) => (
+            <ProductCard
+              key={product.id}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
+            >
+              <div style={{ position: 'relative' }}>
+                <ProductImage src={product.image} alt={product.name} />
+                <Overlay className="overlay">
+                  <OverlayText>{product.description}</OverlayText>
+                </Overlay>
+              </div>
+              <ProductInfo>
+                <ProductName>{product.name}</ProductName>
+                <ProductPrice>${product.price.toFixed(2)}</ProductPrice>
+                <Button onClick={() => handleAddToCart(product)}>
+                  Add to Cart
+                </Button>
+                <Button onClick={() => handleAddToCart(product)}>
+                  Buy Now
+                </Button>
+              </ProductInfo>
+            </ProductCard>
+          ))}
+        </ProductGrid>
+      </React.Fragment>
+    ))}
+  </ShopContainer>
+);
 }
 
 export default Shop;
