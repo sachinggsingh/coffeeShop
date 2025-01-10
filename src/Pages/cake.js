@@ -5,19 +5,20 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
 const CakeContainer = styled.div`
-  padding: 6rem 2rem 4rem 2rem; // Added top padding for navbar
+  padding: 6rem 2rem 4rem 2rem;
   max-width: 1200px;
   margin: 0 auto;
-  background-color: #fffbeb; // Warm background color
+  background-color: #fffbeb;
 `;
 
 const ProductGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
-  max-width: 1100px; // Slightly reduced to center content more
+  max-width: 1100px;
   margin: 0 auto;
 `;
+
 const ProductCard = styled(motion.div)`
   background: linear-gradient(145deg, #ffffff, #e6e6e6);
   border-radius: 10px;
@@ -30,10 +31,6 @@ const ProductCard = styled(motion.div)`
   &:hover {
     transform: translateY(-5px);
     box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.15), -4px -4px 12px rgba(255, 255, 255, 0.9);
-  }
-
-  &:hover .overlay {
-    opacity: 1;
   }
 `;
 
@@ -52,7 +49,6 @@ const ProductName = styled.h3`
   font-size: 1.4rem;
   margin-bottom: 0.5rem;
   font-weight: 600;
-  box-sizing: border-box;
 `;
 
 const ProductPrice = styled.p`
@@ -61,12 +57,14 @@ const ProductPrice = styled.p`
   margin-bottom: 1rem;
   font-weight: 600;
 `;
+
 const Title = styled(motion.h1)`
   font-size: 2.5rem;
   margin-bottom: 2rem;
   text-align: center;
-  color: #78350f; // Warm brown color
+  color: #78350f;
 `;
+
 const Button = styled.button`
   background: #78350f;
   color: white;
@@ -80,38 +78,23 @@ const Button = styled.button`
   transition: background 0.3s ease, transform 0.2s ease;
 
   &:hover {
-    background:#78350f;
+    background: #5a2c0c;
     transform: scale(1.05);
   }
-    
+
   &:active {
     transform: scale(0.98);
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); 
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
   }
 `;
 
-const StyledButton = styled.button`
+const StyledButton = styled(Button)`
   background: linear-gradient(145deg, #6b4f4f, #7d5858);
-  color: white;
   margin-left: 3rem;
-  border: none;
-  padding: 0.6rem 1.2rem;
-  font-size: 1rem;
-  border-radius: 10px;
   margin-top: 1rem;
-  cursor: pointer;
-  letter-spacing: 0.6px;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-  transition: background 0.3s ease, transform 0.2s ease;
 
   &:hover {
     background: linear-gradient(145deg, #7d5858, #8e6a6a);
-    transform: scale(1.05);
-  }
-    
-  &:active {
-    transform: scale(0.98);
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); 
   }
 `;
 
@@ -141,7 +124,7 @@ function Cake() {
     if (!quantities[product.id]) {
       setQuantities({
         ...quantities,
-        [product.id]: 1
+        [product.id]: 1,
       });
       dispatch(addToCart({ ...product, quantity: 1 }));
     }
@@ -151,7 +134,7 @@ function Cake() {
     const newQuantity = (quantities[product.id] || 0) + 1;
     setQuantities({
       ...quantities,
-      [product.id]: newQuantity
+      [product.id]: newQuantity,
     });
     dispatch(addToCart({ ...product, quantity: newQuantity }));
   };
@@ -161,84 +144,67 @@ function Cake() {
       const newQuantity = quantities[product.id] - 1;
       setQuantities({
         ...quantities,
-        [product.id]: newQuantity
+        [product.id]: newQuantity,
       });
       dispatch(addToCart({ ...product, quantity: newQuantity }));
     } else {
-      setQuantities({
-        ...quantities,
-        [product.id]: 0
-      });
+      const updatedQuantities = { ...quantities };
+      delete updatedQuantities[product.id];
+      setQuantities(updatedQuantities);
       dispatch(removeFromCart(product.id));
     }
   };
 
   const products = [
     {
-        id: 36,
-        name: "Oreo cheese cake",
-        price: 9.2,
-        image:
-          "https://handletheheat.com/wp-content/uploads/2015/11/oreo-cheesecake-recipe-SQUARE.jpg",
-        description:
-          "Creamy cheesecake with an Oreo crust and topping, rich and indulgent.",
-      },
-      {
-        id: 37,
-        name: "Chocolate cake",
-        price: 7.2,
-        image:
-          "https://img.freepik.com/free-photo/chocolate-cake_1203-8942.jpg?ga=GA1.1.900909129.1729318722&semt=ais_hybrid",
-        description:
-          "Moist and decadent, a classic chocolate cake perfect for any celebration.",
-      },
-      {
-        id: 38,
-        name: "Red velvet cake",
-        price: 4.2,
-        image:
-          "https://img.freepik.com/free-photo/top-view-red-strawberry-cake-delicious-with-tea-table-fruit-color-cake-biscuit-sweet_140725-28319.jpg?ga=GA1.1.900909129.1729318722&semt=ais_hybrid",
-        description:
-          "Rich and velvety, a moist red cake with cream cheese frosting, elegant and delicious.",
-      },
-      {
-        id: 39,
-        name: "Cheese cake",
-        price: 8.2,
-        image:
-          "https://img.freepik.com/premium-photo/citrus-cheesecake-cake-with-kumquats_82780-1574.jpg?ga=GA1.1.900909129.1729318722&semt=ais_hybrid",
-        description:
-          "Creamy and smooth, a classic cheesecake with a graham cracker crust, perfect for dessert.",
-      },
-      {
-        id: 40,
-        name: "Blueberry cake",
-        price: 3.2,
-        image:
-          "https://img.freepik.com/premium-photo/pieces-pie-from-cottage-cheese-blueberries_116441-1516.jpg?ga=GA1.1.900909129.1729318722&semt=ais_hybrid",
-        description:
-          "Moist and bursting with blueberries, a sweet and tangy cake perfect for any occasion.",
-      },
-      {
-        id: 41,
-        name: "Strawberry cake",
-        price: 6,
-        image:
-          "https://img.freepik.com/free-photo/delicious-cake-with-strawberries_23-2150797874.jpg?ga=GA1.1.900909129.1729318722&semt=ais_hybrid",
-        description:
-          "Light and fluffy, a sweet strawberry cake with creamy frosting, perfect for summer.",
-      },
-];
+      id: 36,
+      name: "Oreo cheese cake",
+      price: 9.2,
+      image: "https://handletheheat.com/wp-content/uploads/2015/11/oreo-cheesecake-recipe-SQUARE.jpg",
+      description: "Creamy cheesecake with an Oreo crust and topping, rich and indulgent.",
+    },
+    {
+      id: 37,
+      name: "Chocolate cake",
+      price: 7.2,
+      image: "https://img.freepik.com/free-photo/chocolate-cake_1203-8942.jpg",
+      description: "Moist and decadent, a classic chocolate cake perfect for any celebration.",
+    },
+    {
+      id: 38,
+      name: "Red velvet cake",
+      price: 4.2,
+      image: "https://img.freepik.com/free-photo/top-view-red-strawberry-cake-delicious-with-tea-table-fruit-color-cake-biscuit-sweet_140725-28319.jpg",
+      description: "Rich and velvety, a moist red cake with cream cheese frosting, elegant and delicious.",
+    },
+    {
+      id: 39,
+      name: "Cheese cake",
+      price: 8.2,
+      image: "https://img.freepik.com/premium-photo/citrus-cheesecake-cake-with-kumquats_82780-1574.jpg",
+      description: "Creamy and smooth, a classic cheesecake with a graham cracker crust, perfect for dessert.",
+    },
+    {
+      id: 40,
+      name: "Blueberry cake",
+      price: 3.2,
+      image: "https://img.freepik.com/premium-photo/pieces-pie-from-cottage-cheese-blueberries_116441-1516.jpg",
+      description: "Moist and bursting with blueberries, a sweet and tangy cake perfect for any occasion.",
+    },
+    {
+      id: 41,
+      name: "Strawberry cake",
+      price: 6.0,
+      image: "https://img.freepik.com/free-photo/delicious-cake-with-strawberries_23-2150797874.jpg",
+      description: "Light and fluffy, a sweet strawberry cake with creamy frosting, perfect for summer.",
+    },
+  ];
 
   return (
     <CakeContainer>
-      <Title
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-           Our Cake Selection
-        </Title>
+      <Title initial={{ opacity: 0, y: -50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+        Our Cake Selection
+      </Title>
       <ProductGrid>
         {products.map((product) => (
           <ProductCard key={product.id}>
@@ -247,10 +213,10 @@ function Cake() {
               <ProductName>{product.name}</ProductName>
               <ProductPrice>${product.price.toFixed(2)}</ProductPrice>
               {!quantities[product.id] ? (
-                <Button onClick={() => handleAddToCart(product)}>
-                  Add to Cart
-                </Button>
-            
+                <>
+                  <Button onClick={() => handleAddToCart(product)}>Add to Cart</Button>
+                  <StyledButton onClick={() => handleAddToCart(product)}>Buy Now</StyledButton>
+                </>
               ) : (
                 <QuantityControls>
                   <QuantityButton onClick={() => handleDecrement(product)}>-</QuantityButton>
@@ -258,7 +224,6 @@ function Cake() {
                   <QuantityButton onClick={() => handleIncrement(product)}>+</QuantityButton>
                 </QuantityControls>
               )}
-              <StyledButton onClick={() => handleAddToCart(product)}>Buy Now</StyledButton>
             </ProductInfo>
           </ProductCard>
         ))}
