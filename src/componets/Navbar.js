@@ -312,12 +312,9 @@ function Navbar() {
             {navItems.map((items) => {
               if (items.title === "Product") {
                 return (
-                  <NavLinks>
+                  <NavLinks key={items.id}>
                     <li
-                      key={items.id}
-                      className={
-                        location.pathname === items.path ? "active" : ""
-                      }
+                      className={location.pathname === items.path ? "active" : ""}
                       onMouseEnter={() => setproDropdown(true)}
                       onMouseLeave={() => setproDropdown(false)}
                     >
@@ -332,12 +329,9 @@ function Navbar() {
 
               if (items.title === "Stories") {
                 return (
-                  <NavLinks>
+                  <NavLinks key={items.id}>
                     <li
-                      key={items.id}
-                      className={
-                        location.pathname === items.path ? "active" : ""
-                      }
+                      className={location.pathname === items.path ? "active" : ""}
                       onMouseEnter={() => setosDropdown(true)}
                       onMouseLeave={() => setosDropdown(false)}
                     >
@@ -352,52 +346,27 @@ function Navbar() {
 
               if (items.title === "User") {
                 return (
-                  <NavLinks>
-                    {isLoggedIn ? (
-                      <>
-                        <li
-                          key={items.id}
-                          className={
-                            location.pathname === items.path ? "active" : ""
-                          }
-                          onMouseEnter={() => setusloginDropdown(true)}
-                          onMouseLeave={() => setusloginDropdown(false)}
-                        >
-                          <NavLink whileHover={{ scale: 1.05 }}>
-                            <Link>{items.title}</Link>
-                            {uslogindropdown && <UsLoginDropdown />}
-                          </NavLink>
-                        </li>
-                        <li>
-                          <NavLink whileHover={{ scale: 1.05 }}>
-                            <Link>{items.title}</Link>
-                            {uslogoutdropdown && <UsLogoutDropdown />}
-                          </NavLink>
-                        </li>
-                      </>
-                    ) : (
-                      <li
-                        key={items.id}
-                        className={
-                          location.pathname === items.path ? "active" : ""
+                  <NavLinks key={items.id}>
+                    <li
+                      className={location.pathname === items.path ? "active" : ""}
+                      onMouseEnter={() => setuslogoutDropdown(true)}
+                      onMouseLeave={() => setuslogoutDropdown(false)}
+                    >
+                      <NavLink whileHover={{ scale: 1.05 }}>
+                        <Link to="/cart">{items.title}</Link>
+                        {isLoggedIn ? 
+                          (uslogindropdown && <UsLoginDropdown />) :
+                          (uslogoutdropdown && <UsLogoutDropdown />)
                         }
-                        onMouseEnter={() => setuslogoutDropdown(true)}
-                        onMouseLeave={() => setuslogoutDropdown(false)}
-                      >
-                        <NavLink whileHover={{ scale: 1.05 }}>
-                          <Link>{items.title}</Link>
-                          {uslogoutdropdown && <UsLogoutDropdown />}
-                        </NavLink>
-                      </li>
-                    )}
+                      </NavLink>
+                    </li>
                   </NavLinks>
                 );
               }
 
               return (
-                <NavLinks>
+                <NavLinks key={items.id}>
                   <li
-                    key={items.id}
                     className={location.pathname === items.path ? "active" : ""}
                   >
                     <NavLink whileHover={{ scale: 1.05 }}>
@@ -408,6 +377,7 @@ function Navbar() {
               );
             })}
 
+            {/* Shop and other navigation items */}
             <NavLinks>
               <ShopLink
                 className={location.pathname === "/shop" ? "active" : ""}
@@ -427,8 +397,6 @@ function Navbar() {
                 <Link to="/faq">FAQ</Link>
               </NavLink>
 
-              {/* removed unnecessary links that were already hidden and obsolete.  */}
-
               {isLoggedIn && (
                 <>
                   <NavLink
@@ -447,7 +415,7 @@ function Navbar() {
                     whileHover={{ scale: 1.05 }}
                     onClick={() => {
                       handleLogout();
-                      setIsOpen(false); // Ensure mobile menu closes after logout
+                      setIsOpen(false);
                     }}
                     style={{ cursor: "pointer" }}
                   >
