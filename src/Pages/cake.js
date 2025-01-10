@@ -68,12 +68,6 @@ const OverlayText = styled.p`
   text-align: center;
 `;
 
-const ProductInfo = styled.div`
-  padding: 1.25rem;
-  background-color: white;
-`;
-
-
 const ProductPrice = styled.p`
   font-size: 1.5rem;
   color: #4a2c2a;
