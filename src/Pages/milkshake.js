@@ -4,7 +4,7 @@ import { addToCart, removeFromCart } from '../Store/cartSlice';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
-const CoffeeContainer = styled.div`
+const MilkshakeContainer = styled.div`
   padding: 6rem 2rem 4rem 2rem; // Added top padding for navbar
   max-width: 1200px;
   margin: 0 auto;
@@ -133,7 +133,7 @@ const QuantityDisplay = styled.span`
   text-align: center;
 `;
 
-function Coffee() {
+function Milkshake() {
   const dispatch = useDispatch();
   const [quantities, setQuantities] = useState({});
 
@@ -267,7 +267,7 @@ function Coffee() {
 ];
 
   return (
-    <CoffeeContainer>
+    <MilkshakeContainer>
       <Title
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
@@ -299,8 +299,8 @@ function Coffee() {
           </ProductCard>
         ))}
       </ProductGrid>
-    </CoffeeContainer>
+    </MilkshakeContainer>
   );
 }
 
-export default Coffee;
+export default Milkshake;
