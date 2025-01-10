@@ -1,22 +1,14 @@
-import { motion } from "framer-motion";
-import React from "react";
-import { useDispatch } from "react-redux";
-import styled from "styled-components";
-import { addToCart } from "../Store/cartSlice";
-import Button from "../componets/Button";
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addToCart, removeFromCart } from '../Store/cartSlice';
+import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
-const SoupContainer = styled.div`
+const CoffeeContainer = styled.div`
   padding: 6rem 2rem 4rem 2rem; // Added top padding for navbar
   max-width: 1200px;
   margin: 0 auto;
   background-color: #fffbeb; // Warm background color
-`;
-
-const Title = styled(motion.h1)`
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
-  text-align: center;
-  color: #78350f; // Warm brown color
 `;
 
 const ProductGrid = styled.div`
@@ -51,20 +43,9 @@ const ProductImage = styled.img`
   object-fit: cover;
 `;
 
-const Overlay = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.8);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  padding: 1rem;
-  text-align: center;
+const ProductInfo = styled.div`
+  padding: 1.25rem;
+  background-color: white;
 `;
 
 const ProductName = styled.h3`
@@ -74,31 +55,50 @@ const ProductName = styled.h3`
   box-sizing: border-box;
 `;
 
-const OverlayText = styled.p`
-  font-size: 1rem;
-  color: #333;
-  text-align: center;
-`;
-
-const ProductInfo = styled.div`
-  padding: 1.25rem;
-  background-color: white;
-`;
-
 const ProductPrice = styled.p`
   font-size: 1.1rem;
   color: #4a2c2a;
   margin-bottom: 1rem;
   font-weight: 600;
 `;
-
-const StyledButton = styled.button`
-  background: linear-gradient(145deg, #6b4f4f, #7d5858);
+const Title = styled(motion.h1)`
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: #78350f; // Warm brown color
+`;
+const Button = styled.button`
+  background: #78350f;
   color: white;
   border: none;
   padding: 0.6rem 1.2rem;
   font-size: 1rem;
-  border-radius: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  letter-spacing: 0.6px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease, transform 0.2s ease;
+
+  &:hover {
+    background:#78350f;
+    transform: scale(1.05);
+  }
+    
+  &:active {
+    transform: scale(0.98);
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); 
+  }
+`;
+
+const StyledButton = styled.button`
+  background: linear-gradient(145deg, #6b4f4f, #7d5858);
+  color: white;
+  margin-left: 3rem;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border-radius: 10px;
+  margin-top: 1rem;
   cursor: pointer;
   letter-spacing: 0.6px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
@@ -115,7 +115,65 @@ const StyledButton = styled.button`
   }
 `;
 
-const products = [
+const QuantityControls = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+`;
+
+const QuantityButton = styled(Button)`
+  padding: 5px 10px;
+  min-width: 30px;
+`;
+
+const QuantityDisplay = styled.span`
+  font-weight: bold;
+  min-width: 20px;
+  text-align: center;
+`;
+
+function Coffee() {
+  const dispatch = useDispatch();
+  const [quantities, setQuantities] = useState({});
+
+  const handleAddToCart = (product) => {
+    if (!quantities[product.id]) {
+      setQuantities({
+        ...quantities,
+        [product.id]: 1
+      });
+      dispatch(addToCart({ ...product, quantity: 1 }));
+    }
+  };
+
+  const handleIncrement = (product) => {
+    const newQuantity = (quantities[product.id] || 0) + 1;
+    setQuantities({
+      ...quantities,
+      [product.id]: newQuantity
+    });
+    dispatch(addToCart({ ...product, quantity: newQuantity }));
+  };
+
+  const handleDecrement = (product) => {
+    if (quantities[product.id] > 1) {
+      const newQuantity = quantities[product.id] - 1;
+      setQuantities({
+        ...quantities,
+        [product.id]: newQuantity
+      });
+      dispatch(addToCart({ ...product, quantity: newQuantity }));
+    } else {
+      setQuantities({
+        ...quantities,
+        [product.id]: 0
+      });
+      dispatch(removeFromCart(product.id));
+    }
+  };
+
+  const products = [
     {
         id: 42,
         name: "Salad",
@@ -171,51 +229,43 @@ const products = [
           "Spicy and aromatic, a Thai soup with lemongrass, kaffir lime leaves, and chilies, often with shrimp.",
       },
 ];
-function Soup() {
-    const dispatch = useDispatch();
-  
-    const handleAddToCart = (product) => {
-      dispatch(addToCart(product));
-    };
-  
-    return (
-      <SoupContainer>
-        <Title
+
+
+  return (
+    <CoffeeContainer>
+      <Title
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          Our Soupshake Selection
+         Our Soupshake Selection
         </Title>
-        <ProductGrid>
-          {products.map((product) => (
-            <ProductCard
-              key={product.id}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-            >
-              <div style={{ position: "relative" }}>
-                <ProductImage src={product.image} alt={product.name} />
-                <Overlay className="overlay">
-                  <OverlayText>{product.description}</OverlayText>
-                </Overlay>
-              </div>
-              <ProductInfo>
-                <ProductName>{product.name}</ProductName>
-                <ProductPrice>${product.price.toFixed(2)}</ProductPrice>
+      <ProductGrid>
+        {products.map((product) => (
+          <ProductCard key={product.id}>
+            <ProductImage src={product.image} alt={product.name} />
+            <ProductInfo>
+              <ProductName>{product.name}</ProductName>
+              <ProductPrice>${product.price.toFixed(2)}</ProductPrice>
+              {!quantities[product.id] ? (
                 <Button onClick={() => handleAddToCart(product)}>
                   Add to Cart
                 </Button>
-                <StyledButton onClick={() => handleAddToCart(product)}>Add to Cart</StyledButton>
-  
-              </ProductInfo>
-            </ProductCard>
-          ))}
-        </ProductGrid>
-      </SoupContainer>
-    );
-  }
-  
-  export default Soup;
-  
+            
+              ) : (
+                <QuantityControls>
+                  <QuantityButton onClick={() => handleDecrement(product)}>-</QuantityButton>
+                  <QuantityDisplay>{quantities[product.id]}</QuantityDisplay>
+                  <QuantityButton onClick={() => handleIncrement(product)}>+</QuantityButton>
+                </QuantityControls>
+              )}
+              <StyledButton onClick={() => handleAddToCart(product)}>Buy Now</StyledButton>
+            </ProductInfo>
+          </ProductCard>
+        ))}
+      </ProductGrid>
+    </CoffeeContainer>
+  );
+}
+
+export default Coffee;
