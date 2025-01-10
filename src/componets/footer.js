@@ -86,7 +86,7 @@ const InfoColumn = styled.div`
 const SocialIcons = styled.div`
   display: flex;
   justify-content: center;
-  gap: 2rem;
+  gap: 1rem; //additional gap removed.
   margin-top: 1rem;
 
   @media (max-width: 768px) {
@@ -137,7 +137,7 @@ function Footer() {
             aria-label="twitter"
             role="link"
           >
-            <i className="fab fa-twitter"></i>
+            <i className="fa-brands fa-twitter"></i>{/* 'className' should've been used instead of 'class'. */}
           </SocialIcon>
           <SocialIcon
             href="https://instagram.com"
