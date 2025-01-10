@@ -1,6 +1,6 @@
 .product-submenu {
     position: absolute;
-    top: 100%;
+    top: 50px;
     right: 0px;
     list-style: none;
     text-align: start;
@@ -32,4 +32,5 @@
 .submenu-item:hover {
     background-color: rgba(210, 105, 30, 0.2);
     color: #ffe4b5;
+    cursor: pointer;
 }
