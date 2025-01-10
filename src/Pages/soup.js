@@ -91,7 +91,6 @@ const Button = styled.button`
 `;
 
 const StyledButton = styled.button`
-
   background: linear-gradient(145deg, #6b4f4f, #7d5858);
   color: white;
   margin-left: 3rem;
@@ -120,7 +119,6 @@ const StyledButton = styled.button`
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.103);
     position: relative;
   }
-
 
   .IconContainer {
     position: absolute;
@@ -170,6 +168,7 @@ const StyledButton = styled.button`
     transition-duration: .5s;
   }
 `;
+
 const StyledWrapper = styled.div`
   .heart-container {
     --heart-color: maroon;
@@ -178,7 +177,6 @@ const StyledWrapper = styled.div`
     height: 40px;
     transition: .3s;
     z-index:100;
-    
   }
 
   .heart-container .checkbox {
@@ -199,7 +197,7 @@ const StyledWrapper = styled.div`
   }
 
   .heart-container .svg-outline,
-          .heart-container .svg-filled {
+  .heart-container .svg-filled {
     fill: var(--heart-color);
     position: absolute;
   }
@@ -256,11 +254,14 @@ const StyledWrapper = styled.div`
       transform: scale(1.4);
       opacity: 0;
       display: none;
-    }`;
-    const ProductInfo1 = styled.div`
-display:flex;
-  align-items:center;
-  justify-content:space-between;
+    }
+  }
+`;
+
+const ProductInfo1 = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `;
 
 const QuantityControls = styled.div`
@@ -280,48 +281,7 @@ const QuantityDisplay = styled.span`
   min-width: 20px;
   text-align: center;
 `;
-
-function Coffee() {
-  const dispatch = useDispatch();
-  const [quantities, setQuantities] = useState({});
-
-  const handleAddToCart = (product) => {
-    if (!quantities[product.id]) {
-      setQuantities({
-        ...quantities,
-        [product.id]: 1
-      });
-      dispatch(addToCart({ ...product, quantity: 1 }));
-    }
-  };
-
-  const handleIncrement = (product) => {
-    const newQuantity = (quantities[product.id] || 0) + 1;
-    setQuantities({
-      ...quantities,
-      [product.id]: newQuantity
-    });
-    dispatch(addToCart({ ...product, quantity: newQuantity }));
-  };
-
-  const handleDecrement = (product) => {
-    if (quantities[product.id] > 1) {
-      const newQuantity = quantities[product.id] - 1;
-      setQuantities({
-        ...quantities,
-        [product.id]: newQuantity
-      });
-      dispatch(addToCart({ ...product, quantity: newQuantity }));
-    } else {
-      setQuantities({
-        ...quantities,
-        [product.id]: 0
-      });
-      dispatch(removeFromCart(product.id));
-    }
-  };
-
-  const products = [
+const products = [
     {
         id: 42,
         name: "Salad",
@@ -378,17 +338,55 @@ function Coffee() {
       },
 ];
 
+function Coffee() {
+  const dispatch = useDispatch();
+  const [quantities, setQuantities] = useState({});
+
+  const handleAddToCart = (product) => {
+    if (!quantities[product.id]) {
+      setQuantities({
+        ...quantities,
+        [product.id]: 1
+      });
+      dispatch(addToCart({ ...product, quantity: 1 }));
+    }
+  };
+
+  const handleIncrement = (product) => {
+    const newQuantity = (quantities[product.id] || 0) + 1;
+    setQuantities({
+      ...quantities,
+      [product.id]: newQuantity
+    });
+    dispatch(addToCart({ ...product, quantity: newQuantity }));
+  };
+
+  const handleDecrement = (product) => {
+    if (quantities[product.id] > 1) {
+      const newQuantity = quantities[product.id] - 1;
+      setQuantities({
+        ...quantities,
+        [product.id]: newQuantity
+      });
+      dispatch(addToCart({ ...product, quantity: newQuantity }));
+    } else {
+      setQuantities({
+        ...quantities,
+        [product.id]: 0
+      });
+      dispatch(removeFromCart(product.id));
+    }
+  };
 
   return (
     <CoffeeContainer>
       <Title
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-         Our Soupshake Selection
-        </Title>
-
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        Our Soupshake Selection
+      </Title>
       <ProductGrid>
         {products.map((product) => (
           <ProductCard key={product.id}>
@@ -400,7 +398,6 @@ function Coffee() {
                 <Button onClick={() => handleAddToCart(product)}>
                   Add to Cart
                 </Button>
-            
               ) : (
                 <QuantityControls>
                   <QuantityButton onClick={() => handleDecrement(product)}>-</QuantityButton>
@@ -418,63 +415,6 @@ function Coffee() {
 }
 
 export default Coffee;
-
-        <ProductGrid>
-          {products.map((product) => (
-            <ProductCard
-              key={product.id}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-            ><StyledWrapper style={{backgroundColor:"white",padding:"10px",zIndex:"100",borderRadius:"50px", position:"absolute" ,top: "0", right: "0"}}><div className="heart-container" title="Like">
-            <input type="checkbox" className="checkbox" id="Give-It-An-Id" />
-            <div className="svg-container">
-              <svg viewBox="0 0 24 24" className="svg-outline" xmlns="http://www.w3.org/2000/svg">
-                <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,11,8.967a1,1,0,0,0,2,0,4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,22,8.967C22,11.87,19.053,16.006,13.915,20.313Z">
-                </path>
-              </svg>
-              <svg viewBox="0 0 24 24" className="svg-filled" xmlns="http://www.w3.org/2000/svg">
-                <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Z">
-                </path>
-              </svg>
-              <svg className="svg-celebrate" width={100} height={100} xmlns="http://www.w3.org/2000/svg">
-                <polygon points="10,10 20,20" />
-                <polygon points="10,50 20,50" />
-                <polygon points="20,80 30,70" />
-                <polygon points="90,10 80,20" />
-                <polygon points="90,50 80,50" />
-                <polygon points="80,80 70,70" />
-              </svg>
-            </div>
-          </div></StyledWrapper>
-              <div style={{ position: "relative" }}>
-                <ProductImage src={product.image} alt={product.name} />
-                <Overlay className="overlay">
-                  <OverlayText>{product.description}</OverlayText>
-                </Overlay>
-              </div>
-              <ProductInfo>
-              <ProductInfo1>
-                <ProductName>{product.name}</ProductName>
-                <ProductPrice>${product.price.toFixed(2)}</ProductPrice>
-                </ProductInfo1>
-                <Button onClick={() => handleAddToCart(product)}>
-                  Add to Cart
-                </Button>
-                <StyledButton onClick={() => handleAddToCart(product)}><button className="CartBtn">
-        <span className="IconContainer"> 
-          <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512" fill="rgb(17, 17, 17)" className="cart"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z" /></svg>
-        </span>
-        <p className="text">Buy Now</p>
-      </button></StyledButton>
-  
-              </ProductInfo>
-            </ProductCard>
-          ))}
-        </ProductGrid>
-      </SoupContainer>
-    );
-  }
   
   export default Soup;
   
