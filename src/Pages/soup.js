@@ -4,7 +4,7 @@ import { addToCart, removeFromCart } from '../Store/cartSlice';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
-const CoffeeContainer = styled.div`
+const SoupContainer = styled.div`
   padding: 6rem 2rem 4rem 2rem; // Added top padding for navbar
   max-width: 1200px;
   margin: 0 auto;
@@ -338,7 +338,7 @@ const products = [
       },
 ];
 
-function Coffee() {
+function Soup() {
   const dispatch = useDispatch();
   const [quantities, setQuantities] = useState({});
 
@@ -379,7 +379,7 @@ function Coffee() {
   };
 
   return (
-    <CoffeeContainer>
+    <SoupContainer>
       <Title
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
@@ -410,12 +410,10 @@ function Coffee() {
           </ProductCard>
         ))}
       </ProductGrid>
-    </CoffeeContainer>
+    </SoupContainer>
   );
 }
 
-export default Coffee;
-  
-  export default Soup;
+export default Soup;
   
 
