@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const StyledButton = styled(motion.button)`
   padding: 0.5rem 1rem;
-  margin: 1rem 1rem;
+  margin: 1rem 30px 1rem 0;
   font-size: 1rem;
   background-color: ${props => props.primary ? '#7c2214' : '#7c2214'};
   color: ${props => props.primary ? 'white' : 'white'};
