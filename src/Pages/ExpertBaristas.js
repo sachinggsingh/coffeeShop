@@ -282,7 +282,9 @@ function ExpertBaristas() {
         >
           Expert baristas excel in making coffee due to their comprehensive knowledge of coffee, practical brewing skills, and passion for the craft...
         </FeatureDescription>
-        <Button onClick={toggleChat}>Chat with a Coffee Expert</Button>
+
+   <Button onClick={toggleChat}>Chat with a Coffee Expert</Button>
+
       </ExpertContainer>
 
       {isChatOpen && (
