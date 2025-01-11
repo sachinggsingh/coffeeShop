@@ -14,6 +14,7 @@ const Title = styled(motion.h1)`
   font-size: 2.5rem;
   margin-bottom: 2rem;
   text-align: center;
+  margin-top: 4rem;
 `;
 
 const ProfileInfo = styled(motion.div)`
@@ -45,6 +46,7 @@ const Order = styled.div`
 `;
 
 function Profile() {
+  const UserData = JSON.parse(localStorage.getItem('user'));
   const user = useSelector((state) => state.auth.user);
 
   // Mock order history data
@@ -70,11 +72,11 @@ function Profile() {
       >
         <InfoItem>
           <Label>Name:</Label>
-          {user?.username || 'N/A'}
+          {UserData.username || 'N/A'}
         </InfoItem>
         <InfoItem>
           <Label>Email:</Label>
-          {user?.email || 'N/A'}
+          {UserData.email || 'N/A'}
         </InfoItem>
         <Button primary>Edit Profile</Button>
       </ProfileInfo>
