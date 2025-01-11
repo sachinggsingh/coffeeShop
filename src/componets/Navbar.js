@@ -163,10 +163,24 @@ const MobileMenuButton = styled(motion.button)`
   border-radius: 8px;
   transition: all 0.3s ease;
 
-  @media (max-width: 768px) {
+  /* Default styling for mobile */
+  @media (max-width: 1024px) { 
     display: flex;
     align-items: center;
     justify-content: center;
+    position: absolute;
+    right: 20px; 
+    top: 50%;
+    transform: translateY(-50%); 
+  }
+
+  @media (max-width: 768px) { 
+    font-size: 1.3rem; 
+  }
+
+  @media (max-width: 480px) { 
+    font-size: 1.2rem;
+    padding: 0.4rem; 
   }
 
   &:hover {
@@ -174,6 +188,7 @@ const MobileMenuButton = styled(motion.button)`
     color: #ffe4b5;
   }
 `;
+
 
 const MobileMenu = styled(motion.div)`
   position: fixed;
