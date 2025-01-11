@@ -78,13 +78,14 @@ const Logo = styled(motion.div)`
 
 const RightNav = styled(motion.div)`
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   padding: 1rem 2rem;
   position: fixed;
   top: 0px;
-  left: 35vw; //Now the Shop section is completely visible at the top-right section of Navbar.
+  left: 20vw; //Now the Shop section is completely visible at the top-right section of Navbar.
   right: 0;
+  bottom:5;
   z-index: 1000;
   transition: all 0.3s ease;
 

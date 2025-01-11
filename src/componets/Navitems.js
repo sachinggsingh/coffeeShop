@@ -29,6 +29,13 @@ export const navItems = [
     path: "./user",
     cName: "nav-item",
   },
+  {
+     id :6,
+     title:"About",
+     path:"./about",
+     cName:"nav-item",
+  },
+ 
 ];
 
 export const productDropdown =[
