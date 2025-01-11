@@ -137,6 +137,7 @@ const Input = styled.input`
 `;
 
 function Profile() {
+  const UserData = JSON.parse(localStorage.getItem('user'));
   const user = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
   const [darkMode, setDarkMode] = useState(false);
@@ -158,6 +159,7 @@ function Profile() {
   };
 
   return (
+<<<<<<< HEAD
     <>
       <GlobalStyle darkMode={darkMode} />
       <DarkModeToggle darkMode={darkMode} onClick={() => setDarkMode(!darkMode)}>
@@ -234,6 +236,46 @@ function Profile() {
         </OrderHistory>
       </ProfileContainer>
     </>
+=======
+    <ProfileContainer>
+      <Title
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        Your Profile
+      </Title>
+      <ProfileInfo
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+      >
+        <InfoItem>
+          <Label>Name:</Label>
+          {UserData.username || 'N/A'}
+        </InfoItem>
+        <InfoItem>
+          <Label>Email:</Label>
+          {UserData.email || 'N/A'}
+        </InfoItem>
+        <Button primary>Edit Profile</Button>
+      </ProfileInfo>
+      <OrderHistory
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.4 }}
+      >
+        <h2>Order History</h2>
+        {orderHistory.map((order) => (
+          <Order key={order.id}>
+            <p>Order ID: {order.id}</p>
+            <p>Date: {order.date}</p>
+            <p>Total: ${order.total.toFixed(2)}</p>
+          </Order>
+        ))}
+      </OrderHistory>
+    </ProfileContainer>
+>>>>>>> c4ffeed32197d9bee201fd0e6445c3f67a4f3322
   );
 }
 
