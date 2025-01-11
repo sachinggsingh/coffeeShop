@@ -475,5 +475,4 @@ function PremiumBeans() {
     </Loader>
   );
 }
-
 export default PremiumBeans;
