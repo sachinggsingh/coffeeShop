@@ -7,24 +7,30 @@ export const navItems = [
   },
   {
     id: 2,
+    title: "About",
+    path: "./About",
+    cName: "nav-item",
+  },
+  {
+    id: 3,
     title: "Product",
     path: "./product",
     cName: "nav-item",
   },
   {
-    id: 3,
+    id: 4,
     title: "Contact",
     path: "./contact",
     cName: "nav-item",
   },
   {
-    id: 4,
+    id: 5,
     title: "Stories",
     path: "./our-story",
     cName: "nav-item",
   },
   {
-    id: 5,
+    id: 6,
     title: "User",
     path: "./user",
     cName: "nav-item",
