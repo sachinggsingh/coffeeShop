@@ -13,12 +13,14 @@ const CoffeeContainer = styled.div`
 
 const ProductGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, max-content));
   gap: 2rem;
   max-width: 1100px; // Slightly reduced to center content more
   margin: 0 auto;
+  justify-content: center;
 `;
 const ProductCard = styled(motion.div)`
+max-width:345 px;
   background: linear-gradient(145deg, #ffffff, #e6e6e6);
   border-radius: 10px;
   overflow: hidden;
@@ -132,10 +134,45 @@ const QuantityDisplay = styled.span`
   min-width: 20px;
   text-align: center;
 `;
+const SearchFilterContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  
+  margin-bottom: 2rem;
+  
+`;
+const SearchInput = styled.input`
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px 0 0 4px;
+  outline: none;
+  width: 300px;
+
+  &:focus {
+    border-color: #6b4f4f;
+  }
+`;
+
+const SearchButton = styled.button`
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background: linear-gradient(145deg, #6b4f4f, #7d5858);
+  color: white;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  transition: background 0.3s ease;
+
+  &:hover {
+    background: linear-gradient(145deg, #7d5858, #8e6a6a);
+  }
+`;
 
 function Coffee() {
   const dispatch = useDispatch();
   const [quantities, setQuantities] = useState({});
+  const [searchQuery, setSearchQuery] = useState('');
 
   const handleAddToCart = (product) => {
     if (!quantities[product.id]) {
@@ -344,6 +381,9 @@ function Coffee() {
       "Coffee with Irish whiskey, sugar, and cream, a warm and boozy treat.",
   },
 ];
+const filteredProducts = products.filter((product) =>
+  product.name.toLowerCase().includes(searchQuery.toLowerCase())
+);
 
   return (
     <CoffeeContainer>
@@ -354,8 +394,21 @@ function Coffee() {
         >
           Our Coffee Selection
         </Title>
+        <SearchFilterContainer>
+     
+      <SearchInput
+    type="text"
+    placeholder="Search for coffee..."
+    value={searchQuery}
+    onChange={(e) => setSearchQuery(e.target.value)}
+  />
+  <SearchButton onClick={() => console.log("Search clicked!")}>
+    Search
+  </SearchButton>
+
+  </SearchFilterContainer>
       <ProductGrid>
-        {products.map((product) => (
+        {filteredProducts.map((product) => (
           <ProductCard key={product.id}>
             <ProductImage src={product.image} alt={product.name} />
             <ProductInfo>
