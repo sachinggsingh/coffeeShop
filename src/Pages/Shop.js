@@ -9,7 +9,7 @@ import { useState } from 'react';
 import Button from '../componets/Button';
 import { toast, ToastContainer } from 'react-toastify'; // Add this import
 import 'react-toastify/dist/ReactToastify.css';
-
+import DynamicText from "./dynamicText";
 import ButtonGroup from '@mui/material/ButtonGroup';
 
 
@@ -21,6 +21,8 @@ const ShopContainer = styled.div`
   background-color: #fffbeb;
   padding-top: 1.5rem;
   padding-top: 1.5rem; /* Adjusted padding for top */
+  
+
 
 `;
 
@@ -36,14 +38,17 @@ const Title = styled(motion.h1)`
 
 const ProductGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, max-content));
   gap: 2rem;
   max-width: 1100px;
   margin: 0 auto;
   margin-top : 50px;
+
+ 
 `;
 
 const ProductCard = styled(motion.div)`
+ 
   background: linear-gradient(145deg, #ffffff, #e6e6e6);
   border-radius: 10px;
   overflow: hidden;
@@ -633,176 +638,219 @@ const products = [
   },
 ];
 
+const SearchFilterContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  
+  margin-bottom: 2rem;
+  
+`;
+const SearchInput = styled.input`
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px 0 0 4px;
+  outline: none;
+  width: 300px;
+
+  &:focus {
+    border-color: #6b4f4f;
+  }
+`;
+
+const SearchButton = styled.button`
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background: linear-gradient(145deg, #6b4f4f, #7d5858);
+  color: white;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  transition: background 0.3s ease;
+
+  &:hover {
+    background: linear-gradient(145deg, #7d5858, #8e6a6a);
+  }
+`;
+
 
 
 function Shop() {
   const dispatch = useDispatch();
-
-
-
   const [category, setCategory] = useState("hot");
-
+  const [searchQuery, setSearchQuery] = useState("");
 
   const handleAddToCart = (product) => {
     dispatch(addToCart(product));
     toast.success(`${product.name} added to cart!`);
   };
 
-
-
   const handleClick = (value) => {
     setCategory(value);
-  }
+  };
 
-  const filteredProducts = products.filter((product) => product.type === category);
+  // Filter products based on search query or category
+  const filteredProducts = products.filter((product) => {
+    // Check if product matches the selected category
+    const matchesCategory = category === "all" || product.type === category;
+    // Check if product name matches the search query (case insensitive)
+    const matchesSearchQuery = product.name.toLowerCase().includes(searchQuery.toLowerCase());
 
+    // If search query is provided, only show products matching the query and selected category
+    return searchQuery ? matchesSearchQuery : matchesCategory;
+  });
 
-  const [itemsNo,setItemsNo]=useState(9);
- 
-  const handleItemsNo = ()=>{
+  const [itemsNo, setItemsNo] = useState(9);
+
+  const handleItemsNo = () => {
     const s = products.length;
-    if (s==itemsNo) {
+    if (s === itemsNo) {
       setItemsNo(9);
     } else {
-      setItemsNo(Math.min(itemsNo + 9,s));
+      setItemsNo(Math.min(itemsNo + 9, s));
     }
-  }
+  };
 
- return (
-  <ShopContainer>
-    <Title initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
-      Our Coffee Selection
-    </Title>
+  // Group products by type (category)
+  const groupedProducts = products.reduce((acc, product) => {
+    if (!acc[product.type]) acc[product.type] = [];
+    acc[product.type].push(product);
+    return acc;
+  }, {});
 
-    <ButtonGroup
-      variant="text"
-      aria-label="Basic button group"
-      sx={{
-        borderRadius: '8px',
-        padding: '4px',
-        marginLeft: '230px',
-      }}
-    >
-      <Button
-        onClick={() => setCategory("hot")}
-        style={{
-          width: '200px',
-          backgroundColor: category === "hot" ? "#f0efdc" : "#7c2414",
-          color: category === "hot" ? "black" : "white",
+  return (
+    <ShopContainer>
+      <Title
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        text-weight="extrabold"
+      >
+        <DynamicText text="Welcome to MsCafe Shop" />
+      </Title>
+
+      <SearchFilterContainer>
+        <SearchInput
+          type="text"
+          placeholder="Search for ..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+        <SearchButton onClick={() => console.log("Search clicked!")}>
+          Search
+        </SearchButton>
+      </SearchFilterContainer>
+
+      <Title initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
+        Our Coffee Selection
+      </Title>
+
+      <ButtonGroup
+        variant="text"
+        aria-label="Basic button group"
+        sx={{
+          borderRadius: "8px",
+          padding: "4px",
+          marginLeft: "230px",
         }}
       >
-        Hot Beverages
-      </Button>
-      <Button
-        onClick={() => setCategory("cold")}
-        style={{
-          width: '200px',
-          backgroundColor: category === "cold" ? "#f0efdc" : "#7c2414",
-          color: category === "cold" ? "black" : "white",
-        }}
-      >
-        Cold Beverages
-      </Button>
-      <Button
-        onClick={() => setCategory("food")}
-        style={{
-          width: '200px',
-          backgroundColor: category === "food" ? "#f0efdc" : "#7c2414",
-          color: category === "food" ? "black" : "white",
-        }}
-      >
-        Food
-      </Button>
-    </ButtonGroup>
-
-    <ProductGrid>
-      {filteredProducts.slice(0, itemsNo).map((product) => (
-        <ProductCard
-          key={product.id}
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-          whileHover={{
-            scale: 1.05,
-            boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)',
-            transition: { duration: 0.3 },
-          }}
-          style={{ display: 'flex', flexDirection: 'column', height: '100%' }}
-        >
-          <ProductImage src={product.image} alt={product.name} />
-          <ProductInfo
-            style={{
-              flex: 1,
-              flexDirection: 'column',
-              display: 'flex',
-            }}
-          >
-            <ProductName>{product.name}</ProductName>
-            <ProductPrice>${product.price.toFixed(2)}</ProductPrice>
-            <StyledButton onClick={() => handleAddToCart(product)}>
-              Add to Cart
-            </StyledButton>
-          </ProductInfo>
-        </ProductCard>
-      ))}
-      <div style={{ gridColumn: '2 / 3' }}>
         <Button
-          onClick={() => handleItemsNo()}
-          style={{ width: '100%', marginLeft: '0px' }}
+          onClick={() => setCategory("hot")}
+          style={{
+            width: "200px",
+            backgroundColor: category === "hot" ? "#f0efdc" : "#7c2414",
+            color: category === "hot" ? "black" : "white",
+          }}
         >
-          {itemsNo === products.length ? "See Less" : "See More"}
+          Hot Beverages
         </Button>
-      </div>
-    </ProductGrid>
-
-    <ToastContainer />
-
-    {[product1, product2, product3, product4].map((productList, index) => (
-      <React.Fragment key={index}>
-        <Title
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+        <Button
+          onClick={() => setCategory("cold")}
+          style={{
+            width: "200px",
+            backgroundColor: category === "cold" ? "#f0efdc" : "#7c2414",
+            color: category === "cold" ? "black" : "white",
+          }}
         >
-          {index === 0
-            ? "Our Tea Selection"
-            : index === 1
-            ? "Our Smoothie and Milkshake Selection"
-            : index === 2
-            ? "Our Cake Selection"
-            : "Our Soup and Salad Selection"}
-        </Title>
-        <ProductGrid>
-          {productList.map((product) => (
-            <ProductCard
-              key={product.id}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-            >
-              <div style={{ position: 'relative' }}>
-                <ProductImage src={product.image} alt={product.name} />
-                <Overlay className="overlay">
-                  <OverlayText>{product.description}</OverlayText>
-                </Overlay>
-              </div>
-              <ProductInfo>
-                <ProductName>{product.name}</ProductName>
-                <ProductPrice>${product.price.toFixed(2)}</ProductPrice>
-                <Button onClick={() => handleAddToCart(product)}>
-                  Add to Cart
-                </Button>
-                <Button onClick={() => handleAddToCart(product)}>
-                  Buy Now
-                </Button>
-              </ProductInfo>
-            </ProductCard>
-          ))}
-        </ProductGrid>
-      </React.Fragment>
-    ))}
-  </ShopContainer>
-);
+          Cold Beverages
+        </Button>
+        <Button
+          onClick={() => setCategory("food")}
+          style={{
+            width: "200px",
+            backgroundColor: category === "food" ? "#f0efdc" : "#7c2414",
+            color: category === "food" ? "black" : "white",
+          }}
+        >
+          Food
+        </Button>
+      </ButtonGroup>
+
+      {/* Dynamically render sections */}
+      <div>
+        {Object.keys(groupedProducts).map((section) => {
+          const sectionProducts = groupedProducts[section];
+
+          // Only display the section if it matches the search query or if the search query is empty
+          const matchesSearchQuery = sectionProducts.some((product) =>
+            product.name.toLowerCase().includes(searchQuery.toLowerCase())
+          );
+
+          // Skip section if no products match the search query and the search query is not empty
+          if (searchQuery && !matchesSearchQuery) {
+            return null;
+          }
+
+          return (
+            <React.Fragment key={section}>
+              <Title
+                initial={{ opacity: 0, y: -50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                {section === "hot" ? "Our Hot Beverages" : section === "cold" ? "Our Cold Beverages" : section === "food" ? "Our Food Selection" : ""}
+              </Title>
+              <ProductGrid>
+                {sectionProducts.map((product) => {
+                  // If there's a search query, only show products that match
+                  if (searchQuery && !product.name.toLowerCase().includes(searchQuery.toLowerCase())) {
+                    return null;
+                  }
+                  return (
+                    <ProductCard
+                      key={product.id}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.5 }}
+                    >
+                      <div style={{ position: "relative" }}>
+                        <ProductImage src={product.image} alt={product.name} />
+                        <Overlay className="overlay">
+                          <OverlayText>{product.description}</OverlayText>
+                        </Overlay>
+                      </div>
+                      <ProductInfo>
+                        <ProductName>{product.name}</ProductName>
+                        <ProductPrice>${product.price.toFixed(2)}</ProductPrice>
+                        <Button onClick={() => handleAddToCart(product)}>
+                          Add to Cart
+                        </Button>
+                        <Button onClick={() => handleAddToCart(product)}>
+                          Buy Now
+                        </Button>
+                      </ProductInfo>
+                    </ProductCard>
+                  );
+                })}
+              </ProductGrid>
+            </React.Fragment>
+          );
+        })}
+      </div>
+
+      <ToastContainer />
+    </ShopContainer>
+  );
 }
 
 export default Shop;
