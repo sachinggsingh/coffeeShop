@@ -3,7 +3,7 @@ import styled, { keyframes } from 'styled-components';
 
 const Loader = styled.div`
   background: linear-gradient(135deg, #FDF5E6, #FFE4B5);
-  height: 90vh;
+  height: 100vh;
   width: 100%;
   position:relative;
 
