@@ -14,17 +14,17 @@ import {
 
 const NavbarContainer = styled(motion.nav)`
   display: flex;
-  width: 100vw;
+  width: 100%;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
+  padding: 0.5rem 2rem;
   background: rgba(44, 19, 11, 0.95);
   backdrop-filter: blur(10px);
   box-shadow: 0 2px 20px rgba(30, 12, 5, 0.2);
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1000;
+  z-index: 1100;
   transition: all 0.3s ease;
   border-bottom: 2px solid #8b4513;
 
@@ -36,7 +36,7 @@ const NavbarContainer = styled(motion.nav)`
   &::before {
     content: "";
     position: absolute;
-    width: 100vw;
+    width: 100%;
     top: 0;
     left: 0;
     right: 0;
@@ -48,12 +48,14 @@ const NavbarContainer = styled(motion.nav)`
 `;
 
 const Logo = styled(motion.div)`
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 700;
   font-family: "Playfair Display", serif;
   display: flex;
   align-items: center;
   cursor: pointer;
+  gap: 0.5rem; /* Add spacing between the icon and text */
+  min-width: 150px; /* Ensure minimum width for logo area */
 
   a {
     color: #d2691e;
@@ -63,6 +65,7 @@ const Logo = styled(motion.div)`
     -webkit-text-fill-color: transparent;
     transition: all 0.3s ease;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    white-space: nowrap; /* Prevent logo text from wrapping */
 
     &:hover {
       opacity: 0.9;
@@ -70,23 +73,26 @@ const Logo = styled(motion.div)`
   }
 
   img {
-    margin-right: 5px; /* Adds space between the image and the text */
+    margin-right: 0.5rem; /* Adds space between the image and the text */
     width: 30px; /* Adjust size of the image */
     height: 30px; /* Adjust size of the image */
+    flex-shrink: 0; /* Prevent logo image from shrinking */
   }
 `;
 
 const RightNav = styled(motion.div)`
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-end;
   align-items: center;
-  padding: 1rem 2rem;
-  position: fixed;
+  padding: 0.1rem;
+  gap: 1rem; /* Space between nav items */
+  flex-grow: 1; /* Allow right navigation to take remaining space */
   top: 0px;
-  left: 35vw; //Now the Shop section is completely visible at the top-right section of Navbar.
-  right: 0;
   z-index: 1000;
   transition: all 0.3s ease;
+  @media (max-width: 768px) {
+    justify-content: flex-end;
+  }
 
   &.scrolled {
     padding: 0.8rem 2rem;
@@ -110,9 +116,10 @@ const NavLinks = styled(motion.div)`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  gap: 2rem;
+  gap: 1.5rem;
   margin: 10px;
   align-items: center;
+  margin-left: ${({ first }) => (first ? '2rem' : '0')}; /* Apply to first item */
 
   @media (max-width: 768px) {
     display: none;
@@ -129,7 +136,7 @@ const NavLink = styled(motion.div)`
     font-size: 1.1rem;
     transition: all 0.3s ease;
     font-family: "Poppins", sans-serif;
-    padding: 25px;
+    padding: 20px;
 
     &:hover {
       color: #ffe4b5;
@@ -204,6 +211,11 @@ const MobileNavLink = styled(motion.div)`
     color: #deb887;
     text-decoration: none;
     font-weight: 500;
+    font-size: 1.1rem;
+    padding: 0.5rem;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+    font-family: "Poppins", sans-serif;
     display: block;
     transition: all 0.3s ease;
     font-family: "Poppins", sans-serif;
@@ -217,34 +229,56 @@ const MobileNavLink = styled(motion.div)`
       transform: translateX(10px);
     }
   }
+
+  &.active a {
+    color: #d2691e;
+    font-weight: bold;
+  }
+
+  &::after {
+    content: "☕";
+    position: absolute;
+    font-size: 0.8rem;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%) scale(0);
+    transition: transform 0.3s ease;
+    color: #d2691e;
+  }
+
+  &:hover::after {
+    transform: translateX(-50%) scale(1);
+  }
 `;
 
 const DropdownMenu = styled(motion.div)`
   display: none;
   position: absolute;
-  top: 100%;
+  top: 50px;
   left: 0;
+  min-width: 180px;
   background: rgba(44, 19, 11, 0.95);
   border: 2px solid #8b4513;
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
-  display: none;
   flex-direction: column;
-  padding: 0.5rem 0;
-  z-index: 1001;
+  z-index: 1050;
+  transition: all 0.2s ease-out;
+  animation: slideIn 0.3s ease forwards;
 
   a {
     display: block;
-    padding: 0.5rem 1rem;
+    width: 100%; 
     text-decoration: none;
     color: #deb887;
-    font-family: "Poppins", sans-serif;
-    font-size: 1rem;
-    transition: background 0.3s ease;
+    padding: 0.5rem 1rem; 
+    text-align: start;
+    background-color: transparent;
+    transition: background-color 0.2s ease, color 0.2s ease; 
 
     &:hover {
-      background: rgba(210, 105, 30, 0.2);
-      color: #ffe4b5;
+      background-color: #8b4513; 
+      color: #ffffff;
     }
   }
 `;
@@ -256,15 +290,38 @@ const ShopLink = styled(NavLink)`
     display: flex;
   }
 
+  a {
+    color: #deb887;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    font-family: "Poppins", sans-serif;
+    padding: 20px;
+
+    &:hover {
+      color: #ffe4b5;
+    }
+  }
+
+  &.active a {
+    text-decoration: none;
+    color: #d2691e;
+  }
+
   &::after {
-    content: "▼";
-    font-size: 0.7rem;
-    margin-left: 0.3rem;
+    content: "☕";
+    position: absolute;
+    font-size: 0.8rem;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%) scale(0);
     transition: transform 0.3s ease;
+    color: #d2691e;
   }
 
   &:hover::after {
-    transform: rotate(180deg);
+    transform: translateX(-50%) scale(1);
   }
 `;
 
