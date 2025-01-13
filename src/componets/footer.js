@@ -2,7 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-// Styled components for the footer
+
+// Styled components for the footer (unchanged)
 const FooterContainer = styled.footer`
   background-color: #78350f;
   color: #fffbeb;
@@ -12,26 +13,25 @@ const FooterContainer = styled.footer`
   bottom: 0;
   width: 100%;
   box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
-
 `;
 
 const FooterContent = styled.div`
   max-width: 1200px;
   margin: 0 auto;
-  
+
   p {
     margin: 0.5rem 0;
     font-size: 1rem;
     line-height: 1.5rem;
-    
+
     &:first-child {
       font-weight: 500;
     }
   }
 
-  @media (max-width:768px){
-    display:flex;
-    flex-direction:column;
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
   }
 `;
 
@@ -40,12 +40,10 @@ const InfoSection = styled.div`
   justify-content: space-between;
   margin-top: 1.3rem;
   margin-bottom: 1.3rem;
-  // text-align: left;
 
   @media (max-width: 768px) {
     flex-direction: column;
-    gap:1.5rem;
-
+    gap: 1.5rem;
   }
 `;
 
@@ -58,9 +56,10 @@ const InfoColumn = styled.div`
     margin-bottom: 1rem;
   }
 
-  p, a {
+  p,
+  a {
     font-size: 0.9rem;
-    color:rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
     text-decoration: none;
     display: block;
     margin-bottom: 0.5rem;
@@ -70,23 +69,23 @@ const InfoColumn = styled.div`
     color: #fbbf24;
   }
 
-  @media (max-width:768px){
-    h3{
-      font-size:1.2rem;
-      margin-bottom:0rem;
-      }
+  @media (max-width: 768px) {
+    h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0rem;
+    }
 
-    p{
-      font-size:1rem;
-      margin:0rem;
-    } 
-
+    p {
+      font-size: 1rem;
+      margin: 0rem;
+    }
+  }
 `;
 
 const SocialIcons = styled.div`
   display: flex;
   justify-content: center;
-  gap: 1rem; //additional gap removed.
+  gap: 1rem;
   margin-top: 1rem;
 
   @media (max-width: 768px) {
@@ -101,7 +100,7 @@ const SocialIcon = styled(motion.a)`
   padding: 0.5rem;
   border-radius: 50%;
   transition: color 0.3s ease;
-  
+
   &:hover {
     color: #fbbf24;
     transform: scale(1.2);
@@ -116,7 +115,6 @@ function Footer() {
   return (
     <FooterContainer>
       <FooterContent>
-
         {/* Social Icons */}
         <SocialIcons>
           <SocialIcon
@@ -134,10 +132,10 @@ function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.2 }}
-            aria-label="twitter"
+            aria-label="Twitter"
             role="link"
           >
-            <i className="fa-brands fa-twitter"></i>{/* 'className' should've been used instead of 'class'. */}
+            <i className="fa-brands fa-x-twitter"></i> {/* Updated Twitter icon */}
           </SocialIcon>
           <SocialIcon
             href="https://instagram.com"
@@ -149,15 +147,28 @@ function Footer() {
           >
             <i className="fab fa-instagram"></i>
           </SocialIcon>
+          <SocialIcon
+            href="https://linkedin.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.2 }}
+            aria-label="LinkedIn"
+            role="link"
+          >
+            <i className="fab fa-linkedin-in"></i> {/* LinkedIn icon */}
+          </SocialIcon>
         </SocialIcons>
-    
+
         {/* Informational Sections */}
         <InfoSection>
           <InfoColumn>
             <h3>About Us</h3>
-            <p>Founded in 2010, MsCafe is dedicated to serving the finest coffee with passion and expertise. We source our beans from sustainable farms across the globe.</p>
+            <p>
+              Founded in 2010, MsCafe is dedicated to serving the finest coffee with passion and
+              expertise. We source our beans from sustainable farms across the globe.
+            </p>
           </InfoColumn>
-          <InfoColumn  >
+          <InfoColumn>
             <h3>Quick Links</h3>
             <Link to="/">Home</Link>
             <Link to="/shop">Shop</Link>
@@ -175,13 +186,16 @@ function Footer() {
           <InfoColumn>
             <h3>Location</h3>
             <p>123 Coffee St, Bean Town, USA</p>
-            <p><a href="https://www.google.com/maps" target="_blank" rel="noopener noreferrer">View on Map</a></p>
+            <p>
+              <a href="https://www.google.com/maps" target="_blank" rel="noopener noreferrer">
+                View on Map
+              </a>
+            </p>
           </InfoColumn>
         </InfoSection>
 
         <p>&copy; {new Date().getFullYear()} MsCafe. All rights reserved.</p>
         <p>Made with ♥ by Mscoder</p>
-
       </FooterContent>
     </FooterContainer>
   );
