@@ -95,21 +95,37 @@ const SocialIcons = styled.div`
 
 const SocialIcon = styled(motion.a)`
   color: #fffbeb;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   text-decoration: none;
   padding: 0.5rem;
   border-radius: 50%;
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, transform 0.3s ease;
 
   &:hover {
-    color: #fbbf24;
     transform: scale(1.2);
+  }
+
+  &[href*="facebook.com"]:hover {
+    color: #3b5998; /* Facebook Blue */
+  }
+
+  &[href*="twitter.com"]:hover {
+    color: #1da1f2; /* Twitter Blue */
+  }
+
+  &[href*="instagram.com"]:hover {
+    color: #e4405f; /* Instagram Pink */
+  }
+
+  &[href*="linkedin.com"]:hover {
+    color: #0077b5; /* LinkedIn Blue */
   }
 
   @media (max-width: 768px) {
     font-size: 1.3rem;
   }
 `;
+
 
 function Footer() {
   return (
@@ -135,7 +151,7 @@ function Footer() {
             aria-label="Twitter"
             role="link"
           >
-            <i className="fa-brands fa-x-twitter"></i> {/* Updated Twitter icon */}
+            <i className="fab fa-twitter"></i> {/* Updated Twitter icon */}
           </SocialIcon>
           <SocialIcon
             href="https://instagram.com"
