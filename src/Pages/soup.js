@@ -278,7 +278,7 @@ const filteredProducts = products.filter((product) =>
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-         Our Soupshake Selection
+          Soupshake Selection
         </Title>
         <SearchFilterContainer>
      

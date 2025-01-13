@@ -93,7 +93,11 @@ const RightNav = styled(motion.div)`
   flex-grow: 1; /* Allow right navigation to take remaining space */
   top: 0px;
 
+  left: 55vw; //Now the Shop section is completely visible at the top-right section of Navbar.
+
+
   left: 20vw; //Now the Shop section is completely visible at the top-right section of Navbar.
+
   right: 0;
   bottom:5;
 
@@ -138,7 +142,7 @@ const NavLinks = styled(motion.div)`
 
 const NavLink = styled(motion.div)`
   position: relative;
-
+  padding-bottom: 15px;
   a {
     color: #deb887;
     text-decoration: none;
@@ -146,7 +150,9 @@ const NavLink = styled(motion.div)`
     font-size: 1.1rem;
     transition: all 0.3s ease;
     font-family: "Poppins", sans-serif;
+
     padding: 20px;
+
 
     &:hover {
       color: #ffe4b5;
@@ -154,7 +160,7 @@ const NavLink = styled(motion.div)`
   }
 
   &.active a {
-    text-decoration: underline;
+    text-decoration: none;
     color: #d2691e;
   }
 
@@ -162,7 +168,7 @@ const NavLink = styled(motion.div)`
     content: "☕";
     position: absolute;
     font-size: 0.8rem;
-    bottom: -15px;
+    bottom: -8px;
     left: 50%;
     transform: translateX(-50%) scale(0);
     transition: transform 0.3s ease;
@@ -279,9 +285,14 @@ const MobileNavLink = styled(motion.div)`
 const DropdownMenu = styled(motion.div)`
   display: none;
   position: absolute;
+
+  top: 100%;
+  right: 0;
+
   top: 50px;
   left: 0;
   min-width: 180px;
+
   background: rgba(44, 19, 11, 0.95);
   border: 2px solid #8b4513;
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
@@ -335,12 +346,18 @@ const ShopLink = styled(NavLink)`
   }
 
   &::after {
+
+    content: "";
+    font-size: 0.7rem;
+    margin-left: 0.3rem;
+
     content: "☕";
     position: absolute;
     font-size: 0.8rem;
     bottom: -15px;
     left: 50%;
     transform: translateX(-50%) scale(0);
+
     transition: transform 0.3s ease;
     color: #d2691e;
   }
