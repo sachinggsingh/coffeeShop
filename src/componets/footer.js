@@ -175,6 +175,7 @@ function Footer() {
             <Link to="/about">About</Link>
             <Link to="/contact">Contact</Link>
             <Link to="/testimonial">Testimonial</Link>
+            <Link to="/contributor">Contributors</Link>
           </InfoColumn>
 
           <InfoColumn>
