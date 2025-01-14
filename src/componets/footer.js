@@ -2,11 +2,14 @@ import React from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import FooterImg from './FooterImg.png'; 
 
 // Styled components for the footer
 const FooterContainer = styled.footer`
-  background: linear-gradient(135deg, #5b2c1a, #8e5234);
-  color: #fffbeb;
+  background: linear-gradient(90deg, rgba(148, 93, 56, 1), rgba(56, 39, 16, 1));
+-webkit-background: linear-gradient(90deg, rgba(148, 93, 56, 1), rgba(56, 39, 16, 1));
+-moz-background: linear-gradient(90deg, rgba(148, 93, 56, 1), rgba(56, 39, 16, 1));
+  color: #fffbeb; 
   padding: 1.5rem 2rem;
   text-align: center;
   position: relative;
@@ -37,10 +40,19 @@ const FooterContent = styled.div`
 
 const InfoSection = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content:space-between;
+  align-items:center;
   margin: 2rem 0;
   text-align: left;
-
+  .infoimg
+  {
+      height:20rem;
+      padding-right:1rem;
+  }
+      .info-wrapper
+      {
+          display:flex;
+      }
   @media (max-width: 768px) {
     flex-direction: column;
     gap: 1.5rem;
@@ -67,10 +79,11 @@ const InfoColumn = styled.div`
   }
 
   a:hover {
-    color: #fbbf24;
+     color: #fbbf24;
+      
     text-decoration: underline;
   }
-`;
+`
 
 const SocialIcons = styled.div`
   display: flex;
@@ -129,7 +142,7 @@ const Divider = styled.hr`
   height: 2px;
   background: #ffd6a5;
   margin: 2rem auto;
-  width: 80%;
+  width: 60%;
 `;
 
 
@@ -188,7 +201,9 @@ function Footer() {
 
         {/* Informational Sections */}
         <InfoSection>
-          <InfoColumn>
+        <img src={FooterImg} alt="Footer" className="infoimg"/>
+        <div className="info-wrapper">
+        <InfoColumn>
             <h3>About Us</h3>
             <p>
               Founded in 2010, MsCafe is dedicated to serving the finest coffee
@@ -222,6 +237,8 @@ function Footer() {
               </a>
             </p>
           </InfoColumn>
+        </div>
+        
         </InfoSection>
 
         {/* Footer Text */}
