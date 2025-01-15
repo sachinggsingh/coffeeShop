@@ -7,7 +7,7 @@ import styled from "styled-components";
 import Button from "../componets/Button";
 import Faq from "../componets/faq";
 import "./Home.css";
-import DynamicText from "./dynamicText";
+
 gsap.registerPlugin(ScrollTrigger);
 
 const HomeContainer = styled.div`
@@ -19,9 +19,9 @@ const HomeContainer = styled.div`
 
 const HeroSection = styled.section`
   display: flex;
-  padding: 0;
-  margin: 0;
-  top: -2rem;
+  padding:0;
+  margin:0;
+  top:-2rem;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -30,7 +30,7 @@ const HeroSection = styled.section`
 
   width: 100%;
 
-  gap: -0.5rem;
+  gap:-0.5rem;
 
   background-image: linear-gradient(
       rgba(44, 19, 11, 0.7),
@@ -56,7 +56,8 @@ const HeroSection = styled.section`
 
 const Title = styled(motion.h1)`
   font-size: 5rem;
-
+  
+  
   font-family: "Playfair Display", serif;
   color: #ffe4b5;
 
@@ -67,20 +68,22 @@ const Title = styled(motion.h1)`
 
 const Subtitle = styled(motion.p)`
   font-size: 1.8rem;
-
+  
   font-family: "Poppins", sans-serif;
   color: #deb887;
   max-width: 600px;
+  
 
   @media (max-width: 768px) {
     font-size: 1.4rem;
+    
   }
 `;
 
 const StyledButton = styled(Button)`
   background: #d2691e;
   color: #ffe4b5;
-  padding: 0.8rem;
+  padding:0.8rem;
   font-size: 1.2rem;
   border-radius: 30px;
   border: 2px solid #8b4513;
@@ -96,9 +99,8 @@ const StyledButton = styled(Button)`
   }
 
   @media (min-width: 783px) {
-    font-size: 0.8rem;
-    padding: 0.5rem;
-  }
+  font-size:0.8rem;
+  padding: 0.5rem}
 `;
 
 const FeaturesSection = styled.section`
@@ -109,6 +111,8 @@ const FeaturesSection = styled.section`
   background: linear-gradient(135deg, #fdf5e6, #ffe4b5);
   position: relative;
   overflow: visible;
+
+  
 
   @media (max-width: 768px) {
     padding: 4rem 2rem;
@@ -179,9 +183,9 @@ const SpecialtySection = styled.section`
   background: #2c130b;
   position: relative;
 
-  & h1 {
-    width: 100%;
-    text-align: center;
+  &::before {
+    content: "Our Specialties";
+    position: absolute;
     top: 2rem;
     left: 50%;
     transform: translateX(-50%);
@@ -298,7 +302,7 @@ function Home() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-           <DynamicText text="Welcome to MsCafe" />
+          Welcome to MsCafe
         </Title>
         <Subtitle
           initial={{ opacity: 0, y: -30 }}
@@ -349,7 +353,6 @@ function Home() {
         </FeatureCard>
       </FeaturesSection>
       <SpecialtySection ref={specialtyRef}>
-
         <div style={{ textAlign: 'center', margin: '1rem' }}>
         <a href="/premiumbeans">
           <SpecialtyImage
@@ -378,6 +381,7 @@ function Home() {
           <Subtitle style={{ fontSize: '1.5rem', fontFamily: 'Playfair Display, serif' }}>Nitro Cold Brew</Subtitle>
         </div>
       </SpecialtySection>
+      <Faq />
     </HomeContainer>
   );
 }
