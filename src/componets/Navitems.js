@@ -89,10 +89,4 @@ export const userLoginDropdown = [
     path: "./cart",
     cName: "submenu-item",
   },
-  {
-    id: 2,
-    title: "profile",
-    path: "./profile",
-    cName: "submenu-item",
-  },
 ];
