@@ -377,21 +377,6 @@ function Home() {
         </a>
           <Subtitle style={{ fontSize: '1.5rem', fontFamily: 'Playfair Display, serif' }}>Nitro Cold Brew</Subtitle>
         </div>
-
-        <h1>Our Specialities</h1>
-        <SpecialtyImage
-          src="https://img.freepik.com/free-photo/brown-coffee-beans-seed_74190-6651.jpg?ga=GA1.1.1542821208.1727756299&semt=ais_hybrid "
-          alt="Specialty Coffee 1"
-        />
-        <SpecialtyImage
-          src="https://img.freepik.com/free-photo/coffee-machine-making-perfect-cup-coffee_23-2151699675.jpg?ga=GA1.1.1542821208.1727756299&semt=ais_hybrid"
-          alt="Specialty Coffee 2"
-        />
-        <SpecialtyImage
-          src="https://img.freepik.com/free-photo/coffee-cup-with-beans_23-2148453628.jpg?t=st=1727760337~exp=1727763937~hmac=c326eb236a78a478ea9d9703e1bdbb8b390dcc71cefb24d78ca7a85bcb1c1cc5&w=740"
-          alt="Specialty Coffee 3"
-        />
-
       </SpecialtySection>
     </HomeContainer>
   );
