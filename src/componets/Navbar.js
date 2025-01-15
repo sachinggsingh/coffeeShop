@@ -129,7 +129,9 @@ const NavLink = styled(motion.div)`
     font-size: 1.1rem;
     transition: all 0.3s ease;
     font-family: "Poppins", sans-serif;
-    padding: 25px;
+    padding: 20px;
+     
+    
 
     &:hover {
       color: #ffe4b5;
