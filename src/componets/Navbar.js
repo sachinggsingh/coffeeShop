@@ -351,7 +351,7 @@ function Navbar() {
                   </NavLinks>
                 );
               }
-
+              
               if (items.title === "User") {
                 return (
                   <NavLinks>
