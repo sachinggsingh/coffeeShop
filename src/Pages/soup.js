@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { addToCart, removeFromCart } from '../Store/cartSlice';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 const SoupContainer = styled.div`
   padding: 6rem 2rem 4rem 2rem; // Added top padding for navbar
@@ -13,12 +14,15 @@ const SoupContainer = styled.div`
 
 const ProductGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, max-content));
   gap: 2rem;
   max-width: 1100px; // Slightly reduced to center content more
   margin: 0 auto;
+  justify-content: center;
+
 `;
 const ProductCard = styled(motion.div)`
+max-width:345 px;
   background: linear-gradient(145deg, #ffffff, #e6e6e6);
   border-radius: 10px;
   overflow: hidden;
@@ -132,10 +136,53 @@ const QuantityDisplay = styled.span`
   min-width: 20px;
   text-align: center;
 `;
+const SearchFilterContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  
+  margin-bottom: 2rem;
+  
+`;
+const SearchInput = styled.input`
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px 0 0 4px;
+  outline: none;
+  width: 300px;
+
+  &:focus {
+    border-color: #6b4f4f;
+  }
+`;
+
+const SearchButton = styled.button`
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background: linear-gradient(145deg, #6b4f4f, #7d5858);
+  color: white;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  transition: background 0.3s ease;
+
+  &:hover {
+    background: linear-gradient(145deg, #7d5858, #8e6a6a);
+  }
+`;
 
 function Soup() {
   const dispatch = useDispatch();
   const [quantities, setQuantities] = useState({});
+  const [searchQuery, setSearchQuery] = useState('');
+  const [likedProducts, setLikedProducts] = useState({});
+
+  const toggleHeart = (productId) => {
+    setLikedProducts((prevState) => ({
+      ...prevState,
+      [productId]: !prevState[productId],
+    }));
+  };
 
   const handleAddToCart = (product) => {
     if (!quantities[product.id]) {
@@ -229,7 +276,9 @@ function Soup() {
           "Spicy and aromatic, a Thai soup with lemongrass, kaffir lime leaves, and chilies, often with shrimp.",
       },
 ];
-
+const filteredProducts = products.filter((product) =>
+  product.name.toLowerCase().includes(searchQuery.toLowerCase())
+);
 
   return (
     <SoupContainer>
@@ -238,12 +287,44 @@ function Soup() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-         Our Soupshake Selection
+          Soupshake Selection
         </Title>
+        <SearchFilterContainer>
+     
+      <SearchInput
+    type="text"
+    placeholder="Search for soup..."
+    value={searchQuery}
+    onChange={(e) => setSearchQuery(e.target.value)}
+  />
+  <SearchButton onClick={() => console.log("Search clicked!")}>
+    Search
+  </SearchButton>
+
+  </SearchFilterContainer>
       <ProductGrid>
-        {products.map((product) => (
+        {filteredProducts.map((product) => (
           <ProductCard key={product.id}>
-            <ProductImage src={product.image} alt={product.name} />
+            <div style={{ position: 'relative' }}>
+              <ProductImage src={product.image} alt={product.name} />
+              
+              <div
+                onClick={() => toggleHeart(product.id)} 
+                style={{
+                  position: 'absolute',
+                  top: '10px',
+                  right: '10px',
+                  cursor: 'pointer',
+                  fontSize: '24px',
+                  color: likedProducts[product.id] ? 'red' : 'gray',
+                }}
+              >
+                <i
+                  className={`fa-heart ${likedProducts[product.id] ? 'fas' : 'far'
+                    }`}
+                ></i>
+              </div>
+            </div>
             <ProductInfo>
               <ProductName>{product.name}</ProductName>
               <ProductPrice>${product.price.toFixed(2)}</ProductPrice>
@@ -251,7 +332,7 @@ function Soup() {
                 <Button onClick={() => handleAddToCart(product)}>
                   Add to Cart
                 </Button>
-            
+
               ) : (
                 <QuantityControls>
                   <QuantityButton onClick={() => handleDecrement(product)}>-</QuantityButton>
@@ -267,5 +348,6 @@ function Soup() {
     </SoupContainer>
   );
 }
+
 
 export default Soup;

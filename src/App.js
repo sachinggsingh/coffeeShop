@@ -1,5 +1,6 @@
-
 import React from 'react';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import ScrollToTop from './componets/ScrollToTop';
 import { Provider } from 'react-redux';
@@ -13,11 +14,11 @@ import Register from './Pages/Register';
 import Shop from './Pages/Shop';
 import Cart from './Pages/cart';
 import About from './Pages/About';
+import Faq from './Pages/Faq';
 import Contact from './Pages/contact';
 import Profile from './Pages/profile';
 import Checkout from './Pages/checkOut';
 import Testimonial from './Pages/Testimonial';
-
 import Cake from './Pages/cake';
 import Coffee from './Pages/coffee';
 import Soup from './Pages/soup';
@@ -46,6 +47,8 @@ function App() {
         <ScrollToTop />
         <AppContainer>
           <Navbar />
+          
+          <ToastContainer position="top-right" autoClose={3000} />
           <ContentContainer>
             <Routes>
               <Route path="/" element={<Home />} />
@@ -60,7 +63,7 @@ function App() {
               <Route path="/contact" element={<Contact />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/checkout" element={<Checkout />} />
-
+              <Route path="/faq" element={<Faq />} />
               <Route path="/shop/cake" element={<Cake />} />
               <Route path="/shop/coffee" element={<Coffee />} />
               <Route path="/shop/soup" element={<Soup />} />
@@ -79,3 +82,4 @@ function App() {
 }
 
 export default App;
+

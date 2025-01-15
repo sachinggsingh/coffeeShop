@@ -3,105 +3,26 @@ import {productDropdown,ourstoryDropdown,userLoginDropdown,userLogoutDropdown} f
 import { Link} from "react-router-dom";
 import "./Dropdown.css";
 
-export const ProDropdown =()=>{
-    const [dropdown,setDropdown] =useState(false);
-    return <>
-    <ul className={dropdown ? "product-submenu clicked" :"product-submenu"}
-     onClick={()=> setDropdown(!dropdown)}>
-        {
-            productDropdown.map(item=>{
-                return (
-                    
-                
-              <li key={item.id} className={item.cName}
-              onClick={()=> setDropdown(false)}>
-                <Link to={item.path}>{item.title}</Link>
-                  
-              </li>
-                
-                )
-            })
-        }
+const Dropdown = ({ items }) => {
+  const [dropdown, setDropdown] = useState(false);
 
+  const toggleDropdown = () => setDropdown((prevState) => !prevState);
+
+  return (
+    <ul
+      className={`product-submenu ${dropdown ? "clicked" : ""}`}
+      onClick={toggleDropdown}
+    >
+      {items.map((item) => (
+        <li key={item.id} className={`submenu-item ${item.cName}`} onClick={() => setDropdown(false)}>
+          <Link to={item.path}>{item.title}</Link>
+        </li>
+      ))}
     </ul>
-        </>
-    
-      };
-
-      export const OsDropdown =()=>{
-        const [dropdown,setDropdown] =useState(false);
-        return <>
-        <ul className={dropdown ? "product-submenu clicked" :"product-submenu"}
-         onClick={()=> setDropdown(!dropdown)}>
-            {
-                ourstoryDropdown.map(item=>{
-                    return (
-                        
-                    
-                  <li key={item.id} className={item.cName}
-                  onClick={()=> setDropdown(false)}>
-                    <Link to={item.path}>{item.title}</Link>
-                      
-                  </li>
-                    
-                    )
-                })
-            }
-    
-        </ul>
-            </>
-        
-          };
-
-          export const UsLoginDropdown =()=>{
-            const [dropdown,setDropdown] =useState(false);
-            return <>
-            <ul className={dropdown ? "product-submenu clicked" :"product-submenu"}
-             onClick={()=> setDropdown(!dropdown)}>
-                {
-                    userLoginDropdown.map(item=>{
-                        return (
-                            
-                        
-                      <li key={item.id} className={item.cName}
-                      onClick={()=> setDropdown(false)}>
-                        <Link to={item.path}>{item.title}</Link>
-                          
-                      </li>
-
-                        
-                        )
-                    })
-                }
-        
-            </ul>
-                </>
-            
-              };
-
-
-              export const UsLogoutDropdown =()=>{
-                const [dropdown,setDropdown] =useState(false);
-                return <>
-                <ul className={dropdown ? "product-submenu clicked" :"product-submenu"}
-                 onClick={()=> setDropdown(!dropdown)}>
-                    {
-                        userLogoutDropdown.map(item=>{
-                            return (
-                                
-                            
-                          <li key={item.id} className={item.cName}
-                          onClick={()=> setDropdown(false)}>
-                            <Link to={item.path}>{item.title}</Link>
-                              
-                          </li>
-                            
-                            )
-                        })
-                    }
-            
-                </ul>
-                    </>
-                
-                  };
-
+  );
+};
+      
+export const OsDropdown = () => <Dropdown items={ourstoryDropdown} />;
+export const UsLoginDropdown = () => <Dropdown items={userLoginDropdown} />;
+export const UsLogoutDropdown = () => <Dropdown items={userLogoutDropdown} />;
+export const ProDropdown = () => <Dropdown items={productDropdown} />;
