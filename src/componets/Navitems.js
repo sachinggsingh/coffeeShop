@@ -34,7 +34,7 @@ export const navItems = [
     title: "User",
     path: "./user",
     cName: "nav-item",
-  }.
+  },
  
 ];
 
