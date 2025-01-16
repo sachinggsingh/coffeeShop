@@ -34,13 +34,7 @@ export const navItems = [
     title: "User",
     path: "./user",
     cName: "nav-item",
-  },
-  {
-     id :6,
-     title:"About",
-     path:"./about",
-     cName:"nav-item",
-  },
+  }.
  
 ];
 
