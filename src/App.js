@@ -29,6 +29,8 @@ import ForgetPassword from "./Pages/ForgetPassword";
 import ExpertBaristas from "./Pages/ExpertBaristas";
 import Reviews from "./componets/Reviews";
 
+import Terms from "./Pages/Terms";
+
 const AppContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -68,7 +70,7 @@ function App() {
               <Route path="/shop/coffee" element={<Coffee />} />
               <Route path="/shop/soup" element={<Soup />} />
               <Route path="/shop/milkshake" element={<Milkshakes />} />
-
+              <Route path="/terms" element={<Terms />} />
               <Route path="/premiumbeans" element={<PremiumBeans />} />
               <Route path="/expertbaristas" element={<ExpertBaristas />} />
             </Routes>
