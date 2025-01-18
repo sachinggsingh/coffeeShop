@@ -152,29 +152,38 @@ function Footer() {
       <FooterContent>
         {/* Social Icons */}
         <SocialIcons>
+
           <SocialIcon
             href="https://facebook.com"
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.2 }}
-            aria-label="Facebook"
-          >
+            aria-label="Facebook">
             <i className="fab fa-facebook-f"></i> {/* Facebook icon */}
           </SocialIcon>
+
           <SocialIcon
             href="https://linkedin.com"
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.2 }}
             aria-label="LinkedIn"
-            role="link"
-          >
-
-            <i className="fab fa-twitter"></i> {/* Updated Twitter icon */}
-
-            <i className="fab fa-linkedin-in"></i> {/* LinkedIn icon */}
-
+            role="link">
+          <i className="fab fa-linkedin-in"></i>  {/* LinkedIn icon */}
           </SocialIcon>
+
+          <SocialIcon
+            href="https://linkedin.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.2 }}
+            aria-label="LinkedIn"
+            role="link">
+            <i className="fab fa-twitter"></i>  {/* Twitter icon */}
+          </SocialIcon>
+
+      
+
           <SocialIcon
             href="https://instagram.com"
             target="_blank"
@@ -184,6 +193,7 @@ function Footer() {
           >
             <i className="fab fa-instagram"></i> {/* Instagram icon */}
           </SocialIcon>
+
           <SocialIcon
             href="https://github.com/Mujtabaa07/coffeeShop"
             target="_blank"
@@ -194,6 +204,7 @@ function Footer() {
           >
             <i className="fab fa-github"></i> {/* GitHub icon */}
           </SocialIcon>
+
         </SocialIcons>
 
         {/* Divider */}
