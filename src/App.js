@@ -14,6 +14,7 @@ import Register from './Pages/Register';
 import Shop from './Pages/Shop';
 import Cart from './Pages/cart';
 import About from './Pages/About';
+import Contributor from './Pages/contributor';
 import Faq from './Pages/Faq';
 import Contact from './Pages/contact';
 import Profile from './Pages/profile';
@@ -61,6 +62,7 @@ function App() {
               <Route path="/shop" element={<Shop />} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/about" element={<About />} />
+              <Route path="/Contributor" element={<Contributor />} />
               <Route path="/testimonial" element={<Testimonial />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/profile" element={<Profile />} />
