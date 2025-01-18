@@ -60,6 +60,9 @@ function SignupPage() {
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#6D4C41]"
               />
             </div>
+            <p className="font-bold">
+              By creating an account, you agree with the <a href="/terms" ><span className="text-blue-700 ml-20 font-bold">Terms and conditions.</span></a>
+            </p>
             <button
               type="submit"
               className="w-full bg-[#4E342E] text-white py-2 px-4 rounded-lg hover:bg-[#3E2723] transition duration-300"
