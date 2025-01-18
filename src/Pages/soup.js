@@ -349,4 +349,5 @@ const filteredProducts = products.filter((product) =>
   );
 }
 
+
 export default Soup;

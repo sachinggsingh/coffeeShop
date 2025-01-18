@@ -441,7 +441,7 @@ function Navbar() {
                   </NavLinks>
                 );
               }
-
+              
               if (items.title === "User") {
                 return (
                   <NavLinks key={items.id}>

@@ -172,6 +172,7 @@ const SearchButton = styled.button`
 `;
 
 
+
 function Milkshake() {
   const dispatch = useDispatch();
   const [quantities, setQuantities] = useState({});
@@ -386,5 +387,6 @@ const filteredProducts = products.filter((product) =>
     </MilkshakeContainer>
   );
 }
+
 
 export default Milkshake;
