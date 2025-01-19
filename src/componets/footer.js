@@ -222,8 +222,8 @@ function Footer() {
           </InfoColumn>
           <InfoColumn>
             <h3>Contact Us</h3>
-            <p>Email: contact@mscafe.com</p>
-            <p>Phone: (123) 456-7890</p>
+            <p><a href="mailto:contact@mscafe.com">✉️ contact@mscafe.com</a></p>
+            <p><a href="tel:+11234567890">☎️ (123) 456-7890</a></p>
           </InfoColumn>
           <InfoColumn>
             <h3>Location</h3>
