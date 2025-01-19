@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import ScrollToTop from './componets/ScrollToTop';
+import ScrollToTop from './componets/ScrollToTop'; 
 import { Provider } from 'react-redux';
 import { store } from './Store/index';
 import styled from 'styled-components';
@@ -14,7 +14,6 @@ import Register from './Pages/Register';
 import Shop from './Pages/Shop';
 import Cart from './Pages/cart';
 import About from './Pages/About';
-import Contributor from './Pages/contributor';
 import Faq from './Pages/Faq';
 import Contact from './Pages/contact';
 import Profile from './Pages/profile';
@@ -26,11 +25,9 @@ import Soup from './Pages/soup';
 import Milkshakes from './Pages/milkshake';
 import PremiumBeans from './Pages/PremiumBeans';
 import ForgetPassword from "./Pages/ForgetPassword";
-
 import ExpertBaristas from "./Pages/ExpertBaristas";
 import Reviews from "./componets/Reviews";
-
-import Terms from "./Pages/Terms";
+import AnimatedCursor from "react-animated-cursor";
 
 const AppContainer = styled.div`
   display: flex;
@@ -50,7 +47,14 @@ function App() {
         <ScrollToTop />
         <AppContainer>
           <Navbar />
-          
+          <AnimatedCursor 
+            innerSize={20}
+            outerSize={20}
+            color='104, 225, 239'
+            outerAlpha={0.2}
+            innerScale={0.7}
+            outerScale={5}
+          />
           <ToastContainer position="top-right" autoClose={3000} />
           <ContentContainer>
             <Routes>
@@ -62,7 +66,6 @@ function App() {
               <Route path="/shop" element={<Shop />} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/about" element={<About />} />
-              <Route path="/Contributor" element={<Contributor />} />
               <Route path="/testimonial" element={<Testimonial />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/profile" element={<Profile />} />
@@ -72,7 +75,6 @@ function App() {
               <Route path="/shop/coffee" element={<Coffee />} />
               <Route path="/shop/soup" element={<Soup />} />
               <Route path="/shop/milkshake" element={<Milkshakes />} />
-              <Route path="/terms" element={<Terms />} />
               <Route path="/premiumbeans" element={<PremiumBeans />} />
               <Route path="/expertbaristas" element={<ExpertBaristas />} />
             </Routes>
@@ -86,4 +88,3 @@ function App() {
 }
 
 export default App;
-
