@@ -156,7 +156,6 @@ function About() {
               src="https://i.ytimg.com/vi/DyJTVkRP1vY/maxresdefault.jpg" 
               alt="Zumar Cafe Interior" 
             />
-            <div className="overlay"></div>
           </HoverImage>
         </ImageContent>
       </Content>
