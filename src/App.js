@@ -2,8 +2,7 @@ import React, {useState} from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { BrowserRouter as Router, Route, Routes,useLocation } from 'react-router-dom';
-import ScrollToTop from './componets/ScrollToTop';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
 import ScrollToTop from './componets/ScrollToTop'; 
 import { Provider } from 'react-redux';
 import { store } from './Store/index';
