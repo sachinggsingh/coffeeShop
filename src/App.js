@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { BrowserRouter as Router, Route, Routes,useLocation } from 'react-router-dom';
 import ScrollToTop from './componets/ScrollToTop';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import ScrollToTop from './componets/ScrollToTop'; 
 import { Provider } from 'react-redux';
 import { store } from './Store/index';
 import styled from 'styled-components';
@@ -25,9 +27,9 @@ import Soup from './Pages/soup';
 import Milkshakes from './Pages/milkshake';
 import PremiumBeans from './Pages/PremiumBeans';
 import ForgetPassword from "./Pages/ForgetPassword";
-
 import ExpertBaristas from "./Pages/ExpertBaristas";
 import Reviews from "./componets/Reviews";
+import AnimatedCursor from "react-animated-cursor";
 
 const AppContainer = styled.div`
   display: flex;
@@ -48,7 +50,14 @@ function App() {
         <ScrollToTop />
         <AppContainer>
           <Navbar />
-          
+          <AnimatedCursor 
+            innerSize={20}
+            outerSize={20}
+            color='104, 225, 239'
+            outerAlpha={0.2}
+            innerScale={0.7}
+            outerScale={5}
+          />
           <ToastContainer position="top-right" autoClose={3000} />
           <ContentContainer>
             <Routes>
@@ -69,7 +78,6 @@ function App() {
               <Route path="/shop/coffee" element={<Coffee />} />
               <Route path="/shop/soup" element={<Soup />} />
               <Route path="/shop/milkshake" element={<Milkshakes />} />
-
               <Route path="/premiumbeans" element={<PremiumBeans />} />
               <Route path="/expertbaristas" element={<ExpertBaristas />} />
             </Routes>
@@ -87,4 +95,3 @@ function App() {
 }
 
 export default App;
-

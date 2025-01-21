@@ -650,23 +650,26 @@ const SearchFilterContainer = styled.div`
 const SearchInput = styled.input`
   padding: 0.5rem;
   font-size: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 4px 0 0 4px;
+  border: 2px solid brown; /* Updated border width and color */
+  border-radius: 20px; /* Increased roundness */
   outline: none;
   width: 300px;
+  margin-right: 1rem; /* Added margin on the right */
 
   &:focus {
-    border-color: #6b4f4f;
+    border-color: #6b4f4f; /* Focus state border color */
   }
 `;
+
 
 const SearchButton = styled.button`
   padding: 0.5rem 1rem;
   font-size: 1rem;
+  font-weight: bold;
   background: linear-gradient(145deg, #6b4f4f, #7d5858);
   color: white;
   border: none;
-  border-radius: 0 4px 4px 0;
+  border-radius: 15px 15px 15px 15px;
   cursor: pointer;
   transition: background 0.3s ease;
 
@@ -735,7 +738,7 @@ function Shop() {
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        text-weight="extrabold"
+        text-weight="bold-800"
       >
         <DynamicText text="Welcome to MsCafe Shop" />
       </Title>

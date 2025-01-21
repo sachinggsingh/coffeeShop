@@ -8,10 +8,27 @@ function Testimonial() {
         <div className="container">
           <h1>What Our Customers Say</h1>
           <div className="carousel-container">
-            <div id="carouselExampleSlidesOnly" className="carousel slide" data-bs-ride="carousel">
+            <div
+              id="carouselExampleSlidesOnly"
+              className="carousel slide"
+              data-bs-ride="carousel"
+              data-bs-interval="3000"
+              data-bs-wrap="true">
               <div className="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleSlidesOnly" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleSlidesOnly" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button
+                  type="button"
+                  data-bs-target="#carouselExampleSlidesOnly"
+                  data-bs-slide-to="0"
+                  className="active"
+                  aria-current="true"
+                  aria-label="Slide 1"
+                ></button>
+                <button
+                  type="button"
+                  data-bs-target="#carouselExampleSlidesOnly"
+                  data-bs-slide-to="1"
+                  aria-label="Slide 2"
+                ></button>
               </div>
               <div className="carousel-inner">
                 <div className="carousel-item active">
@@ -59,11 +76,20 @@ function Testimonial() {
                   </div>
                 </div>
               </div>
-              <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleSlidesOnly" data-bs-slide="prev">
+              <button
+                className="carousel-control-prev"
+                type="button"
+                data-bs-target="#carouselExampleSlidesOnly"
+                data-bs-slide="prev"
+              >
                 <span className="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span className="visually-hidden">Previous</span>
               </button>
-              <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleSlidesOnly" data-bs-slide="next">
+              <button
+                className="carousel-control-next"
+                type="button"
+                data-bs-target="#carouselExampleSlidesOnly"
+                data-bs-slide="next">
                 <span className="carousel-control-next-icon" aria-hidden="true"></span>
                 <span className="visually-hidden">Next</span>
               </button>
@@ -76,7 +102,9 @@ function Testimonial() {
 }
 
 function TestimonialCard({ name, image, rating, text }) {
+  
   return (
+    
     <div className="single">
       <div className="image">
         <img src={image} alt={name} />

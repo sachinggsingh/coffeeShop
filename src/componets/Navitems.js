@@ -1,3 +1,4 @@
+
 export const navItems = [
   {
     id: 1,
@@ -34,12 +35,6 @@ export const navItems = [
     title: "User",
     path: "./user",
     cName: "nav-item",
-  },
-  {
-     id :6,
-     title:"About",
-     path:"./about",
-     cName:"nav-item",
   },
  
 ];
@@ -104,10 +99,13 @@ export const userLoginDropdown = [
     path: "./cart",
     cName: "submenu-item",
   },
+
   {
     id: 2,
     title: "Profile",
     path: "./profile",
     cName: "submenu-item",
   },
+
 ];
+
